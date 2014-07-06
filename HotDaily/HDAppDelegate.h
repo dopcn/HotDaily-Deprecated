@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface HDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

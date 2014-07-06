@@ -6,11 +6,9 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @class HDDetailViewController;
-
-#import <CoreData/CoreData.h>
 
 @interface HDMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 

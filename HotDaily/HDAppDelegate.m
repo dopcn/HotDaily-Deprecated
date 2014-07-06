@@ -7,7 +7,6 @@
 //
 
 #import "HDAppDelegate.h"
-
 #import "HDMasterViewController.h"
 
 @implementation HDAppDelegate

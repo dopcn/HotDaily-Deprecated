@@ -7,7 +7,6 @@
 //
 
 #import "HDMasterViewController.h"
-
 #import "HDDetailViewController.h"
 
 @interface HDMasterViewController ()
