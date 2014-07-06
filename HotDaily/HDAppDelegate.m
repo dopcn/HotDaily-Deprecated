@@ -27,7 +27,8 @@
         HDMasterViewController *controller = (HDMasterViewController *)masterNavigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        UIStoryboard *phone = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        UINavigationController *navigationController = (UINavigationController *)[phone instantiateViewControllerWithIdentifier:@"TopViewController"];
         HDMasterViewController *controller = (HDMasterViewController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     }
