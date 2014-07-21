@@ -6,6 +6,7 @@ pod 'AFNetworking', '~> 2.3.1'
 pod 'SDWebImage', '~> 3.6'
 pod 'WebViewJavascriptBridge', '~> 4.1.0'
 pod 'ECSlidingViewController', '~> 2.0.2'
+pod 'ReactiveCocoa', '~> 2.3.1'
 end
 
 target "HotDailyTests" do

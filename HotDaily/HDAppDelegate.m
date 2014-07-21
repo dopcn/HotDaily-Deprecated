@@ -7,7 +7,7 @@
 //
 
 #import "HDAppDelegate.h"
-#import "HDMasterViewController.h"
+//#import "HDMainListViewController.h"
 
 @implementation HDAppDelegate
 
@@ -17,20 +17,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
-        
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        HDMasterViewController *controller = (HDMasterViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
+    if (HDisPad) {
+//        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+//        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+//        splitViewController.delegate = (id)navigationController.topViewController;
+//        
+//        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
+//        HDMasterViewController *controller = (HDMasterViewController *)masterNavigationController.topViewController;
+//        controller.managedObjectContext = self.managedObjectContext;
     } else {
-        UIStoryboard *phone = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *)[phone instantiateViewControllerWithIdentifier:@"TopViewController"];
-        HDMasterViewController *controller = (HDMasterViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
+//        UIStoryboard *phone = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+//        UINavigationController *navigationController = (UINavigationController *)[phone instantiateViewControllerWithIdentifier:@"TopViewController"];
+//        HDMainListViewController *controller = (HDMainListViewController *)navigationController.topViewController;
+//        controller.managedObjectContext = self.managedObjectContext;
     }
     return YES;
 }
