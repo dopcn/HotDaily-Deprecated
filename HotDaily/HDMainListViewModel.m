@@ -15,7 +15,7 @@
 }
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 5;
 }
 
 @end
