@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     if (HDisPad) {
 //        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
 //        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
