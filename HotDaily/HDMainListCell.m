@@ -8,7 +8,22 @@
 
 #import "HDMainListCell.h"
 
-@implementation HDMainListCell
+@implementation HDMainListCellWithImage
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+        HDLog(@"init");
+    }
+    return self;
+}
+
+@end
+
+
+@implementation HDMainListCellWithoutImage
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -9,7 +9,13 @@
 @import UIKit;
 @class HDMainListViewModel;
 
-@interface HDMainListCell : UITableViewCell
+@interface HDMainListCellWithImage : UITableViewCell
+
+@property (nonatomic, strong) HDMainListViewModel *viewModel;
+
+@end
+
+@interface HDMainListCellWithoutImage : UITableViewCell
 
 @property (nonatomic, strong) HDMainListViewModel *viewModel;
 
