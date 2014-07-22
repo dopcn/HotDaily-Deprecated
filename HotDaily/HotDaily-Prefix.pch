@@ -16,4 +16,5 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
+    #import <AFNetworking/AFNetworking.h>
 #endif

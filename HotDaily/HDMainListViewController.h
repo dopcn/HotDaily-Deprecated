@@ -6,8 +6,11 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@class HDMainListViewModel;
 
 @interface HDMainListViewController : UITableViewController
+
+@property (nonatomic, strong) HDMainListViewModel *viewModel;
 
 @end

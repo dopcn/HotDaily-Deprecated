@@ -26,6 +26,8 @@
 		871BE2961963DC4900087E4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE26E1963DC4900087E4B /* CoreData.framework */; };
 		871BE29E1963DC4900087E4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871BE29C1963DC4900087E4B /* InfoPlist.strings */; };
 		871BE2A01963DC4900087E4B /* HotDailyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE29F1963DC4900087E4B /* HotDailyTests.m */; };
+		87829395197D0DD10037AC25 /* HDMainListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829394197D0DD10037AC25 /* HDMainListViewModel.m */; };
+		87829398197D13660037AC25 /* HDHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829397197D13660037AC25 /* HDHTTPManager.m */; };
 		87C17A64197C03CF00DCA99C /* HDMainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A63197C03CF00DCA99C /* HDMainListViewController.m */; };
 		87C17A6B197C0B8E00DCA99C /* HDListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A6A197C0B8E00DCA99C /* HDListDetailViewController.m */; };
 		87C17A6E197C0C1200DCA99C /* HDMainListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A6D197C0C1200DCA99C /* HDMainListCell.m */; };
@@ -65,6 +67,10 @@
 		871BE29B1963DC4900087E4B /* HotDailyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HotDailyTests-Info.plist"; sourceTree = "<group>"; };
 		871BE29D1963DC4900087E4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		871BE29F1963DC4900087E4B /* HotDailyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotDailyTests.m; sourceTree = "<group>"; };
+		87829393197D0DD10037AC25 /* HDMainListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewModel.h; sourceTree = "<group>"; };
+		87829394197D0DD10037AC25 /* HDMainListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewModel.m; sourceTree = "<group>"; };
+		87829396197D13660037AC25 /* HDHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHTTPManager.h; sourceTree = "<group>"; };
+		87829397197D13660037AC25 /* HDHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDHTTPManager.m; sourceTree = "<group>"; };
 		87C17A62197C03CF00DCA99C /* HDMainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewController.h; sourceTree = "<group>"; };
 		87C17A63197C03CF00DCA99C /* HDMainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewController.m; sourceTree = "<group>"; };
 		87C17A68197C061200DCA99C /* HDMacro.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMacro.pch; sourceTree = "<group>"; };
@@ -214,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				871BE2821963DC4900087E4B /* HotDaily.xcdatamodeld */,
+				87829396197D13660037AC25 /* HDHTTPManager.h */,
+				87829397197D13660037AC25 /* HDHTTPManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -221,6 +229,8 @@
 		87C17A67197C056400DCA99C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				87829393197D0DD10037AC25 /* HDMainListViewModel.h */,
+				87829394197D0DD10037AC25 /* HDMainListViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -392,6 +402,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				87C17A6B197C0B8E00DCA99C /* HDListDetailViewController.m in Sources */,
+				87829398197D13660037AC25 /* HDHTTPManager.m in Sources */,
+				87829395197D0DD10037AC25 /* HDMainListViewModel.m in Sources */,
 				871BE27B1963DC4900087E4B /* HDAppDelegate.m in Sources */,
 				87C17A64197C03CF00DCA99C /* HDMainListViewController.m in Sources */,
 				87C17A71197C0C6B00DCA99C /* HDSettingsViewController.m in Sources */,
