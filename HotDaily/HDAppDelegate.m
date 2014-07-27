@@ -7,6 +7,11 @@
 //
 
 #import "HDAppDelegate.h"
+#import <SDWebImage/SDImageCache.h>
+#import <SDWebImage/SDWebImageManager.h>
+
+static NSString* const KImageReferer = @"http://bbs.tianya.cn";
+
 //#import "HDMainListViewController.h"
 
 @implementation HDAppDelegate
@@ -32,6 +37,11 @@
 //        HDMainListViewController *controller = (HDMainListViewController *)navigationController.topViewController;
 //        controller.managedObjectContext = self.managedObjectContext;
     }
+    
+    NSString *bundledPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"CustomPathImages"];
+    [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];
+    [[[SDWebImageManager sharedManager] imageDownloader] setValue:KImageReferer forHTTPHeaderField:@"Referer"];
+    
     return YES;
 }
 							

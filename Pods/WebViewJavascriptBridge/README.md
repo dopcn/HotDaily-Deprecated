@@ -9,6 +9,8 @@ In the Wild
 -----------
 WebViewJavascriptBridge is used by a range of companies and projects. This list is incomplete, but feel free to add your's and send a PR.
 
+- [Facebook Messenger](https://www.facebook.com/mobile/messenger)
+- [Facebook Paper](https://facebook.com/paper)
 - [Yardsale](https://www.getyardsale.com/)
 - [EverTrue](http://www.evertrue.com/)
 - [Game Insight](http://www.game-insight.com/)
@@ -50,8 +52,20 @@ To use a WebViewJavascriptBridge in your own project:
 
 4) Finally, set up the javascript side:
 	
-	document.addEventListener('WebViewJavascriptBridgeReady', function onBridgeReady(event) {
-		var bridge = event.bridge
+	function connectWebViewJavascriptBridge(callback) {
+		if (window.WebViewJavascriptBridge) {
+			callback(WebViewJavascriptBridge)
+		} else {
+			document.addEventListener('WebViewJavascriptBridgeReady', function() {
+				callback(WebViewJavascriptBridge)
+			}, false)
+		}
+	}
+	
+	connectWebViewJavascriptBridge(function(bridge) {
+		
+		/* Init your app here */
+
 		bridge.init(function(message, responseCallback) {
 			alert('Received message: ' + message)   
 			if (responseCallback) {
@@ -62,7 +76,7 @@ To use a WebViewJavascriptBridge in your own project:
 		bridge.send('Please respond to this', function responseCallback(responseData) {
 			console.log("Javascript got its response", responseData)
 		})
-	}, false)
+	})
 
 Contributors & Forks
 --------------------
@@ -130,6 +144,23 @@ Example:
 		NSLog(@"Current UIWebView page URL is: %@", responseData);
 	}];
 
+#### Custom bundle
+`WebViewJavascriptBridge` requires `WebViewJavascriptBridge.js.txt` file that is injected into web view to create a bridge on JS side. Standard implementation uses `mainBundle` to search for this file. If you e.g. build a static library and you have that file placed somewhere else you can use this method to specify which bundle should be searched for `WebViewJavascriptBridge.js.txt` file:
+
+##### `[WebViewJavascriptBridge bridgeForWebView:(UIWebView/WebView*)webView webViewDelegate:(UIWebViewDelegate*)webViewDelegate handler:(WVJBHandler)handler resourceBundle:(NSBundle*)bundle`
+
+Example:
+
+
+```
+[WebViewJavascriptBridge bridgeForWebView:_webView
+                          webViewDelegate:self
+                                  handler:^(id data, WVJBResponseCallback responseCallback) {
+                                      NSLog(@"Received message from javascript: %@", data);
+                                  }
+                           resourceBundle:[NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"ResourcesBundle" withExtension:@"bundle"]]
+];
+```
 
 ### Javascript API
 

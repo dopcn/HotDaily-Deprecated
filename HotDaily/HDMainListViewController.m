@@ -11,8 +11,11 @@
 #import "HDMainListCell.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <ReactiveCocoa/RACEXTScope.h>
+#import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
 
-@interface HDMainListViewController ()
+
+@interface HDMainListViewController () <UIActionSheetDelegate>
 
 @end
 
@@ -20,7 +23,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewModel = [[HDMainListViewModel alloc] init];
+    self.viewModel = [HDMainListViewModel new];
+    self.slidingViewController.anchorRightPeekAmount = 160.0;
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    
+    self.menuButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal defer:^RACSignal *{
+            [self.slidingViewController anchorTopViewToRightAnimated:YES];
+            return nil;
+        }];
+    }];
 }
 
 #pragma mark - Table view data source
@@ -39,11 +51,13 @@
     if (indexPath.row < 3) {
         HDMainListCellWithImage *cell = [tableView dequeueReusableCellWithIdentifier:identifierWithImage forIndexPath:indexPath];
         cell.title.text = @"withimagewithimagewithimagewithimage";
-        [cell.titleImage setImageWithURL:[NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184371599.jpg"]];
+        [cell.titleImage sd_setImageWithURL:[NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184371599.jpg"]];
+        cell.bottomView.backgroundColor = [UIColor redColor];
         return cell;
     } else {
         HDMainListCellWithoutImage *cell = [tableView dequeueReusableCellWithIdentifier:identifierWithoutImage forIndexPath:indexPath];
         cell.title.text = @"withoutimagewithoutimagewithoutimagewithoutimage";
+        cell.bottomView.backgroundColor = [UIColor redColor];
         return cell;
     }
     
@@ -71,5 +85,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

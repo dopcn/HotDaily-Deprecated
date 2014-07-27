@@ -96,7 +96,7 @@ THE SOFTWARE.
 
 ## WebViewJavascriptBridge
 
-Copyright (c) 2011-2013 Marcus Westin, Antoine Lagadec
+Copyright (c) 2011-2014 Marcus Westin, Antoine Lagadec
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
