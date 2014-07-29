@@ -10,12 +10,16 @@
 
 @implementation HDMainListViewModel
 
-- (NSInteger)numberOfSections {
-    return 1;
+- (NSInteger)numberOfRows {
+    return [self.data[@"data"][@"list"] count];
 }
 
-- (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return 5;
+- (NSString *)titleOfRow:(NSInteger)row {
+    return self.data[@"data"][@"list"][row][@"title"];
+}
+
+- (UIColor *)bottomViewColorOfRow:(NSInteger)row {
+    return [UIColor redColor];
 }
 
 @end

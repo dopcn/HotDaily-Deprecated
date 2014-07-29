@@ -10,7 +10,10 @@
 
 @interface HDMainListViewModel : NSObject
 
-- (NSInteger)numberOfSections;
-- (NSInteger)numberOfRowsInSection:(NSInteger)section;
+@property (nonatomic, strong) NSDictionary *data;
+
+- (NSInteger)numberOfRows;
+- (NSString *)titleOfRow:(NSInteger)row;
+- (UIColor *)bottomViewColorOfRow:(NSInteger)row;
 
 @end
