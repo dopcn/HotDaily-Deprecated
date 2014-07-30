@@ -9,7 +9,6 @@
 #import "HDMainListViewController.h"
 #import "HDMainListViewModel.h"
 #import "HDMainListCell.h"
-#import "HDHTTPManager.h"
 
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
@@ -65,6 +64,7 @@
 }
 
 #pragma mark - Table view data source
+//default number of section is 1
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.viewModel numberOfRowsInSection:section];
 }
@@ -83,14 +83,18 @@
     }
 }
 
+#pragma mark - tableView delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"CellToDetail" sender:indexPath];
+}
 
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    NSLog(@"%@",[sender class]);
+    if ([segue.destinationViewController respondsToSelector:@selector(setData:)]) {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        NSDictionary *data = [self.viewModel dataAtIndexPath:indexPath];
+        [segue.destinationViewController performSelector:@selector(setData:) withObject:data];
+    }
 }
 
 

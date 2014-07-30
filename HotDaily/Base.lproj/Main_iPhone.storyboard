@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90191915759999997" green="0.90191915759999997" blue="0.90191915759999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainListCellWithImage" id="m0d-ak-lc9" customClass="HDMainListCellWithImage">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainListCellWithImage" id="m0d-ak-lc9" customClass="HDMainListCellWithImage">
                                 <rect key="frame" x="0.0" y="86" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
@@ -65,10 +65,9 @@
                                     <outlet property="bottomView" destination="acY-4h-UE4" id="aqw-xb-yDj"/>
                                     <outlet property="title" destination="Sej-yF-wGp" id="B84-fK-B7e"/>
                                     <outlet property="titleImage" destination="Svf-jv-j4q" id="EDa-9l-Bvi"/>
-                                    <segue destination="Ah7-4n-0Wa" kind="push" identifier="showDetail" id="jUr-3t-vfg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainListCellWithoutImage" id="KZJ-Uf-1f3" customClass="HDMainListCellWithoutImage">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainListCellWithoutImage" id="KZJ-Uf-1f3" customClass="HDMainListCellWithoutImage">
                                 <rect key="frame" x="0.0" y="181" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KZJ-Uf-1f3" id="Olm-3b-Hob">
@@ -96,7 +95,27 @@
                                 <connections>
                                     <outlet property="bottomView" destination="yBy-en-Po5" id="xJb-Rb-cty"/>
                                     <outlet property="title" destination="9cm-Wy-2Jx" id="XEx-tM-0Dj"/>
-                                    <segue destination="Ah7-4n-0Wa" kind="push" id="h4v-BY-nUL"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainListCell" textLabel="R1t-Y8-NDK" style="IBUITableViewCellStyleDefault" id="Wqg-sa-nq6" userLabel="这个 cell 只是为了构建一个 segue" customClass="HDMainListCellWithoutImage">
+                                <rect key="frame" x="0.0" y="276" width="320" height="95"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wqg-sa-nq6" id="wCy-q0-w76">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="95"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R1t-Y8-NDK">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.90191915759999997" green="0.90191915759999997" blue="0.90191915759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="Ah7-4n-0Wa" kind="push" identifier="CellToDetail" id="Kul-e9-XP6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -407,7 +426,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="jUr-3t-vfg"/>
-    </inferredMetricsTieBreakers>
 </document>

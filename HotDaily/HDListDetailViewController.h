@@ -10,4 +10,6 @@
 
 @interface HDListDetailViewController : HDBaseViewController
 
+@property (strong, nonatomic) NSDictionary *data;
+
 @end

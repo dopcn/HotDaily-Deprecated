@@ -19,6 +19,10 @@
     return [self.data[@"data"][@"list"] count];
 }
 
+- (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath {
+    return self.data[@"data"][@"list"][indexPath.row];
+}
+
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
     return self.data[@"data"][@"list"][indexPath.row][@"title"];
 }

@@ -14,6 +14,7 @@
 
 - (NSInteger)numberOfSections;
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
+- (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
 - (NSURL *)imageURLAtIndexPath:(NSIndexPath *)indexPath;
 - (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath;
