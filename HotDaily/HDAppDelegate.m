@@ -23,6 +23,7 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD0021B)];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
 //    if (HDisPad) {
 //        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
