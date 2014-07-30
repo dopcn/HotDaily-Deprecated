@@ -49,7 +49,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Svf-jv-j4q">
-                                                    <rect key="frame" x="220" y="5" width="75" height="75"/>
+                                                    <rect key="frame" x="215" y="0.0" width="85" height="85"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acY-4h-UE4">
                                                     <rect key="frame" x="0.0" y="83" width="300" height="2"/>

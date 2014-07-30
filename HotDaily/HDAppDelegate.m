@@ -9,6 +9,7 @@
 #import "HDAppDelegate.h"
 #import <SDWebImage/SDImageCache.h>
 #import <SDWebImage/SDWebImageManager.h>
+#import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
 static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 
@@ -21,6 +22,7 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD0021B)];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
