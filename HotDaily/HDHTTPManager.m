@@ -8,8 +8,6 @@
 
 #import "HDHTTPManager.h"
 
-static NSString * const baseURLString = @"http://wireless.tianya.cn/v/";
-
 @interface HDHTTPManager ()
 - (instancetype)initWithBaseURL:(NSURL *)url;
 @end

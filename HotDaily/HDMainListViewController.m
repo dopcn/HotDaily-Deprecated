@@ -40,21 +40,15 @@
 - (void)bindViewModel {
     self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            NSDictionary *params = @{@"pageNo": @1,
-                                     @"pageSize": @50,
-                                     @"orderBy": @1,
-                                     @"pageBy": @1};
-            [[HDHTTPManager sharedHTTPManager] GET:@"forumStand/hotw?"
-                                        parameters:params
-                                           success:^(NSURLSessionDataTask *task, id responseObject) {
-                                               [subscriber sendNext:responseObject];
-                                               dispatch_async(dispatch_get_main_queue(), ^{
-                                                   [self.tableView reloadData];
-                                               });
-                                               [subscriber sendCompleted];
-                                           } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                               [subscriber sendError:error];
-                                           }];
+            [self.viewModel GETHotListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+                [subscriber sendNext:responseObject];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+                [subscriber sendCompleted];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                [subscriber sendError:error];
+            }];
             return [RACDisposable disposableWithBlock:^{
                 //
             }];

@@ -8,6 +8,9 @@
 
 #import "AFHTTPSessionManager.h"
 
+static NSString* const baseURLString = @"http://wireless.tianya.cn/v/";
+static NSString* const hotListURLString = @"forumStand/hotw?";
+
 @interface HDHTTPManager : AFHTTPSessionManager
 
 + (HDHTTPManager *)sharedHTTPManager;

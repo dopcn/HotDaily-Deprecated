@@ -19,4 +19,7 @@
 - (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath;
 
+- (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
 @end

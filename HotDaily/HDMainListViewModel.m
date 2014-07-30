@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
+#import "HDHTTPManager.h"
 #import "HDMainListViewModel.h"
-#import <SDWebImage/SDWebImageManager.h>
 
 @implementation HDMainListViewModel
 
@@ -28,7 +28,6 @@
         NSURL *url = [NSURL URLWithString:self.data[@"data"][@"list"][indexPath.row][@"pic"]];
         return url;
     } else {
-#warning handle error
         return nil;
     }
 }
@@ -42,6 +41,20 @@
         return ![self.data[@"data"][@"list"][indexPath.row][@"pic"] isEqualToString:@""];
     }
     return NO;
+}
+
+- (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *, id))success failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
+    NSDictionary *params = @{@"pageNo": @1,
+                             @"pageSize": @50,
+                             @"orderBy": @1,
+                             @"pageBy": @1};
+    [[HDHTTPManager sharedHTTPManager] GET:hotListURLString
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       success(task, responseObject);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       failure(task, error);
+                                   }];
 }
 
 @end
