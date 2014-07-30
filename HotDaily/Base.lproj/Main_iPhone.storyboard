@@ -12,7 +12,6 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.88343032525510201" green="0.0" blue="0.009586108057780731" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -109,14 +108,12 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="热帖日报" id="tQt-TN-PWz">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="g6K-kR-dFv"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="SCX-2M-XRz">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="menuButton" destination="g6K-kR-dFv" id="IOH-19-lka"/>
                         <outlet property="refreshButton" destination="SCX-2M-XRz" id="beN-Sx-qd9"/>
                     </connections>
                 </tableViewController>
@@ -133,7 +130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VaW-Mr-XYc">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CollectionCell" id="VaW-Mr-XYc">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VaW-Mr-XYc" id="m9n-e1-vyL">
@@ -364,7 +361,6 @@
                 <navigationController storyboardIdentifier="SettingsViewController" definesPresentationContext="YES" id="fhs-is-W3f" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pk6-qV-FpU">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.88343032529999999" green="0.0" blue="0.0095861080580000001" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

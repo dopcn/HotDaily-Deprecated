@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@interface HDAdViewController : UIViewController
+@interface HDAdViewController : HDBaseViewController
 
 @end

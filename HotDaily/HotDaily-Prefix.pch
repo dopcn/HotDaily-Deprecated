@@ -18,4 +18,6 @@
     #import <CoreData/CoreData.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
     #import <AFNetworking/AFNetworking.h>
+
+    #import "HDBaseViewController.h"
 #endif

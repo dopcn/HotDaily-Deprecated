@@ -13,6 +13,6 @@
 #define RectLog(frame) NSLog(@"origin:(%f,%f)\nsize:(%f,%f)",frame.origin.x,frame.origin.y,frame.size.width,frame.size.height)
 #define HDisPad [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
 #define HDisPhone [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone
-
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #endif

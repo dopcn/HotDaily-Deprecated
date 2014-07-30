@@ -30,11 +30,13 @@
     [self bindViewModel];
     
     [self.refreshButton.rac_command execute:nil];
+
 }
 
 - (void)configureView {
     //configure other attributes of slidingViewController in storyboard runtime attributes
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    [self setLeftNavButton];
 }
 
 - (void)bindViewModel {
@@ -59,11 +61,6 @@
         [signal subscribeNext:^(id x) {
             self.viewModel.data = x;
         }];
-    }];
-    
-    self.menuButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        [self.slidingViewController anchorTopViewToRightAnimated:YES];
-        return [RACSignal empty];
     }];
 }
 

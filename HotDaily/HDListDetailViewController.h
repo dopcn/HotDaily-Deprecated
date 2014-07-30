@@ -8,7 +8,6 @@
 
 @import UIKit;
 
-
-@interface HDListDetailViewController : UIViewController
+@interface HDListDetailViewController : HDBaseViewController
 
 @end

@@ -9,12 +9,9 @@
 @import UIKit;
 @class HDMainListViewModel;
 
-@interface HDMainListViewController : UITableViewController
+@interface HDMainListViewController : HDBaseTableViewController
 
 @property (nonatomic, strong) HDMainListViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
-
-
 
 @end

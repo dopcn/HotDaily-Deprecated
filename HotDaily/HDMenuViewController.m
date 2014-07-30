@@ -23,9 +23,7 @@
 
 - (NSArray *)menuItems {
     if (_menuItems) return _menuItems;
-    
     _menuItems = @[@"头版",@"剪报",@"设置",@"留言版",@"广告版"];
-    
     return _menuItems;
 }
 
@@ -45,17 +43,25 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (indexPath.row < self.menuItems.count - 1) {
-//        UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"topViewController"];
-//        [nav.viewControllers[0] setCategoryId:indexPath.row];
-//        [nav setToolbarHidden:YES];
-//        self.slidingViewController.topViewController = nav;
-//        
-//    } else if (indexPath.row == self.menuItems.count - 1) {
-//        self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingViewController"];
-//    }
-    
+    switch (indexPath.row) {
+        case 0:
+            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopViewController"];
+            break;
+        case 1:
+            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
+            break;
+        case 2:
+            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+            break;
+        case 3:
+            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuggestionViewController"];
+            break;
+        case 4:
+            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdViewController"];
+            break;
+        default:
+            break;
+    }
     [self.slidingViewController resetTopViewAnimated:YES];
 }
 
