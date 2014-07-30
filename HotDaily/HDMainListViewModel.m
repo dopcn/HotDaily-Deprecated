@@ -33,7 +33,7 @@
 }
 
 - (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath {
-    return [UIColor redColor];
+    return UIColorFromRGB(0xD0021B);
 }
 
 - (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath {
