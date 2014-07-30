@@ -7,19 +7,41 @@
 //
 
 #import "HDMainListViewModel.h"
+#import <SDWebImage/SDWebImageManager.h>
 
 @implementation HDMainListViewModel
 
-- (NSInteger)numberOfRows {
+- (NSInteger)numberOfSections {
+    return 1;
+}
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section {
     return [self.data[@"data"][@"list"] count];
 }
 
-- (NSString *)titleOfRow:(NSInteger)row {
-    return self.data[@"data"][@"list"][row][@"title"];
+- (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
+    return self.data[@"data"][@"list"][indexPath.row][@"title"];
 }
 
-- (UIColor *)bottomViewColorOfRow:(NSInteger)row {
+- (NSURL *)imageURLAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self hasImageAtIndexPath:indexPath]) {
+        NSURL *url = [NSURL URLWithString:self.data[@"data"][@"list"][indexPath.row][@"pic"]];
+        return url;
+    } else {
+#warning handle error
+        return nil;
+    }
+}
+
+- (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath {
     return [UIColor redColor];
+}
+
+- (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.data[@"data"][@"list"][indexPath.row][@"pic"]) {
+        return ![self.data[@"data"][@"list"][indexPath.row][@"pic"] isEqualToString:@""];
+    }
+    return NO;
 }
 
 @end

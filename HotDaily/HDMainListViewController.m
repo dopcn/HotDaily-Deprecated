@@ -11,12 +11,11 @@
 #import "HDMainListCell.h"
 #import "HDHTTPManager.h"
 
-#import <SDWebImage/UIImageView+WebCache.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
 
 
-@interface HDMainListViewController () <UIActionSheetDelegate>
+@interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -34,7 +33,7 @@
 }
 
 - (void)configureView {
-    self.slidingViewController.anchorRightPeekAmount = 160.0;
+    //configure other attributes of slidingViewController in storyboard runtime attributes
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
 }
 
@@ -76,39 +75,33 @@
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.viewModel numberOfRows];
+    return [self.viewModel numberOfRowsInSection:section];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    static NSString *identifierWithImage = @"MainListCellWithImage";
+    static NSString *identifierWithImage = @"MainListCellWithImage";
     static NSString *identifierWithoutImage = @"MainListCellWithoutImage";
-//    if (indexPath.row < 3) {
-//        HDMainListCellWithImage *cell = [tableView dequeueReusableCellWithIdentifier:identifierWithImage forIndexPath:indexPath];
-//        cell.title.text = @"withimagewithimagewithimagewithimage";
-//        [cell.titleImage sd_setImageWithURL:[NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184371599.jpg"]];
-//        cell.bottomView.backgroundColor = [UIColor redColor];
-//        return cell;
-//    } else {
-        HDMainListCellWithoutImage *cell = [tableView dequeueReusableCellWithIdentifier:identifierWithoutImage forIndexPath:indexPath];
-        cell.title.text = [self.viewModel titleOfRow:indexPath.row];
-        cell.bottomView.backgroundColor = [self.viewModel bottomViewColorOfRow:indexPath.row];
+    if ([self.viewModel hasImageAtIndexPath:indexPath]) {
+        HDMainListCellWithImage *cell = [tableView dequeueReusableCellWithIdentifier:identifierWithImage forIndexPath:indexPath];
+        [cell configureWithViewModel:self.viewModel atIndexPath:indexPath];
         return cell;
-//    }
-    
-//TODO:[cell configureWithData:[self.viewmodel dataofindexpath:indexpath]];
+    } else {
+        HDMainListCellWithoutImage *cell = [tableView dequeueReusableCellWithIdentifier:identifierWithoutImage forIndexPath:indexPath];
+        [cell configureWithViewModel:self.viewModel atIndexPath:indexPath];
+        return cell;
+    }
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"%@",[sender class]);
 }
-*/
+
 
 
 

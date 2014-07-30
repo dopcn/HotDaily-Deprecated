@@ -9,19 +9,21 @@
 @import UIKit;
 @class HDMainListViewModel;
 
-@interface HDMainListCellWithImage : UITableViewCell
-
-@property (nonatomic, strong) HDMainListViewModel *viewModel;
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UIImageView *titleImage;
-@property (weak, nonatomic) IBOutlet UIView *bottomView;
-
-@end
-
 @interface HDMainListCellWithoutImage : UITableViewCell
 
 @property (nonatomic, strong) HDMainListViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+- (void)configureWithViewModel:(HDMainListViewModel *)viewModel atIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+@interface HDMainListCellWithImage : HDMainListCellWithoutImage
+
+@property (nonatomic, strong) HDMainListViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UIImageView *titleImage;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @end

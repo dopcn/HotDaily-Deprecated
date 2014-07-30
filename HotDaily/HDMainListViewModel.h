@@ -12,8 +12,11 @@
 
 @property (nonatomic, strong) NSDictionary *data;
 
-- (NSInteger)numberOfRows;
-- (NSString *)titleOfRow:(NSInteger)row;
-- (UIColor *)bottomViewColorOfRow:(NSInteger)row;
+- (NSInteger)numberOfSections;
+- (NSInteger)numberOfRowsInSection:(NSInteger)section;
+- (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
+- (NSURL *)imageURLAtIndexPath:(NSIndexPath *)indexPath;
+- (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath;
+- (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

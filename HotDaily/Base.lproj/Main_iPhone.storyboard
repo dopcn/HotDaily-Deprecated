@@ -169,6 +169,9 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="underLeftViewControllerStoryboardId" value="MenuViewController"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="topViewControllerStoryboardId" value="TopViewController"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="anchorRightPeekAmount">
+                            <integer key="value" value="160"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Hk-Pr-BnN" userLabel="First Responder" sceneMemberID="firstResponder"/>
