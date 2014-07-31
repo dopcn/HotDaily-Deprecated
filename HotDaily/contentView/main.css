@@ -1,0 +1,21 @@
+html{width:100%;}
+
+body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,blockquote{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,i,strong,th,var,optgroup{font-style:normal;font-weight:normal}ul,ol{list-style:none}
+
+#title {
+	font-size: 18px;
+	font-weight: bold;
+}
+.con {
+	border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+p {
+    overflow: hidden;
+}
+
+img {
+	max-width: 100%;
+ 	margin:auto;
+}

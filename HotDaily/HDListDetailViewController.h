@@ -13,5 +13,7 @@
 
 @property (strong, nonatomic) HDListDetailViewModel *viewModel;
 - (void)setViewModelData:(NSDictionary *)data;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+- (IBAction)backButtonTapped:(id)sender;
 
 @end

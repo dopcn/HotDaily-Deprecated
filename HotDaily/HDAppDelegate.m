@@ -10,6 +10,7 @@
 #import <SDWebImage/SDImageCache.h>
 #import <SDWebImage/SDWebImageManager.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
+#import "WebViewProxy.h"
 
 static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 
@@ -26,7 +27,9 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD0021B)];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    
+//    [[UIBarButtonItem appearance] setBackButton Image:[UIImage imageNamed:@"arrow.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"arrow"]];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"arrow"]];
 //    if (HDisPad) {
 //        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
 //        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
@@ -45,10 +48,23 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
     NSString *bundledPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"CustomPathImages"];
     [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];
     [[[SDWebImageManager sharedManager] imageDownloader] setValue:KImageReferer forHTTPHeaderField:@"Referer"];
-    
+    [self setupProxy];
     return YES;
 }
-							
+
+- (void)setupProxy {
+    NSOperationQueue* queue = [[NSOperationQueue alloc] init];
+    [queue setMaxConcurrentOperationCount:5];
+    
+    [WebViewProxy handleRequestsWithHost:@"img3.laibafile.cn" handler:^(NSURLRequest *req, WVPResponse *res) {
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:req.URL];
+        [request addValue:@"http://bbs.tianya.cn" forHTTPHeaderField:@"Referer"];
+        [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            [res respondWithData:data mimeType:@"image/jpg"];
+        }];
+    }];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

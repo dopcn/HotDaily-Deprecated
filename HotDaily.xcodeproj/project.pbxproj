@@ -27,6 +27,8 @@
 		871BE29E1963DC4900087E4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871BE29C1963DC4900087E4B /* InfoPlist.strings */; };
 		871BE2A01963DC4900087E4B /* HotDailyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE29F1963DC4900087E4B /* HotDailyTests.m */; };
 		876111F3198A396700B92D99 /* background@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 876111F2198A396700B92D99 /* background@2x.jpg */; };
+		876111F5198A3D9E00B92D99 /* contentView in Resources */ = {isa = PBXBuildFile; fileRef = 876111F4198A3D9E00B92D99 /* contentView */; };
+		876111F8198A409100B92D99 /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 876111F7198A409100B92D99 /* WebViewProxy.m */; };
 		87829395197D0DD10037AC25 /* HDMainListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829394197D0DD10037AC25 /* HDMainListViewModel.m */; };
 		87829398197D13660037AC25 /* HDHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829397197D13660037AC25 /* HDHTTPManager.m */; };
 		87A738741988907A00A5E4A2 /* HDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A738731988907A00A5E4A2 /* HDMenuViewController.m */; };
@@ -76,6 +78,9 @@
 		871BE29D1963DC4900087E4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		871BE29F1963DC4900087E4B /* HotDailyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotDailyTests.m; sourceTree = "<group>"; };
 		876111F2198A396700B92D99 /* background@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background@2x.jpg"; sourceTree = "<group>"; };
+		876111F4198A3D9E00B92D99 /* contentView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = contentView; sourceTree = "<group>"; };
+		876111F6198A409100B92D99 /* WebViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewProxy.h; sourceTree = "<group>"; };
+		876111F7198A409100B92D99 /* WebViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewProxy.m; sourceTree = "<group>"; };
 		87829393197D0DD10037AC25 /* HDMainListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewModel.h; sourceTree = "<group>"; };
 		87829394197D0DD10037AC25 /* HDMainListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewModel.m; sourceTree = "<group>"; };
 		87829396197D13660037AC25 /* HDHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHTTPManager.h; sourceTree = "<group>"; };
@@ -173,6 +178,8 @@
 		871BE2701963DC4900087E4B /* HotDaily */ = {
 			isa = PBXGroup;
 			children = (
+				876111F6198A409100B92D99 /* WebViewProxy.h */,
+				876111F7198A409100B92D99 /* WebViewProxy.m */,
 				871BE2791963DC4900087E4B /* HDAppDelegate.h */,
 				871BE27A1963DC4900087E4B /* HDAppDelegate.m */,
 				87C17A61197C038000DCA99C /* iPhone */,
@@ -271,6 +278,7 @@
 		87C17A66197C054800DCA99C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				876111F4198A3D9E00B92D99 /* contentView */,
 				871BE2821963DC4900087E4B /* HotDaily.xcdatamodeld */,
 				87829396197D13660037AC25 /* HDHTTPManager.h */,
 				87829397197D13660037AC25 /* HDHTTPManager.m */,
@@ -373,6 +381,7 @@
 				871BE2811963DC4900087E4B /* Main_iPad.storyboard in Resources */,
 				871BE28C1963DC4900087E4B /* Images.xcassets in Resources */,
 				871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */,
+				876111F5198A3D9E00B92D99 /* contentView in Resources */,
 				876111F3198A396700B92D99 /* background@2x.jpg in Resources */,
 				871BE2751963DC4900087E4B /* InfoPlist.strings in Resources */,
 			);
@@ -469,6 +478,7 @@
 				87C17A64197C03CF00DCA99C /* HDMainListViewController.m in Sources */,
 				87A738741988907A00A5E4A2 /* HDMenuViewController.m in Sources */,
 				87C17A71197C0C6B00DCA99C /* HDSettingsViewController.m in Sources */,
+				876111F8198A409100B92D99 /* WebViewProxy.m in Sources */,
 				871BE2771963DC4900087E4B /* main.m in Sources */,
 				87C17A6E197C0C1200DCA99C /* HDMainListCell.m in Sources */,
 				871BE2841963DC4900087E4B /* HotDaily.xcdatamodeld in Sources */,
