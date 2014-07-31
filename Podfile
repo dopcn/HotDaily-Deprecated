@@ -7,7 +7,6 @@ pod 'SDWebImage', '~> 3.6'
 pod 'WebViewJavascriptBridge', '~> 4.1.0'
 pod 'ECSlidingViewController', '~> 2.0.2'
 pod 'ReactiveCocoa', '~> 2.3.1'
-pod 'MBProgressHUD', '~> 0.8'
 pod 'SVPullToRefresh', '~> 0.4.1'
 end
 

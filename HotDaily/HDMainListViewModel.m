@@ -65,7 +65,7 @@
 
 - (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *, id))success failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
     NSDictionary *params = @{@"pageNo": @1,
-                             @"pageSize": @5,
+                             @"pageSize": @20,
                              @"orderBy": @1,
                              @"pageBy": @1};
     [[HDHTTPManager sharedHTTPManager] GET:hotListURLString

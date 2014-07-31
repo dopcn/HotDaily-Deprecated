@@ -26,6 +26,7 @@
 		871BE2961963DC4900087E4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE26E1963DC4900087E4B /* CoreData.framework */; };
 		871BE29E1963DC4900087E4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871BE29C1963DC4900087E4B /* InfoPlist.strings */; };
 		871BE2A01963DC4900087E4B /* HotDailyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE29F1963DC4900087E4B /* HotDailyTests.m */; };
+		876111F3198A396700B92D99 /* background@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 876111F2198A396700B92D99 /* background@2x.jpg */; };
 		87829395197D0DD10037AC25 /* HDMainListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829394197D0DD10037AC25 /* HDMainListViewModel.m */; };
 		87829398197D13660037AC25 /* HDHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829397197D13660037AC25 /* HDHTTPManager.m */; };
 		87A738741988907A00A5E4A2 /* HDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A738731988907A00A5E4A2 /* HDMenuViewController.m */; };
@@ -74,6 +75,7 @@
 		871BE29B1963DC4900087E4B /* HotDailyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HotDailyTests-Info.plist"; sourceTree = "<group>"; };
 		871BE29D1963DC4900087E4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		871BE29F1963DC4900087E4B /* HotDailyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotDailyTests.m; sourceTree = "<group>"; };
+		876111F2198A396700B92D99 /* background@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background@2x.jpg"; sourceTree = "<group>"; };
 		87829393197D0DD10037AC25 /* HDMainListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewModel.h; sourceTree = "<group>"; };
 		87829394197D0DD10037AC25 /* HDMainListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewModel.m; sourceTree = "<group>"; };
 		87829396197D13660037AC25 /* HDHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHTTPManager.h; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		87A738841989CF8600A5E4A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				876111F2198A396700B92D99 /* background@2x.jpg */,
 				871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */,
 				87C17A6C197C0C1200DCA99C /* HDMainListCell.h */,
 				87C17A6D197C0C1200DCA99C /* HDMainListCell.m */,
@@ -370,6 +373,7 @@
 				871BE2811963DC4900087E4B /* Main_iPad.storyboard in Resources */,
 				871BE28C1963DC4900087E4B /* Images.xcassets in Resources */,
 				871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */,
+				876111F3198A396700B92D99 /* background@2x.jpg in Resources */,
 				871BE2751963DC4900087E4B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

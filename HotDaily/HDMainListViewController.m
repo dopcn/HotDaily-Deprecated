@@ -14,7 +14,6 @@
 #import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
 #import "HDMainListHeaderView.h"
 
-
 @interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
