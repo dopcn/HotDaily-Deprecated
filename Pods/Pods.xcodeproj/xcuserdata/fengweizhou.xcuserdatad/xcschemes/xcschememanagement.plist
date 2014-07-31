@@ -14,12 +14,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-HotDaily-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HotDaily-ReactiveCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-HotDaily-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-HotDaily-SVPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,42 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>380732C652F841738921035A</key>
+		<key>188BE99A7EE74EAAB75A5612</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7805234FD55C4AB0B0C08632</key>
+		<key>19ABFB3C3A33401AB2781F5A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CD3C3BB83E6444E9A84951C</key>
+		<key>1B9F89AFC67A431188B3B1A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B32FB72CFEC44617ACCC7680</key>
+		<key>264D5EB5F0E54F5A97961BA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF10300835E74419B35967C7</key>
+		<key>644FF18D4FF1476287B9805B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D134AB2211644559B9AEA3CC</key>
+		<key>8DAD18C83AD94F639272345B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D383A648C1734B28AC9BBC4D</key>
+		<key>A12D8639BBD2475984D54170</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB0373BBA19245CEAF175460</key>
+		<key>D409F09E49AC4A93BE7EDCA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E488C394E4B24EB5B7BD7318</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FAE0F11E1CBC41ABBA81FFDE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

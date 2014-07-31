@@ -37,7 +37,7 @@
     //configure other attributes of slidingViewController in storyboard runtime attributes
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
     [self setLeftNavButton];
-    self.tableView.tableHeaderView = [HDMainListHeaderView new];
+    self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
 }
 
 - (void)bindViewModel {
@@ -83,6 +83,10 @@
         [cell configureWithViewModel:self.viewModel atIndexPath:indexPath];
         return cell;
     }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.viewModel titleForHeaderInSection:section];
 }
 
 #pragma mark - tableView delegate

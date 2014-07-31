@@ -9,6 +9,7 @@
 #import "HDMainListHeaderView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageView+WebCache.h"
+#import "HDMainListViewModel.h"
 
 @implementation HDMainListHeaderView
 
@@ -21,40 +22,55 @@
     return self;
 }
 
-- (instancetype)init {
+- (instancetype)initWithViewModel:(HDMainListViewModel *)viewModel {
     self = [self initWithFrame:CGRectMake(0, 0, 320, 200)];
     if (self) {
+        self.viewModel = viewModel;
+        
         [self pageViewInit];
         [self addSubview:self.pageView];
         
         [self pageControlInit];
         [self addSubview:self.pageControl];
         
+        [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(autoSlide) userInfo:nil repeats:YES];
     }
     return self;
+}
+
+- (void)autoSlide {
+    if (self.pageControl.currentPage == 4) {
+        [self.pageView scrollRectToVisible:CGRectMake(0, 0, 320, 200) animated:YES];
+        self.pageControl.currentPage = 0;
+        return;
+    }
+    self.pageControl.currentPage ++;
+    [self.pageView scrollRectToVisible:CGRectMake(self.pageControl.currentPage*320, 0, 320, 200) animated:YES];
+    
 }
 
 - (void)pageViewInit {
     self.pageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
     self.pageView.pagingEnabled = YES;
     self.pageView.delegate = self;
+    self.pageView.bounces = NO;
     self.pageView.showsVerticalScrollIndicator = NO;
     self.pageView.showsHorizontalScrollIndicator = NO;
     self.pageView.contentSize = CGSizeMake(320*5, 200);
     
     for (NSInteger i = 0; i < 5; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0+i*320, 0, 320, 200)];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184527856.jpg"]];
+        [imageView sd_setImageWithURL:[self.viewModel headerImageURLs][i]];
         
         [self insertMaskLayerTo:imageView.layer];
         UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 140, 300, 50)];
         title.textColor = [UIColor whiteColor];
-        title.numberOfLines = 3;
+        title.font = [UIFont boldSystemFontOfSize:20.0];
+        title.numberOfLines = 2;
         title.shadowColor = [UIColor blackColor];
         title.shadowOffset = CGSizeMake(1.0, 1.0);
         [imageView addSubview:title];
-        
-        title.text = @"test now";
+        title.text = [self.viewModel headerImageTitles][i];
         [self.pageView addSubview:imageView];
     }
     
@@ -63,7 +79,7 @@
 
 - (void)insertMaskLayerTo:(CALayer *)layer {
     UIColor *color1 = [UIColor colorWithWhite:0.0 alpha:0.0];
-    UIColor *color2 = [UIColor colorWithWhite:0.0 alpha:0.2];
+    UIColor *color2 = [UIColor colorWithWhite:0.0 alpha:0.3];
     
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     
@@ -86,9 +102,8 @@
 
 #pragma mark - scroll view delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat index = ceilf(scrollView.contentOffset.x / 320.0);
-    NSLog(@"%f",index);
-    self.pageControl.currentPage = index;
+    CGFloat index = scrollView.contentOffset.x / 320.0;
+    self.pageControl.currentPage = roundf(index);
 }
 
 

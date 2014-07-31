@@ -15,4 +15,6 @@
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) UIScrollView *pageView;
 
+- (instancetype)initWithViewModel:(HDMainListViewModel *)viewModel;
+
 @end

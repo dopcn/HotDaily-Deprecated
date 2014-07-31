@@ -19,6 +19,10 @@
     return [self.data[@"data"][@"list"] count];
 }
 
+- (NSString *)titleForHeaderInSection:(NSInteger)section {
+    return @"7月31日 星期四 午报";
+}
+
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath {
     return self.data[@"data"][@"list"][indexPath.row];
 }
@@ -47,9 +51,21 @@
     return NO;
 }
 
+- (NSArray *)headerImageURLs {
+    return @[[NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237388.jpg"],
+             [NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237387.jpg"],
+             [NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237386.jpg"],
+             [NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237385.jpg"],
+             [NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237384.jpg"]];
+}
+
+- (NSArray *)headerImageTitles {
+    return @[@"中文怎么样",@"中文怎么样中文怎么样",@"中文怎么样中文怎么样中文怎么样",@"中文怎么样中文怎么样中文怎么样中文怎么样",@"中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样"];
+}
+
 - (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *, id))success failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
     NSDictionary *params = @{@"pageNo": @1,
-                             @"pageSize": @50,
+                             @"pageSize": @5,
                              @"orderBy": @1,
                              @"pageBy": @1};
     [[HDHTTPManager sharedHTTPManager] GET:hotListURLString
