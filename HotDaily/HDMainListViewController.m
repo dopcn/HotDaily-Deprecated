@@ -12,6 +12,7 @@
 
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
+#import "HDMainListHeaderView.h"
 
 
 @interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -36,6 +37,7 @@
     //configure other attributes of slidingViewController in storyboard runtime attributes
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
     [self setLeftNavButton];
+    self.tableView.tableHeaderView = [HDMainListHeaderView new];
 }
 
 - (void)bindViewModel {
@@ -88,15 +90,18 @@
     [self performSegueWithIdentifier:@"CellToDetail" sender:indexPath];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+//get rid of undeclared selector warning
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController respondsToSelector:@selector(setData:)]) {
+    if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
         NSIndexPath *indexPath = (NSIndexPath *)sender;
         NSDictionary *data = [self.viewModel dataAtIndexPath:indexPath];
-        [segue.destinationViewController performSelector:@selector(setData:) withObject:data];
+        [segue.destinationViewController performSelector:@selector(setViewModelData:) withObject:data];
     }
 }
-
+#pragma clang diagnostic pop
 
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "HDListDetailViewController.h"
+#import "HDListDetailViewModel.h"
 
 @interface HDListDetailViewController ()
 
@@ -14,9 +15,14 @@
 
 @implementation HDListDetailViewController
 
+- (void)setViewModelData:(NSDictionary *)data {
+    self.viewModel = [HDListDetailViewModel new];
+    self.viewModel.data = data;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@",self.data[@"title"]);
+//    NSLog(@"%@",self.viewModel.data[@"title"]);
 }
 
 

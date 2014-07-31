@@ -33,6 +33,8 @@
 		87A7387A19889FE400A5E4A2 /* HDSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387919889FE400A5E4A2 /* HDSuggestionViewController.m */; };
 		87A7387D19889FFF00A5E4A2 /* HDAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387C19889FFF00A5E4A2 /* HDAdViewController.m */; };
 		87A738801988AA1500A5E4A2 /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387F1988AA1500A5E4A2 /* HDBaseViewController.m */; };
+		87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */; };
+		87A738881989CFEC00A5E4A2 /* HDMainListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A738871989CFEC00A5E4A2 /* HDMainListHeaderView.m */; };
 		87C17A64197C03CF00DCA99C /* HDMainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A63197C03CF00DCA99C /* HDMainListViewController.m */; };
 		87C17A6B197C0B8E00DCA99C /* HDListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A6A197C0B8E00DCA99C /* HDListDetailViewController.m */; };
 		87C17A6E197C0C1200DCA99C /* HDMainListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A6D197C0C1200DCA99C /* HDMainListCell.m */; };
@@ -86,6 +88,10 @@
 		87A7387C19889FFF00A5E4A2 /* HDAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDAdViewController.m; sourceTree = "<group>"; };
 		87A7387E1988AA1500A5E4A2 /* HDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseViewController.h; sourceTree = "<group>"; };
 		87A7387F1988AA1500A5E4A2 /* HDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseViewController.m; sourceTree = "<group>"; };
+		87A73881198955F300A5E4A2 /* HDListDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDListDetailViewModel.h; sourceTree = "<group>"; };
+		87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDListDetailViewModel.m; sourceTree = "<group>"; };
+		87A738861989CFEC00A5E4A2 /* HDMainListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListHeaderView.h; sourceTree = "<group>"; };
+		87A738871989CFEC00A5E4A2 /* HDMainListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListHeaderView.m; sourceTree = "<group>"; };
 		87C17A62197C03CF00DCA99C /* HDMainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewController.h; sourceTree = "<group>"; };
 		87C17A63197C03CF00DCA99C /* HDMainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewController.m; sourceTree = "<group>"; };
 		87C17A68197C061200DCA99C /* HDMacro.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMacro.pch; sourceTree = "<group>"; };
@@ -207,16 +213,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		87C17A61197C038000DCA99C /* iPhone */ = {
+		87A738841989CF8600A5E4A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */,
+				87C17A6C197C0C1200DCA99C /* HDMainListCell.h */,
+				87C17A6D197C0C1200DCA99C /* HDMainListCell.m */,
+				87A738861989CFEC00A5E4A2 /* HDMainListHeaderView.h */,
+				87A738871989CFEC00A5E4A2 /* HDMainListHeaderView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		87A738851989CFA000A5E4A2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				87A738721988907A00A5E4A2 /* HDMenuViewController.h */,
 				87A738731988907A00A5E4A2 /* HDMenuViewController.m */,
 				87A7387E1988AA1500A5E4A2 /* HDBaseViewController.h */,
 				87A7387F1988AA1500A5E4A2 /* HDBaseViewController.m */,
-				87C17A6C197C0C1200DCA99C /* HDMainListCell.h */,
-				87C17A6D197C0C1200DCA99C /* HDMainListCell.m */,
 				87C17A62197C03CF00DCA99C /* HDMainListViewController.h */,
 				87C17A63197C03CF00DCA99C /* HDMainListViewController.m */,
 				87C17A69197C0B8E00DCA99C /* HDListDetailViewController.h */,
@@ -229,6 +244,15 @@
 				87A7387919889FE400A5E4A2 /* HDSuggestionViewController.m */,
 				87A7387B19889FFF00A5E4A2 /* HDAdViewController.h */,
 				87A7387C19889FFF00A5E4A2 /* HDAdViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		87C17A61197C038000DCA99C /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				87A738841989CF8600A5E4A2 /* View */,
+				87A738851989CFA000A5E4A2 /* Controller */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -256,6 +280,8 @@
 			children = (
 				87829393197D0DD10037AC25 /* HDMainListViewModel.h */,
 				87829394197D0DD10037AC25 /* HDMainListViewModel.m */,
+				87A73881198955F300A5E4A2 /* HDListDetailViewModel.h */,
+				87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -426,7 +452,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */,
 				87A7387D19889FFF00A5E4A2 /* HDAdViewController.m in Sources */,
+				87A738881989CFEC00A5E4A2 /* HDMainListHeaderView.m in Sources */,
 				87C17A6B197C0B8E00DCA99C /* HDListDetailViewController.m in Sources */,
 				87829398197D13660037AC25 /* HDHTTPManager.m in Sources */,
 				87A738801988AA1500A5E4A2 /* HDBaseViewController.m in Sources */,

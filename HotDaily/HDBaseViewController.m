@@ -28,6 +28,10 @@
     
 }
 
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
 //- (void)didReceiveMemoryWarning
 //{
 //    [super didReceiveMemoryWarning];
@@ -48,6 +52,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
 }
 
 //- (void)didReceiveMemoryWarning

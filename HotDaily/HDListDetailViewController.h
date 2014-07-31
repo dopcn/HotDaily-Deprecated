@@ -7,9 +7,11 @@
 //
 
 @import UIKit;
+@class HDListDetailViewModel;
 
 @interface HDListDetailViewController : HDBaseViewController
 
-@property (strong, nonatomic) NSDictionary *data;
+@property (strong, nonatomic) HDListDetailViewModel *viewModel;
+- (void)setViewModelData:(NSDictionary *)data;
 
 @end
