@@ -3,17 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict/>
-	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>871BE2641963DC4900087E4B</key>
+		<key>HotDaily.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>primary</key>
-			<true/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
-		<key>871BE2901963DC4900087E4B</key>
+		<key>Pods-HotDailyTests.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>primary</key>
+			<key>isShown</key>
 			<true/>
 		</dict>
 	</dict>
