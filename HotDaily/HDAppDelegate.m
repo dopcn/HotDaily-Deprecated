@@ -27,7 +27,6 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD0021B)];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-//    [[UIBarButtonItem appearance] setBackButton Image:[UIImage imageNamed:@"arrow.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"arrow"]];
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"arrow"]];
 //    if (HDisPad) {
