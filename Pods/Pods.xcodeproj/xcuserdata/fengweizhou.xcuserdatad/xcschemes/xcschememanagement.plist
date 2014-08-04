@@ -4,47 +4,47 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-HotDaily-AFNetworking.xcscheme</key>
+		<key>Pods-HotDaily-AFNetworking.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDaily-ECSlidingViewController.xcscheme</key>
+		<key>Pods-HotDaily-ECSlidingViewController.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDaily-ReactiveCocoa.xcscheme</key>
+		<key>Pods-HotDaily-ReactiveCocoa.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDaily-SDWebImage.xcscheme</key>
+		<key>Pods-HotDaily-SDWebImage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDaily-SVPullToRefresh.xcscheme</key>
+		<key>Pods-HotDaily-SVPullToRefresh.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDaily-WebViewJavascriptBridge.xcscheme</key>
+		<key>Pods-HotDaily-WebViewJavascriptBridge.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDaily.xcscheme</key>
+		<key>Pods-HotDaily.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDailyTests-Kiwi.xcscheme</key>
+		<key>Pods-HotDailyTests-Kiwi.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDailyTests.xcscheme</key>
+		<key>Pods-HotDailyTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
