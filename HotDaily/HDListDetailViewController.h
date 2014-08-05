@@ -15,5 +15,6 @@
 - (void)setViewModelData:(NSDictionary *)data;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 - (IBAction)backButtonTapped:(id)sender;
+- (IBAction)shareButtonTapped:(id)sender;
 
 @end

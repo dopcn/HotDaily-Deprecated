@@ -12,6 +12,8 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "WebViewProxy.h"
 
+#import <ShareSDK/ShareSDK.h>
+
 static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 
 @implementation HDAppDelegate
@@ -22,8 +24,16 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [ShareSDK registerApp:@"289fb2996fb8"];
+//    [ShareSDK ssoEnabled:NO];
+    
+    [ShareSDK connectSinaWeiboWithAppKey:@"2625849231"
+                               appSecret:@"1e9a9faad1d444d748b951dbe1d8a5fb"
+                             redirectUri:@"https://api.weibo.com/oauth2/default.html"];
+    
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD0021B)];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];

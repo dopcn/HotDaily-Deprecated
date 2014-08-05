@@ -443,6 +443,9 @@
                         </view>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="7mS-sf-qAE">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="Ah7-4n-0Wa" id="7js-ga-7JG"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
