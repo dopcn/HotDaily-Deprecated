@@ -413,6 +413,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem image="previous" width="90" id="erW-4q-ktG"/>
+                        <barButtonItem image="next" width="90" id="1HU-EH-CvL"/>
+                        <barButtonItem image="more" width="90" id="vGw-KH-x8J"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="cra-N8-TIN">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="arrow" id="bKL-Wh-sUU">
@@ -448,6 +453,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="webView" destination="5bd-mJ-0nG" id="U0V-qn-CMo"/>
                     </connections>
@@ -461,6 +467,9 @@
         <image name="arrow" width="21" height="20"/>
         <image name="avatar" width="102" height="102"/>
         <image name="background.jpg" width="219" height="408"/>
+        <image name="more" width="27" height="5"/>
+        <image name="next" width="12" height="21"/>
+        <image name="previous" width="12" height="21"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

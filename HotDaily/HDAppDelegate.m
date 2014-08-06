@@ -32,6 +32,7 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"arrow"]];
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"arrow"]];
+    [[UIToolbar appearance] setTintColor:UIColorFromRGB(0xD0021B)];
 //    if (HDisPad) {
 //        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
 //        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];

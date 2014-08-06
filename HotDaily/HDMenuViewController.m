@@ -10,7 +10,8 @@
 #import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
 
 @interface HDMenuViewController () <UITableViewDelegate, UITableViewDataSource>
-
+@property (strong, nonatomic) NSArray *menuItems;
+@property (strong, nonatomic) NSArray *menuItemIcons;
 @end
 
 @implementation HDMenuViewController
@@ -23,8 +24,17 @@
 
 - (NSArray *)menuItems {
     if (_menuItems) return _menuItems;
-    _menuItems = @[@"头版",@"剪报",@"设置",@"留言版",@"广告版"];
+    _menuItems = @[@"头版",@"剪报",@"设置",@"广告版"];
     return _menuItems;
+}
+
+- (NSArray *)menuItemIcons {
+    if (_menuItemIcons) return _menuItemIcons;
+    _menuItemIcons = @[[UIImage imageNamed:@"home"],
+                       [UIImage imageNamed:@"collection"],
+                       [UIImage imageNamed:@"settings"],
+                       [UIImage imageNamed:@"attachment"]];
+    return _menuItemIcons;
 }
 
 #pragma mark - UITableViewDataSource
@@ -36,6 +46,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"MenuCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.imageView.image = self.menuItemIcons[indexPath.row];
     cell.textLabel.text = self.menuItems[indexPath.row];
     return cell;
 }
@@ -53,10 +64,10 @@
         case 2:
             self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             break;
+//        case 3:
+//            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuggestionViewController"];
+//            break;
         case 3:
-            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuggestionViewController"];
-            break;
-        case 4:
             self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdViewController"];
             break;
         default:

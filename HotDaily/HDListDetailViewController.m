@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.bridge = [WebViewJavascriptBridge bridgeForWebView:_webView handler:^(id data, WVJBResponseCallback responseCallback) {
-        //
+        //no callback now
     }];
     
     self.webView.scrollView.delegate = self;
@@ -59,6 +59,17 @@
         }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO];
+    [self.toolbarItems[0] setEnabled:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setToolbarHidden:YES];
+}
+
 - (void)loadHTML:(UIWebView*)webView {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"contentView"];
     NSURL *url = [NSURL fileURLWithPath:filePath];
@@ -68,10 +79,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    static float lastOffY  = 0;
-    float curOffY = scrollView.contentOffset.y;
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenHeight = screenRect.size.height;
+    static CGFloat lastOffY  = 0.0;
+    CGFloat curOffY = scrollView.contentOffset.y;
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     if (scrollView.frame.size.height >= scrollView.contentSize.height || //内容高度低于scrollView高度，不隐藏
         fabs(curOffY) + screenHeight > scrollView.contentSize.height  || //拉至最底部时，不做处理

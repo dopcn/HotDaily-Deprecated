@@ -73,8 +73,6 @@
         title.text = [self.viewModel headerImageTitles][i];
         [self.pageView addSubview:imageView];
     }
-    
-    
 }
 
 - (void)insertMaskLayerTo:(CALayer *)layer {
