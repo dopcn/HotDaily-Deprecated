@@ -11,8 +11,6 @@
 #import <WebViewJavascriptBridge/WebViewJavascriptBridge.h>
 #import "HDHTTPManager.h"
 
-#import <ShareSDK/ShareSDK.h>
-
 @interface HDListDetailViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) WebViewJavascriptBridge *bridge;
 @end
@@ -111,43 +109,6 @@
 }
 
 - (IBAction)shareButtonTapped:(id)sender {
-    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
-                                       defaultContent:@"默认分享内容，没内容时显示"
-                                                image:nil
-                                                title:@"ShareSDK"
-                                                  url:@"https://api.weibo.com/oauth2/default.html"
-                                          description:@"这是一条测试信息"
-                                            mediaType:SSPublishContentMediaTypeNews];
-//    [ShareSDK shareContent:publishContent
-//                      type:ShareTypeSinaWeibo
-//               authOptions:nil
-//             statusBarTips:NO result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-//                 if (state == SSResponseStateSuccess)
-//                 {
-//                     NSLog(@"分享成功");
-//                 }
-//                 else if (state == SSResponseStateFail)
-//                 {
-//                     NSLog(@"分享失败错误描述:%@",[error errorDescription]);
-//                 }
-//
-//             }];
     
-    [ShareSDK showShareActionSheet:nil
-                         shareList:nil
-                           content:publishContent
-                     statusBarTips:NO
-                       authOptions:nil
-                      shareOptions:nil
-                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSResponseStateSuccess)
-                                {
-                                    NSLog(@"分享成功");
-                                }
-                                else if (state == SSResponseStateFail)
-                                {
-                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
-                                }
-                            }];
 }
 @end
