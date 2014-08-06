@@ -1,21 +1,61 @@
-html{width:100%;}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;}
 
-body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,blockquote{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,i,strong,th,var,optgroup{font-style:normal;font-weight:normal}ul,ol{list-style:none}
-
-#title {
-	font-size: 18px;
-	font-weight: bold;
+body {
+	background-color: #F1EFE5;
+	font-size: 16px;
 }
-.con {
-	border-bottom-style: solid;
-    border-bottom-width: 1px;
+
+h3 {
+	font-family: "Microsoft YaHei";
+	margin: 10px;
 }
 
 p {
+	margin: 10px;
     overflow: hidden;
+    white-space: pre-line;
+    font-family: "Microsoft YaHei"
 }
 
 img {
 	max-width: 100%;
  	margin:auto;
 }
+
+#title {
+	margin: 10px;
+	background-color: white;
+	border-bottom-color: black;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+}
+
+#categoryName {
+    font-weight: bold;
+	width: 80px;
+	font-size: 14px;
+	line-height: 25px;
+	text-align: center;
+	color: white;
+	background-color: #D0021B;
+	position: relative;
+	left: 30px;
+	top: -10px;
+}
+
+.authorReply {
+	margin: 10px;
+	background-color: white;
+	border-bottom-color: #D0021B;
+	border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+.reply {
+	margin: 10px;
+	background-color: white;
+	border-bottom-color: #F5A623;
+	border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+

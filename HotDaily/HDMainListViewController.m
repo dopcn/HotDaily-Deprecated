@@ -84,8 +84,15 @@
     }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.viewModel titleForHeaderInSection:section];
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
+    if (!header) {
+        header = [UITableViewHeaderFooterView new];
+    }
+    header.contentView.backgroundColor = UIColorFromRGB(0xF2EFE6);
+    header.textLabel.textColor = [UIColor blackColor];
+    header.textLabel.text = [self.viewModel titleForHeaderInSection:section];
+    return header;
 }
 
 #pragma mark - tableView delegate

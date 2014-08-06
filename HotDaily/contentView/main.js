@@ -16,13 +16,19 @@ connectWebViewJavascriptBridge(function(bridge) {
                                            $('#content').empty()
                                            window.scroll(0,0)
                                            $('h3').text(jsondata.title)
+                                           $('#categoryName').text(jsondata.categoryName)
+                                           $('#subtitle').text(jsondata.author + '    ' +jsondata.composeTime.split('.')[0])
                                            var fragment = document.createDocumentFragment(),
                                                list = jsondata.list
                                            for(var x in list){
                                                var div = document.createElement("div")
-                                               div.setAttribute('class','con')
+                                               if (list[x].authorId == jsondata.authorId) {
+                                                   div.setAttribute('class','authorReply')
+                                               } else {
+                                                   div.setAttribute('class','reply')
+                                               }
                                                var li2 = document.createElement('p')
-                                               li2.appendChild(document.createTextNode('ID:' + list[x].author + ' 回复时间:' + list[x].replyTime))
+                                               li2.appendChild(document.createTextNode(list[x].author + '    ' + list[x].replyTime.split('.')[0]))
                                                div.appendChild(li2)
                                            
                                                var listTr = document.createElement('p')

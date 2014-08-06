@@ -24,7 +24,7 @@
 
 - (NSArray *)menuItems {
     if (_menuItems) return _menuItems;
-    _menuItems = @[@"头版",@"剪报",@"设置",@"广告版"];
+    _menuItems = @[@"头条",@"收藏",@"设置",@"广告"];
     return _menuItems;
 }
 

@@ -32,8 +32,7 @@
     
     [self loadHTML:_webView];
     
-    NSDictionary *params = @{
-                            @"categoryId":self.viewModel.data[@"categoryId"],
+    NSDictionary *params = @{@"categoryId":self.viewModel.data[@"categoryId"],
                             @"noteId":self.viewModel.data[@"noteId"],
                             @"pageNo":@1};
     
