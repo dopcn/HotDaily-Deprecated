@@ -188,10 +188,13 @@
     }
 }
 
+
 #pragma mark - alertview delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        NSInteger pageNo = [[alertView textFieldAtIndex:0].text integerValue];
+        NSInteger pageNo = [[alertView textFieldAtIndex:0].text integerValue]?:1;
+        pageNo = pageNo > 0 ? pageNo : 1;
+        pageNo = pageNo < [self.viewModel.detailData[@"data"][@"pageCount"] integerValue] ? pageNo : [self.viewModel.detailData[@"data"][@"pageCount"] integerValue];
         self.currentPageNo = @(pageNo);
     }
 }
