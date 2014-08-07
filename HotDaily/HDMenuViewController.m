@@ -16,15 +16,9 @@
 
 @implementation HDMenuViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
 - (NSArray *)menuItems {
     if (_menuItems) return _menuItems;
-    _menuItems = @[@"头条",@"收藏",@"设置",@"广告"];
+    _menuItems = @[@"头条",@"收藏",@"设置"];
     return _menuItems;
 }
 
@@ -32,8 +26,7 @@
     if (_menuItemIcons) return _menuItemIcons;
     _menuItemIcons = @[[UIImage imageNamed:@"home"],
                        [UIImage imageNamed:@"collection"],
-                       [UIImage imageNamed:@"settings"],
-                       [UIImage imageNamed:@"attachment"]];
+                       [UIImage imageNamed:@"settings"]];
     return _menuItemIcons;
 }
 
@@ -48,6 +41,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.imageView.image = self.menuItemIcons[indexPath.row];
     cell.textLabel.text = self.menuItems[indexPath.row];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
     return cell;
 }
 
@@ -67,9 +61,9 @@
 //        case 3:
 //            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuggestionViewController"];
 //            break;
-        case 3:
-            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdViewController"];
-            break;
+//        case 3:
+//            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdViewController"];
+//            break;
         default:
             break;
     }

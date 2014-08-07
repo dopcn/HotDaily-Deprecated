@@ -9,9 +9,9 @@
 #import "HDListDetailViewController.h"
 #import "HDListDetailViewModel.h"
 #import <WebViewJavascriptBridge/WebViewJavascriptBridge.h>
-#import "HDHTTPManager.h"
+#import <ReactiveCocoa/RACEXTScope.h>
 
-@interface HDListDetailViewController () <UIScrollViewDelegate>
+@interface HDListDetailViewController () <UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) WebViewJavascriptBridge *bridge;
 @end
 
@@ -19,7 +19,7 @@
 
 - (void)setViewModelData:(NSDictionary *)data {
     self.viewModel = [HDListDetailViewModel new];
-    self.viewModel.data = data;
+    self.viewModel.abstractData = data;
 }
 
 - (void)viewDidLoad {
@@ -30,38 +30,15 @@
     
     self.webView.scrollView.delegate = self;
     
-    [self loadHTML:_webView];
+    [self.viewModel loadHTML:self.webView];
     
-    NSDictionary *params = @{@"categoryId":self.viewModel.data[@"categoryId"],
-                            @"noteId":self.viewModel.data[@"noteId"],
-                            @"pageNo":@1};
-    
-    [[HDHTTPManager sharedHTTPManager] GET:@"forumStand/content?" parameters:params
-        success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSError *error;
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject[@"data"]
-                                                               options:0
-                                                                 error:&error];
-            
-            if (! jsonData) {
-                NSLog(@"Got an error: %@", error);
-            } else {
-                NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                [self.bridge send:jsonString];
-            }
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络连接失败"
-                                                                message:[NSString stringWithFormat:@"%@",error]
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alertView show];
-        }];
+    self.currentPageNo = @1;
+    [self bindViewModel];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO];
-    [self.toolbarItems[0] setEnabled:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -69,11 +46,70 @@
     [self.navigationController setToolbarHidden:YES];
 }
 
-- (void)loadHTML:(UIWebView*)webView {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"contentView"];
-    NSURL *url = [NSURL fileURLWithPath:filePath];
-    NSURLRequest *req = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:req];
+- (void)bindViewModel {
+    @weakify(self);
+    [self.onlyAuthor.rac_newOnChannel subscribeNext:^(NSNumber* x) {
+        @strongify(self);
+        if ([x boolValue]) {
+            NSMutableDictionary *data = [self.viewModel.detailData[@"data"] mutableCopy];
+            NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@", self.viewModel.abstractData[@"authorId"]];
+            data[@"list"] = [data[@"list"] filteredArrayUsingPredicate:pre];
+            NSError *error;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
+                                                               options:0
+                                                                 error:&error];
+            if (! jsonData) {
+                NSLog(@"Got an error: %@", error);
+            } else {
+                NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                [self.bridge send:jsonString];
+            }
+        } else {
+            NSError *error;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.viewModel.detailData[@"data"]
+                                                               options:0
+                                                                 error:&error];
+            if (! jsonData) {
+                NSLog(@"Got an error: %@", error);
+            } else {
+                NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                [self.bridge send:jsonString];
+            }
+        }
+    }];
+    
+    RACSignal *pageSignal = RACObserve(self, currentPageNo);
+    
+    [pageSignal subscribeNext:^(NSNumber* x) {
+        @strongify(self);
+        [self.viewModel GETDetailAtPageNo:[x integerValue] success:^(NSURLSessionDataTask *task, id jsonString) {
+            [self.bridge send:jsonString];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [self showAlertMessage];
+        }];
+    }];
+    
+    RACSignal *canGoPrevious = [pageSignal map:^id(NSNumber* value) {
+        return @([value integerValue]>1);
+    }];
+    
+    
+    RACSignal *canGoNext = [pageSignal map:^id(NSNumber* value) {
+        //bad API lead to this
+        NSInteger pageCount = [self.viewModel.detailData[@"data"][@"pageCount"] integerValue]?:2;
+        return @(pageCount > 1 && [value integerValue] < pageCount);
+    }];
+    
+    self.previousPage.rac_command = [[RACCommand alloc] initWithEnabled:canGoPrevious signalBlock:^RACSignal *(id input) {
+            self.currentPageNo = @([self.currentPageNo integerValue]-1);
+            return [RACSignal empty];
+    }];
+    
+    self.nextPage.rac_command = [[RACCommand alloc] initWithEnabled:canGoNext
+        signalBlock:^RACSignal *(id input) {
+            self.currentPageNo = @([self.currentPageNo integerValue]+1);
+            return [RACSignal empty];
+        }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -106,6 +142,14 @@
     }
 }
 
+- (void)showAlertMessage {
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"网络请求失败"
+                                                   message:@"请检查网络连接后重试"
+                                                  delegate:nil
+                                         cancelButtonTitle:@"确定"
+                                         otherButtonTitles:nil, nil];
+    [view show];
+}
 
 //- (void)didReceiveMemoryWarning
 //{
@@ -120,4 +164,48 @@
 - (IBAction)shareButtonTapped:(id)sender {
     
 }
+- (IBAction)moreMenu:(id)sender {
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:@"跳页",@"收藏", nil];
+    [sheet showFromToolbar:self.navigationController.toolbar];
+}
+
+#pragma mark - actionsheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"去哪一页？"
+                                                            message:[NSString stringWithFormat:@"%@/%@",self.currentPageNo,self.viewModel.detailData[@"data"][@"pageCount"]]
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"确定", nil];
+        alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [alertView show];
+    } else if (buttonIndex == 1) {
+        //
+    }
+}
+
+#pragma mark - alertview delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSInteger pageNo = [[alertView textFieldAtIndex:0].text integerValue];
+        self.currentPageNo = @(pageNo);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

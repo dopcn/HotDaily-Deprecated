@@ -40,11 +40,14 @@
 }
 
 - (void)bindViewModel {
+    @weakify(self);
     self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
             [self.viewModel GETHotListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
                 [subscriber sendNext:responseObject];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    @strongify(self);
                     [self.tableView reloadData];
                 });
                 [subscriber sendCompleted];
@@ -59,6 +62,7 @@
     
     [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
         [signal subscribeNext:^(id x) {
+            @strongify(self);
             self.viewModel.data = x;
         }];
     }];

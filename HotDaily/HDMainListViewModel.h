@@ -10,7 +10,7 @@
 
 @interface HDMainListViewModel : NSObject
 
-@property (nonatomic, strong) NSDictionary *data;
+@property (nonatomic, copy) NSDictionary *data;
 //table
 - (NSInteger)numberOfSections;
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;

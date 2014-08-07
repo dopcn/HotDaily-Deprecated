@@ -10,6 +10,11 @@
 
 @interface HDListDetailViewModel : NSObject
 
-@property (strong, nonatomic) NSDictionary *data;
+@property (copy, nonatomic) NSDictionary *abstractData;
+@property (copy, nonatomic) NSDictionary *detailData;
 
+- (void)loadHTML:(UIWebView*)webView;
+- (void)GETDetailAtPageNo:(NSInteger)pageNo
+                  success:(void (^)(NSURLSessionDataTask *task, id jsonString))success
+                  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 @end

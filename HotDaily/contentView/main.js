@@ -20,6 +20,9 @@ connectWebViewJavascriptBridge(function(bridge) {
                                            $('#subtitle').text(jsondata.author + '    ' +jsondata.composeTime.split('.')[0])
                                            var fragment = document.createDocumentFragment(),
                                                list = jsondata.list
+                                           if(list.length < 1){
+                                               alert('本页没有楼主回复')
+                                           }
                                            for(var x in list){
                                                var div = document.createElement("div")
                                                if (list[x].authorId == jsondata.authorId) {

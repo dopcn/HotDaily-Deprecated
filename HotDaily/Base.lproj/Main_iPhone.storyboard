@@ -143,7 +143,7 @@
             </objects>
             <point key="canvasLocation" x="481" y="748"/>
         </scene>
-        <!--Collection View Controller - 剪报-->
+        <!--Collection View Controller - 收藏-->
         <scene sceneID="vlA-7B-7Ty">
             <objects>
                 <tableViewController id="gtC-tN-Zak" customClass="HDCollectionViewController" sceneMemberID="viewController">
@@ -166,7 +166,7 @@
                             <outlet property="delegate" destination="gtC-tN-Zak" id="twe-ta-VIy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="剪报" id="ra4-6q-DgF"/>
+                    <navigationItem key="navigationItem" title="收藏" id="ra4-6q-DgF"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9T-73-eCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -224,74 +224,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWD-x7-wwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="496" y="2123"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="XjI-nS-QGQ">
-            <objects>
-                <navigationController storyboardIdentifier="SuggestionViewController" definesPresentationContext="YES" id="9Jg-pc-cia" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4sG-Qq-vdF">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Jrh-tL-yGu" kind="relationship" relationship="rootViewController" id="iLr-KP-wKq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8wt-CA-0Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="26" y="2829"/>
-        </scene>
-        <!--Suggestion View Controller - 留言版-->
-        <scene sceneID="GDm-pa-kOJ">
-            <objects>
-                <viewController id="Jrh-tL-yGu" customClass="HDSuggestionViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a4B-yk-iWd"/>
-                        <viewControllerLayoutGuide type="bottom" id="jhG-AY-uP0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jL2-UX-CMv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="留言版" id="AEx-jt-NKE"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mDk-kq-9N0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="504" y="2831"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="EJA-hO-WXr">
-            <objects>
-                <navigationController storyboardIdentifier="AdViewController" definesPresentationContext="YES" id="0Vr-AJ-65F" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aHH-vC-CyS">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="lNw-L7-kcF" kind="relationship" relationship="rootViewController" id="BIM-jr-OaN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TpC-bs-7xq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="21" y="3523"/>
-        </scene>
-        <!--Ad View Controller - 广告版-->
-        <scene sceneID="aV1-Pa-vCs">
-            <objects>
-                <viewController id="lNw-L7-kcF" customClass="HDAdViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Rix-Yd-ecO"/>
-                        <viewControllerLayoutGuide type="bottom" id="pFg-Kh-y6Y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="88q-M1-GwB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="广告版" id="bkP-X0-fXP"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aU1-xF-pLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="504" y="3531"/>
         </scene>
         <!--Sliding View Controller-->
         <scene sceneID="qCf-UQ-zMn">
@@ -359,8 +291,8 @@
                                     <outlet property="delegate" destination="Pcg-es-qYc" id="cAq-lM-fcd"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="hRz-hB-brB">
-                                <rect key="frame" x="40" y="40" width="80" height="80"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sheep" translatesAutoresizingMaskIntoConstraints="NO" id="hRz-hB-brB">
+                                <rect key="frame" x="52" y="40" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -420,7 +352,11 @@
                     <toolbarItems>
                         <barButtonItem image="previous" width="90" id="erW-4q-ktG"/>
                         <barButtonItem image="next" width="90" id="1HU-EH-CvL"/>
-                        <barButtonItem image="more" width="90" id="vGw-KH-x8J"/>
+                        <barButtonItem image="more" width="90" id="vGw-KH-x8J">
+                            <connections>
+                                <action selector="moreMenu:" destination="Ah7-4n-0Wa" id="R34-lK-hMq"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="cra-N8-TIN">
                         <nil key="title"/>
@@ -459,6 +395,9 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="nextPage" destination="1HU-EH-CvL" id="Smy-YL-4xZ"/>
+                        <outlet property="onlyAuthor" destination="1gx-Nj-6ja" id="fLU-W3-k9O"/>
+                        <outlet property="previousPage" destination="erW-4q-ktG" id="PD9-Kz-HJG"/>
                         <outlet property="webView" destination="5bd-mJ-0nG" id="U0V-qn-CMo"/>
                     </connections>
                 </viewController>
@@ -469,11 +408,11 @@
     </scenes>
     <resources>
         <image name="arrow" width="21" height="20"/>
-        <image name="avatar" width="102" height="102"/>
         <image name="background.jpg" width="219" height="408"/>
         <image name="more" width="27" height="5"/>
         <image name="next" width="12" height="21"/>
         <image name="previous" width="12" height="21"/>
+        <image name="sheep" width="45" height="42"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
