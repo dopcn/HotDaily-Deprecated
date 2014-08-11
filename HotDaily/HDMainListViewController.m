@@ -47,7 +47,6 @@
             [self.viewModel GETHotListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
                 [subscriber sendNext:responseObject];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    @strongify(self);
                     [self.tableView reloadData];
                 });
                 [subscriber sendCompleted];

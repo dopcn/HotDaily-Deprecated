@@ -10,6 +10,8 @@
 #import "HDListDetailViewModel.h"
 #import <WebViewJavascriptBridge/WebViewJavascriptBridge.h>
 #import <ReactiveCocoa/RACEXTScope.h>
+#import "HDShareViewController.h"
+#import "UIView+Capture.h"
 
 @interface HDListDetailViewController () <UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) WebViewJavascriptBridge *bridge;
@@ -162,14 +164,30 @@
 }
 
 - (IBAction)shareButtonTapped:(id)sender {
+    UIImage *bgImage = [self.navigationController.view captureView];
+    HDShareViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareViewController"];
+
+    [self presentViewController:vc animated:YES completion:^{
+        vc.bgImageView.image = bgImage;
+        [vc.view insertSubview:vc.bgView aboveSubview:vc.bgImageView];
+        [UIView animateWithDuration:0.1
+                         animations:^{
+                             vc.bgView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+                         }];
+    }];
     
 }
+
+- (void)singleTap:(UITapGestureRecognizer *)gr {
+    [gr.view removeFromSuperview];
+}
+
 - (IBAction)moreMenu:(id)sender {
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
                                                        delegate:self
                                               cancelButtonTitle:@"取消"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"跳页",@"收藏", nil];
+                                              otherButtonTitles:@"跳页",@"收藏",@"用网页打开回复", nil];
     [sheet showFromToolbar:self.navigationController.toolbar];
 }
 
@@ -184,7 +202,9 @@
         alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
         [alertView show];
     } else if (buttonIndex == 1) {
-        //
+        //collect
+    } else if (buttonIndex == 2) {
+        //open in webview
     }
 }
 
