@@ -22,10 +22,10 @@
 - (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath;
 //header view
-- (NSArray *)headerImageURLs;
-- (NSArray *)headerImageTitles;
+- (NSArray *)headerImages;
 
-- (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+- (void)GETHotListNumbers:(NSInteger)num
+                  success:(void (^)(NSURLSessionDataTask *, id))success
+                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
 
 @end

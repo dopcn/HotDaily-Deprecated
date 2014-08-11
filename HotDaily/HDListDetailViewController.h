@@ -17,7 +17,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-- (IBAction)backButtonTapped:(id)sender;
 - (IBAction)shareButtonTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UISwitch *onlyAuthor;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousPage;

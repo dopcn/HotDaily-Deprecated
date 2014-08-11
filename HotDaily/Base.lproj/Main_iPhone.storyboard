@@ -22,13 +22,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="748"/>
+            <point key="canvasLocation" x="-431" y="876"/>
         </scene>
         <!--Main List View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController title="Master" id="pGg-6v-bdr" customClass="HDMainListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.93725490196078431" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,7 +129,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="热帖日报" id="tQt-TN-PWz">
+                    <navigationItem key="navigationItem" title="热帖榜" id="tQt-TN-PWz">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="SCX-2M-XRz">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -141,7 +141,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="481" y="748"/>
+            <point key="canvasLocation" x="29" y="876"/>
         </scene>
         <!--Collection View Controller - 收藏-->
         <scene sceneID="vlA-7B-7Ty">
@@ -170,7 +170,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9T-73-eCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="1451"/>
+            <point key="canvasLocation" x="36" y="1579"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A7I-oi-SpZ">
@@ -185,7 +185,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fw-gX-7uk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="1451"/>
+            <point key="canvasLocation" x="-426" y="1579"/>
         </scene>
         <!--Settings View Controller - 设置-->
         <scene sceneID="en8-LZ-VCt">
@@ -223,12 +223,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWD-x7-wwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496" y="2123"/>
+            <point key="canvasLocation" x="947" y="1579"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="nPn-0b-Xfg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lep-sh-J4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ShareViewController" id="NJ7-ow-fUS" customClass="HDShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fHv-RB-FmX"/>
@@ -354,8 +353,53 @@
                         <outlet property="bgImageView" destination="NYc-BW-YtR" id="PF7-or-iQH"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lep-sh-J4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="2123"/>
+            <point key="canvasLocation" x="481" y="64"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JCT-Qc-DxB">
+            <objects>
+                <navigationController storyboardIdentifier="WebViewViewController" definesPresentationContext="YES" id="jd0-rE-Q2A" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rzY-fx-p7I">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4oG-95-kFi" kind="relationship" relationship="rootViewController" id="Us1-Yi-eOL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eMe-wY-Zl2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="64"/>
+        </scene>
+        <!--Web View View Controller - 回复按钮在右上角-->
+        <scene sceneID="nlz-VE-iAW">
+            <objects>
+                <viewController id="4oG-95-kFi" customClass="HDWebViewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3of-IU-OVu"/>
+                        <viewControllerLayoutGuide type="bottom" id="OU0-b2-T6E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cyq-xi-U2g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcV-pB-DSW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="回复按钮在右上角" id="Ot9-KF-zqU"/>
+                    <connections>
+                        <outlet property="webView" destination="bcV-pB-DSW" id="X3B-RN-xQG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUz-H1-004" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1368" y="64"/>
         </scene>
         <!--Sliding View Controller-->
         <scene sceneID="qCf-UQ-zMn">
@@ -459,7 +503,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIN-uC-Nc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="2123"/>
+            <point key="canvasLocation" x="472" y="1579"/>
         </scene>
         <!--List Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -492,11 +536,6 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="cra-N8-TIN">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="arrow" id="bKL-Wh-sUU">
-                            <connections>
-                                <action selector="backButtonTapped:" destination="Ah7-4n-0Wa" id="oes-uJ-eMl"/>
-                            </connections>
-                        </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="Wgu-kY-zBc">
                             <rect key="frame" x="96" y="6" width="128" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -535,12 +574,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="748"/>
+            <point key="canvasLocation" x="472" y="876"/>
         </scene>
     </scenes>
     <resources>
         <image name="Qzone" width="58" height="58"/>
-        <image name="arrow" width="21" height="20"/>
         <image name="background.jpg" width="219" height="408"/>
         <image name="copy" width="58" height="58"/>
         <image name="more" width="27" height="5"/>

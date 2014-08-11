@@ -48,6 +48,7 @@
 		87C17A6B197C0B8E00DCA99C /* HDListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A6A197C0B8E00DCA99C /* HDListDetailViewController.m */; };
 		87C17A6E197C0C1200DCA99C /* HDMainListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A6D197C0C1200DCA99C /* HDMainListCell.m */; };
 		87C17A71197C0C6B00DCA99C /* HDSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C17A70197C0C6B00DCA99C /* HDSettingsViewController.m */; };
+		87C522741998ADC200F89B2A /* HDWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C522731998ADC200F89B2A /* HDWebViewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,8 @@
 		87C17A6D197C0C1200DCA99C /* HDMainListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListCell.m; sourceTree = "<group>"; };
 		87C17A6F197C0C6B00DCA99C /* HDSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSettingsViewController.h; sourceTree = "<group>"; };
 		87C17A70197C0C6B00DCA99C /* HDSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSettingsViewController.m; sourceTree = "<group>"; };
+		87C522721998ADC200F89B2A /* HDWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDWebViewViewController.h; sourceTree = "<group>"; };
+		87C522731998ADC200F89B2A /* HDWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDWebViewViewController.m; sourceTree = "<group>"; };
 		9189872DDC104139BBEDB252 /* Pods-HotDailyTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotDailyTests.xcconfig"; path = "Pods/Pods-HotDailyTests.xcconfig"; sourceTree = "<group>"; };
 		E82E6AB6F53141E397F64070 /* Pods-HotDaily.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotDaily.xcconfig"; path = "Pods/Pods-HotDaily.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,6 +281,8 @@
 				87C17A70197C0C6B00DCA99C /* HDSettingsViewController.m */,
 				876CEC051994AC67007BE0E1 /* HDShareViewController.h */,
 				876CEC061994AC67007BE0E1 /* HDShareViewController.m */,
+				87C522721998ADC200F89B2A /* HDWebViewViewController.h */,
+				87C522731998ADC200F89B2A /* HDWebViewViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				87A738741988907A00A5E4A2 /* HDMenuViewController.m in Sources */,
 				87C17A71197C0C6B00DCA99C /* HDSettingsViewController.m in Sources */,
 				876111F8198A409100B92D99 /* WebViewProxy.m in Sources */,
+				87C522741998ADC200F89B2A /* HDWebViewViewController.m in Sources */,
 				871BE2771963DC4900087E4B /* main.m in Sources */,
 				87C17A6E197C0C1200DCA99C /* HDMainListCell.m in Sources */,
 				871BE2841963DC4900087E4B /* HotDaily.xcdatamodeld in Sources */,

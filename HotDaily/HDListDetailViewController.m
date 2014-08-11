@@ -12,6 +12,7 @@
 #import <ReactiveCocoa/RACEXTScope.h>
 #import "HDShareViewController.h"
 #import "UIView+Capture.h"
+#import "HDWebViewViewController.h"
 
 @interface HDListDetailViewController () <UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) WebViewJavascriptBridge *bridge;
@@ -36,6 +37,12 @@
     
     self.currentPageNo = @1;
     [self bindViewModel];
+    
+    [self setLeftNavButton];
+}
+
+- (void)menuButtonTapped {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -114,6 +121,7 @@
         }];
 }
 
+#pragma mark - scrollview delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     static CGFloat lastOffY  = 0.0;
@@ -159,10 +167,6 @@
 //    // Dispose of any resources that can be recreated.
 //}
 
-- (IBAction)backButtonTapped:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (IBAction)shareButtonTapped:(id)sender {
     UIImage *bgImage = [self.navigationController.view captureView];
     HDShareViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareViewController"];
@@ -176,10 +180,6 @@
                          }];
     }];
     
-}
-
-- (void)singleTap:(UITapGestureRecognizer *)gr {
-    [gr.view removeFromSuperview];
 }
 
 - (IBAction)moreMenu:(id)sender {
@@ -200,11 +200,16 @@
                                                   cancelButtonTitle:@"取消"
                                                   otherButtonTitles:@"确定", nil];
         alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        UITextField *tf = [alertView textFieldAtIndex:0];
+        tf.keyboardType = UIKeyboardTypeNumberPad;
         [alertView show];
     } else if (buttonIndex == 1) {
         //collect
     } else if (buttonIndex == 2) {
-        //open in webview
+        UINavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewController"];
+        HDWebViewViewController *vc = nvc.viewControllers[0];
+        vc.url = self.viewModel.detailData[@"data"][@"mobileUrl"];
+        [self presentViewController:nvc animated:YES completion:nil];
     }
 }
 

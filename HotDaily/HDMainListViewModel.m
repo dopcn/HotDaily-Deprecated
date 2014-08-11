@@ -20,7 +20,9 @@
 }
 
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
-    return @"7月31日 星期四 午报";
+    NSDateFormatter *df = [NSDateFormatter new];
+    [df setDateFormat:@"yyyy-MM-dd EEEE"];
+    return [NSString stringWithFormat:@"今天是: %@",NSLocalizedString([df stringFromDate:[NSDate date]], nil)];
 }
 
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,21 +53,29 @@
     return NO;
 }
 
-- (NSArray *)headerImageURLs {
-    return @[[NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237388.jpg"],
-             [NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237387.jpg"],
-             [NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237386.jpg"],
-             [NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237385.jpg"],
-             [NSURL URLWithString:@"http://img3.laibafile.cn/p/m/184237384.jpg"]];
+- (NSArray *)headerImages {
+    NSMutableArray *images = [NSMutableArray array];
+    for (NSDictionary *dic in self.data[@"data"][@"list"]) {
+        if (dic[@"pic"] && ![dic[@"pic"] isEqualToString:@""]) {
+            [images addObject:@{@"url": dic[@"pic"],
+                                @"title": dic[@"title"]}];
+        }
+        if (images.count == 5) {
+            break;
+        }
+    }
+    //headerView must be 5
+    if (images.count < 5) {
+        while (images.count < 6) {
+            [images addObject:images[0]];
+        }
+    }
+    return images;
 }
 
-- (NSArray *)headerImageTitles {
-    return @[@"中文怎么样",@"中文怎么样中文怎么样",@"中文怎么样中文怎么样中文怎么样",@"中文怎么样中文怎么样中文怎么样中文怎么样",@"中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样中文怎么样"];
-}
-
-- (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *, id))success failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
+- (void)GETHotListNumbers:(NSInteger)num success:(void (^)(NSURLSessionDataTask *, id))success failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
     NSDictionary *params = @{@"pageNo": @1,
-                             @"pageSize": @20,
+                             @"pageSize": @(num),
                              @"orderBy": @1,
                              @"pageBy": @1};
     [[HDHTTPManager sharedHTTPManager] GET:hotListURLString

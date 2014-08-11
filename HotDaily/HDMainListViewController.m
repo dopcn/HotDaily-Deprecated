@@ -29,14 +29,12 @@
     [self bindViewModel];
     
     [self.refreshButton.rac_command execute:nil];
-
 }
 
 - (void)configureView {
+    [self setLeftNavButton];
     //configure other attributes of slidingViewController in storyboard runtime attributes
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
-    [self setLeftNavButton];
-    self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
 }
 
 - (void)bindViewModel {
@@ -44,9 +42,10 @@
     self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.viewModel GETHotListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+            [self.viewModel GETHotListNumbers:100 success:^(NSURLSessionDataTask *task, id responseObject) {
                 [subscriber sendNext:responseObject];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
                     [self.tableView reloadData];
                 });
                 [subscriber sendCompleted];
@@ -68,7 +67,10 @@
 }
 
 #pragma mark - Table view data source
-//default number of section is 1
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.viewModel numberOfSections];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.viewModel numberOfRowsInSection:section];
 }
@@ -121,11 +123,11 @@
 
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 
 

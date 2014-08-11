@@ -60,7 +60,7 @@
     
     for (NSInteger i = 0; i < 5; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0+i*320, 0, 320, 200)];
-        [imageView sd_setImageWithURL:[self.viewModel headerImageURLs][i]];
+        [imageView sd_setImageWithURL:[self.viewModel headerImages][i][@"url"]];
         
         [self insertMaskLayerTo:imageView.layer];
         UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 140, 300, 50)];
@@ -70,7 +70,7 @@
         title.shadowColor = [UIColor blackColor];
         title.shadowOffset = CGSizeMake(1.0, 1.0);
         [imageView addSubview:title];
-        title.text = [self.viewModel headerImageTitles][i];
+        title.text = [self.viewModel headerImages][i][@"title"];
         [self.pageView addSubview:imageView];
     }
 }
