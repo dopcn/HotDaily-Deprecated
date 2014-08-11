@@ -9,10 +9,12 @@
 #import "HDMainListViewController.h"
 #import "HDMainListViewModel.h"
 #import "HDMainListCell.h"
+#import "HDMainListHeaderView.h"
 
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
-#import "HDMainListHeaderView.h"
+#import <SVPullToRefresh/UIScrollView+SVInfiniteScrolling.h>
+
 
 @interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -35,6 +37,13 @@
     [self setLeftNavButton];
     //configure other attributes of slidingViewController in storyboard runtime attributes
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    
+    @weakify(self);
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        @strongify(self);
+        [self.viewModel moreItemsIn:self.tableView];
+        [self.tableView.infiniteScrollingView stopAnimating];
+    }];
 }
 
 - (void)bindViewModel {
@@ -42,8 +51,10 @@
     self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.viewModel GETHotListNumbers:100 success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self.viewModel GETHotListPageSize:100 pageNo:1
+                success:^(NSURLSessionDataTask *task, id responseObject) {
                 [subscriber sendNext:responseObject];
+                self.viewModel.numOfSections = 1;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
                     [self.tableView reloadData];
@@ -68,7 +79,7 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.viewModel numberOfSections];
+    return self.viewModel.numOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -91,8 +91,24 @@
     
     [pageSignal subscribeNext:^(NSNumber* x) {
         @strongify(self);
-        [self.viewModel GETDetailAtPageNo:[x integerValue] success:^(NSURLSessionDataTask *task, id jsonString) {
-            [self.bridge send:jsonString];
+        [self.viewModel GETDetailAtPageNo:[x integerValue] success:^(NSURLSessionDataTask *task, id responseObject, id jsonString) {
+            if (self.onlyAuthor.isOn) {
+                NSMutableDictionary *data = [responseObject mutableCopy];
+                NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@", self.viewModel.abstractData[@"authorId"]];
+                data[@"list"] = [data[@"list"] filteredArrayUsingPredicate:pre];
+                NSError *error;
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
+                                                                   options:0
+                                                                     error:&error];
+                if (! jsonData) {
+                    NSLog(@"Got an error: %@", error);
+                } else {
+                    NSString *jsonString2 = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                    [self.bridge send:jsonString2];
+                }
+            } else {
+                [self.bridge send:jsonString];
+            }
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [self showAlertMessage];
         }];

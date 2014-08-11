@@ -9,14 +9,58 @@
 #import "HDHTTPManager.h"
 #import "HDMainListViewModel.h"
 
+#import <ReactiveCocoa/RACEXTScope.h>
+
 @implementation HDMainListViewModel
 
-- (NSInteger)numberOfSections {
-    return 1;
+- (NSArray *)listArray {
+    if (_listArray) return _listArray;
+    NSRange range;
+    range.location = 0;
+    range.length = 20;
+    _listArray = [_data[@"data"][@"list"] subarrayWithRange:range];
+    return _listArray;
+}
+
+- (NSInteger)numOfSections {
+    if (_numOfSections) return _numOfSections;
+    _numOfSections = 1;
+    return _numOfSections;
+}
+
+- (void)moreItemsIn:(UITableView *)tableView {
+    self.numOfSections += 1;
+    if (self.numOfSections%5 != 0) {
+        NSRange range;
+        range.location = self.numOfSections%5 * 20;
+        range.length = 20;
+        self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+        });
+    } else {
+        @weakify(self);
+        [self GETHotListPageSize:100
+                          pageNo:self.numOfSections/5 + 1
+                         success:^(NSURLSessionDataTask *task, id responseObject) {
+                             @strongify(self);
+                             self.data = responseObject;
+                             NSRange range;
+                             range.location = 0;
+                             range.length = 20;
+                             self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
+                             dispatch_async(dispatch_get_main_queue(), ^{
+                                 [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+                             });
+                         } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                             //
+                         }];
+    }
+    
 }
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return [self.data[@"data"][@"list"] count];
+    return 20;
 }
 
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
@@ -26,16 +70,23 @@
 }
 
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath {
-    return self.data[@"data"][@"list"][indexPath.row];
+    return self.listArray[indexPath.row + indexPath.section*20];
 }
 
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
-    return self.data[@"data"][@"list"][indexPath.row][@"title"];
+    return self.listArray[indexPath.row + indexPath.section*20][@"title"];
+}
+
+- (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.listArray[indexPath.row + indexPath.section*20][@"pic"]) {
+        return ![self.listArray[indexPath.row + indexPath.section*20][@"pic"] isEqualToString:@""];
+    }
+    return NO;
 }
 
 - (NSURL *)imageURLAtIndexPath:(NSIndexPath *)indexPath {
     if ([self hasImageAtIndexPath:indexPath]) {
-        NSURL *url = [NSURL URLWithString:self.data[@"data"][@"list"][indexPath.row][@"pic"]];
+        NSURL *url = [NSURL URLWithString:self.listArray[indexPath.row + indexPath.section*20][@"pic"]];
         return url;
     } else {
         return nil;
@@ -44,13 +95,6 @@
 
 - (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath {
     return UIColorFromRGB(0xD0021B);
-}
-
-- (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.data[@"data"][@"list"][indexPath.row][@"pic"]) {
-        return ![self.data[@"data"][@"list"][indexPath.row][@"pic"] isEqualToString:@""];
-    }
-    return NO;
 }
 
 - (NSArray *)headerImages {
@@ -73,9 +117,12 @@
     return images;
 }
 
-- (void)GETHotListNumbers:(NSInteger)num success:(void (^)(NSURLSessionDataTask *, id))success failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
-    NSDictionary *params = @{@"pageNo": @1,
-                             @"pageSize": @(num),
+- (void)GETHotListPageSize:(NSInteger)size
+                    pageNo:(NSInteger)index
+                   success:(void (^)(NSURLSessionDataTask *, id))success
+                   failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
+    NSDictionary *params = @{@"pageNo": @(index),
+                             @"pageSize": @(size),
                              @"orderBy": @1,
                              @"pageBy": @1};
     [[HDHTTPManager sharedHTTPManager] GET:hotListURLString

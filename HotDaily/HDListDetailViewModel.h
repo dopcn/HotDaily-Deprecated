@@ -15,6 +15,6 @@
 
 - (void)loadHTML:(UIWebView*)webView;
 - (void)GETDetailAtPageNo:(NSInteger)pageNo
-                  success:(void (^)(NSURLSessionDataTask *task, id jsonString))success
+                  success:(void (^)(NSURLSessionDataTask *task, id responseObject, id jsonString))success
                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 @end

@@ -10,11 +10,13 @@
 
 @interface HDMainListViewModel : NSObject
 
-@property (nonatomic, copy) NSDictionary *data;
+@property (copy, nonatomic) NSDictionary *data;
 //table
-- (NSInteger)numberOfSections;
+@property (copy, nonatomic) NSArray *listArray;
+@property (nonatomic) NSInteger numOfSections;
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
+- (void)moreItemsIn:(UITableView *)tableView;
 //table cell
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
@@ -24,8 +26,9 @@
 //header view
 - (NSArray *)headerImages;
 
-- (void)GETHotListNumbers:(NSInteger)num
-                  success:(void (^)(NSURLSessionDataTask *, id))success
-                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
+- (void)GETHotListPageSize:(NSInteger)size
+                    pageNo:(NSInteger)index
+                   success:(void (^)(NSURLSessionDataTask *, id))success
+                   failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
 
 @end

@@ -18,7 +18,7 @@
     [webView loadRequest:req];
 }
 
-- (void)GETDetailAtPageNo:(NSInteger)pageNo success:(void (^)(NSURLSessionDataTask *task, id jsonString))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+- (void)GETDetailAtPageNo:(NSInteger)pageNo success:(void (^)(NSURLSessionDataTask *task, id responseObject, id jsonString))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     NSDictionary *params = @{@"categoryId":self.abstractData[@"categoryId"],
                              @"noteId":self.abstractData[@"noteId"],
                              @"pageNo":@(pageNo)};
@@ -35,7 +35,7 @@
                                            NSLog(@"Got an error: %@", error);
                                        } else {
                                            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                                           success(task, jsonString);
+                                           success(task, responseObject[@"data"], jsonString);
                                        }
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                        failure(task, error);
