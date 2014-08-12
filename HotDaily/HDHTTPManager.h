@@ -15,5 +15,6 @@ static NSString* const funinfoListURLString = @"forumStand/list?categoryId=funin
 @interface HDHTTPManager : AFHTTPSessionManager
 
 + (HDHTTPManager *)sharedHTTPManager;
+- (void)networkFailAlert;
 
 @end

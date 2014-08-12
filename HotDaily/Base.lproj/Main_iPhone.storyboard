@@ -429,10 +429,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="CJu-mc-K9a">
-                                <rect key="frame" x="75" y="137" width="245" height="431"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="utZ-sX-GlZ">
                                 <rect key="frame" x="0.0" y="160" width="320" height="408"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -478,7 +474,6 @@
                     </view>
                     <connections>
                         <outlet property="avatar" destination="hRz-hB-brB" id="dlP-Jg-uai"/>
-                        <outlet property="backgroundImage" destination="CJu-mc-K9a" id="vyA-Ia-ctt"/>
                         <outlet property="tableView" destination="utZ-sX-GlZ" id="Pnd-zK-FL7"/>
                     </connections>
                 </viewController>
@@ -722,7 +717,6 @@
     </scenes>
     <resources>
         <image name="Qzone" width="58" height="58"/>
-        <image name="background.jpg" width="219" height="408"/>
         <image name="copy" width="58" height="58"/>
         <image name="more" width="27" height="5"/>
         <image name="next" width="12" height="21"/>

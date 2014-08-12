@@ -54,7 +54,12 @@
                                  [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
                              });
                          } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                             //
+                             UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"网络请求失败"
+                                                                            message:@"如果你的网络没有问题就是涯叔的服务器当机了呵呵"
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"确定"
+                                                                  otherButtonTitles:nil, nil];
+                             [view show];
                          }];
     }
     

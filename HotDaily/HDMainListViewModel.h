@@ -27,9 +27,7 @@
 //header view
 - (NSArray *)headerImages;
 
-- (void)GETHotListPageSize:(NSInteger)size
-                    pageNo:(NSInteger)index
-                   success:(void (^)(NSURLSessionDataTask *, id))success
-                   failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
+- (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *, id))success
+                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
 
 @end

@@ -51,8 +51,7 @@
     self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.viewModel GETHotListPageSize:100 pageNo:1
-                success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self.viewModel GETHotListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
                 [subscriber sendNext:responseObject];
                 self.viewModel.numOfSections = 1;
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -139,17 +138,5 @@
 //    [super didReceiveMemoryWarning];
 //    // Dispose of any resources that can be recreated.
 //}
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

@@ -40,21 +40,25 @@
         });
     } else {
         @weakify(self);
-        [self GETHotListPageSize:100
-                          pageNo:self.numOfSections/5 + 1
-                         success:^(NSURLSessionDataTask *task, id responseObject) {
-                             @strongify(self);
-                             self.data = responseObject;
-                             NSRange range;
-                             range.location = 0;
-                             range.length = 20;
-                             self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
-                             dispatch_async(dispatch_get_main_queue(), ^{
-                                 [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
-                             });
-                         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                             //
-                         }];
+        NSDictionary *params = @{@"pageNo": @(self.numOfSections/5 + 1),
+                                 @"pageSize": @(100),
+                                 @"orderBy": @1,
+                                 @"pageBy": @1};
+        [[HDHTTPManager sharedHTTPManager] GET:hotListURLString
+                                    parameters:params
+                                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                                           @strongify(self);
+                                           self.data = responseObject;
+                                           NSRange range;
+                                           range.location = 0;
+                                           range.length = 20;
+                                           self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                               [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+                                           });
+                                       } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                           [[HDHTTPManager sharedHTTPManager] networkFailAlert];
+                                       }];
     }
     
 }
@@ -118,12 +122,10 @@
     return images;
 }
 
-- (void)GETHotListPageSize:(NSInteger)size
-                    pageNo:(NSInteger)index
-                   success:(void (^)(NSURLSessionDataTask *, id))success
-                   failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
-    NSDictionary *params = @{@"pageNo": @(index),
-                             @"pageSize": @(size),
+- (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *, id))success
+                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
+    NSDictionary *params = @{@"pageNo": @(1),
+                             @"pageSize": @(100),
                              @"orderBy": @1,
                              @"pageBy": @1};
     [[HDHTTPManager sharedHTTPManager] GET:hotListURLString

@@ -114,7 +114,7 @@
                 [self.bridge send:jsonString];
             }
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            [self showAlertMessage];
+            //
         }];
     }];
     
@@ -170,15 +170,6 @@
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         [self.navigationController setToolbarHidden:NO animated:YES];
     }
-}
-
-- (void)showAlertMessage {
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"网络请求失败"
-                                                   message:@"请检查网络连接后重试"
-                                                  delegate:nil
-                                         cancelButtonTitle:@"确定"
-                                         otherButtonTitles:nil, nil];
-    [view show];
 }
 
 - (void)didReceiveMemoryWarning
