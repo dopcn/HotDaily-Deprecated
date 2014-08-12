@@ -18,14 +18,15 @@
 
 - (NSArray *)menuItems {
     if (_menuItems) return _menuItems;
-    _menuItems = @[@"头条",@"收藏",@"设置"];
+    _menuItems = @[@"热帖榜", @"娱乐八卦", @"回眸经典", @"设置"];
     return _menuItems;
 }
 
 - (NSArray *)menuItemIcons {
     if (_menuItemIcons) return _menuItemIcons;
     _menuItemIcons = @[[UIImage imageNamed:@"home"],
-                       [UIImage imageNamed:@"collection"],
+                       [UIImage imageNamed:@"funinfo"],
+                       [UIImage imageNamed:@"history"],
                        [UIImage imageNamed:@"settings"]];
     return _menuItemIcons;
 }
@@ -53,14 +54,14 @@
             self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopViewController"];
             break;
         case 1:
-            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
+            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FuninfoViewController"];
             break;
         case 2:
+            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HistoryViewController"];
+            break;
+        case 3:
             self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             break;
-//        case 3:
-//            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuggestionViewController"];
-//            break;
 //        case 3:
 //            self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdViewController"];
 //            break;
@@ -74,21 +75,10 @@
 
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 @end

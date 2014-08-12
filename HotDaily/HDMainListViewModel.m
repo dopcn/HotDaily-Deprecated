@@ -111,7 +111,8 @@
     //headerView must be 5
     if (images.count < 5) {
         while (images.count < 6) {
-            [images addObject:images[0]];
+            [images addObject:@{@"url": @"http://img3.laibafile.cn/p/m/173672485.jpg",
+                                @"title": @"五张图片都没有要不要这么烂！"}];
         }
     }
     return images;

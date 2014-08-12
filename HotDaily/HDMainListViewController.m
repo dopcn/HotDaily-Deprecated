@@ -113,7 +113,7 @@
 
 #pragma mark - tableView delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"CellToDetail" sender:indexPath];
+    [self performSegueWithIdentifier:@"MainListCellToDetail" sender:indexPath];
 }
 
 #pragma clang diagnostic push

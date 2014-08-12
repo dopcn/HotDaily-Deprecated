@@ -1,14 +1,14 @@
 //
-//  HDMainListViewModel.h
+//  HDFuninfoViewModel.h
 //  HotDaily
 //
-//  Created by weizhou on 7/21/14.
+//  Created by weizhou on 8/12/14.
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
 @import Foundation;
 
-@interface HDMainListViewModel : NSObject
+@interface HDFuninfoViewModel : NSObject
 
 @property (copy, nonatomic) NSDictionary *data;
 //table
@@ -16,20 +16,15 @@
 @property (nonatomic) NSInteger numOfSections;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
-- (NSString *)titleForHeaderInSection:(NSInteger)section;
 - (void)moreItemsIn:(UITableView *)tableView;
 //table cell
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
-- (NSURL *)imageURLAtIndexPath:(NSIndexPath *)indexPath;
 - (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath;
-- (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath;
-//header view
-- (NSArray *)headerImages;
+- (CGFloat)bottomViewWidthAtIndexPath:(NSIndexPath *)indexPath;
 
-- (void)GETHotListPageSize:(NSInteger)size
-                    pageNo:(NSInteger)index
-                   success:(void (^)(NSURLSessionDataTask *, id))success
-                   failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
+- (void)GETFuninfoListPageSize:(NSInteger)size
+                       success:(void (^)(NSURLSessionDataTask *, id))success
+                       failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
 
 @end

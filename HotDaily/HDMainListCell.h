@@ -21,7 +21,6 @@
 
 @interface HDMainListCellWithImage : HDMainListCellWithoutImage
 
-@property (nonatomic, strong) HDMainListViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIImageView *titleImage;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;

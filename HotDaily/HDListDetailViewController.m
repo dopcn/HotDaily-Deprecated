@@ -41,6 +41,10 @@
     [self setLeftNavButton];
 }
 
+- (void)dealloc {
+    self.webView = nil;
+}
+
 - (void)menuButtonTapped {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -177,11 +181,11 @@
     [view show];
 }
 
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
 
 - (IBAction)shareButtonTapped:(id)sender {
     UIImage *bgImage = [self.navigationController.view captureView];

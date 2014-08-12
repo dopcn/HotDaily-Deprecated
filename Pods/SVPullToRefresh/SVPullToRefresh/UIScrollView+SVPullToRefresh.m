@@ -70,7 +70,7 @@ static char UIScrollViewPullToRefreshView;
         view.scrollView = self;
         [self addSubview:view];
         
-        view.originalTopInset = self.contentInset.top;
+        view.originalTopInset = self.contentInset.top + 64;
         self.pullToRefreshView = view;
         self.showsPullToRefresh = YES;
     }
@@ -145,9 +145,9 @@ static char UIScrollViewPullToRefreshView;
         self.state = SVPullToRefreshStateStopped;
         self.showsDateLabel = NO;
         
-        self.titles = [NSMutableArray arrayWithObjects:NSLocalizedString(@"Pull to refresh...",),
-                                                       NSLocalizedString(@"Release to refresh...",),
-                                                       NSLocalizedString(@"Loading...",),
+        self.titles = [NSMutableArray arrayWithObjects:NSLocalizedString(@"下拉刷新...",),
+                                                       NSLocalizedString(@"释放开始刷新...",),
+                                                       NSLocalizedString(@"刷新中...",),
                                                        nil];
         
         self.subtitles = [NSMutableArray arrayWithObjects:@"", @"", @"", @"", nil];
@@ -241,6 +241,7 @@ static char UIScrollViewPullToRefreshView;
 - (void)resetScrollViewContentInset {
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
     currentInsets.top = self.originalTopInset;
+
     [self setScrollViewContentInset:currentInsets];
 }
 

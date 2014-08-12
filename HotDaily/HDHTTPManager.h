@@ -10,6 +10,7 @@
 
 static NSString* const baseURLString = @"http://wireless.tianya.cn/v/";
 static NSString* const hotListURLString = @"forumStand/hotw?";
+static NSString* const funinfoListURLString = @"forumStand/list?categoryId=funinfo";
 
 @interface HDHTTPManager : AFHTTPSessionManager
 
