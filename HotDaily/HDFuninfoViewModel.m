@@ -40,27 +40,25 @@
         });
     } else {
         @weakify(self);
-        [self GETFuninfoListPageSize:50
-                         success:^(NSURLSessionDataTask *task, id responseObject) {
-                             @strongify(self);
-                             self.data = responseObject;
-                             NSRange range;
-                             range.location = 0;
-                             range.length = 10;
-                             self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
-                             self.numOfSections = 1;
-                             dispatch_async(dispatch_get_main_queue(), ^{
-                                 [tableView reloadData];
-                                 [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-                             });
-                         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                             UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"网络请求失败"
-                                                                            message:@"如果你的网络没有问题就是涯叔的服务器当机了呵呵"
-                                                                           delegate:nil
-                                                                  cancelButtonTitle:@"确定"
-                                                                  otherButtonTitles:nil, nil];
-                             [view show];
-                         }];
+        NSDictionary *params = @{@"pageSize": @(50),
+                                 @"orderBy": @2};
+        [[HDHTTPManager sharedHTTPManager] GET:funinfoListURLString
+                                    parameters:params
+                                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                                           @strongify(self);
+                                           self.data = responseObject;
+                                           NSRange range;
+                                           range.location = 0;
+                                           range.length = 10;
+                                           self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
+                                           self.numOfSections = 1;
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                               [tableView reloadData];
+                                               [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                                           });
+                                       } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                           [[HDHTTPManager sharedHTTPManager] networkFailAlert];
+                                       }];
     }
     
 }
@@ -92,10 +90,9 @@
     }
 }
 
-- (void)GETFuninfoListPageSize:(NSInteger)size
-                   success:(void (^)(NSURLSessionDataTask *, id))success
-                   failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
-    NSDictionary *params = @{@"pageSize": @(size),
+- (void)GETFuninfoListSuccess:(void (^)(NSURLSessionDataTask *, id))success
+                      failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
+    NSDictionary *params = @{@"pageSize": @(50),
                              @"orderBy": @2};
     [[HDHTTPManager sharedHTTPManager] GET:funinfoListURLString
                                 parameters:params

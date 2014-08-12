@@ -63,8 +63,7 @@
     self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.viewModel GETFuninfoListPageSize:50
-                                       success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self.viewModel GETFuninfoListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
                                            [subscriber sendNext:responseObject];
                                            self.viewModel.numOfSections = 1;
                                            dispatch_async(dispatch_get_main_queue(), ^{

@@ -23,8 +23,7 @@
 - (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)bottomViewWidthAtIndexPath:(NSIndexPath *)indexPath;
 
-- (void)GETFuninfoListPageSize:(NSInteger)size
-                       success:(void (^)(NSURLSessionDataTask *, id))success
-                       failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
+- (void)GETFuninfoListSuccess:(void (^)(NSURLSessionDataTask *, id))success
+                      failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
 
 @end
