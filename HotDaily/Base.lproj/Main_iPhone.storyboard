@@ -517,7 +517,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.92578125" green="0.9234484342" blue="0.88784997990000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="0.92578125" green="0.9234484342" blue="0.88784997990000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FuninfoCellWithoutImage" id="e89-Jy-RAK" customClass="HDFuninfoCellWithoutImage">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="FuninfoCellWithoutImage" id="e89-Jy-RAK" customClass="HDFuninfoCellWithoutImage">
                                 <rect key="frame" x="0.0" y="86" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e89-Jy-RAK" id="Bcm-ee-Svg">

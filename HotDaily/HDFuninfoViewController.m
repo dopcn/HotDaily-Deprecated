@@ -29,6 +29,11 @@
     
     [self.refreshButton.rac_command execute:nil];
 }
+//weird question about bottomView width
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+}
 
 - (void)configureView {
     [self setLeftNavButton];
@@ -99,15 +104,16 @@
     return [self.viewModel numberOfRowsInSection:section];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (HDFuninfoCellWithoutImage *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifierWithoutImage = @"FuninfoCellWithoutImage";
-    HDFuninfoCellWithoutImage *cell = [tableView dequeueReusableCellWithIdentifier:identifierWithoutImage forIndexPath:indexPath];
+    HDFuninfoCellWithoutImage *cell = [tableView dequeueReusableCellWithIdentifier:identifierWithoutImage];
     [cell configureWithViewModel:self.viewModel atIndexPath:indexPath];
     return cell;
 }
 
 #pragma mark - tableView delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self performSegueWithIdentifier:@"FuninfoCellToDetail" sender:indexPath];
 }
 

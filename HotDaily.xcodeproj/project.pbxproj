@@ -17,7 +17,6 @@
 		871BE2771963DC4900087E4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE2761963DC4900087E4B /* main.m */; };
 		871BE27B1963DC4900087E4B /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE27A1963DC4900087E4B /* HDAppDelegate.m */; };
 		871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */; };
-		871BE2811963DC4900087E4B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871BE27F1963DC4900087E4B /* Main_iPad.storyboard */; };
 		871BE2841963DC4900087E4B /* HotDaily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 871BE2821963DC4900087E4B /* HotDaily.xcdatamodeld */; };
 		871BE28C1963DC4900087E4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 871BE28B1963DC4900087E4B /* Images.xcassets */; };
 		871BE2931963DC4900087E4B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE2921963DC4900087E4B /* XCTest.framework */; };
@@ -79,7 +78,6 @@
 		871BE2791963DC4900087E4B /* HDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDAppDelegate.h; sourceTree = "<group>"; };
 		871BE27A1963DC4900087E4B /* HDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDAppDelegate.m; sourceTree = "<group>"; };
 		871BE27D1963DC4900087E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		871BE2801963DC4900087E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		871BE2831963DC4900087E4B /* HotDaily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotDaily.xcdatamodel; sourceTree = "<group>"; };
 		871BE28B1963DC4900087E4B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		871BE2911963DC4900087E4B /* HotDailyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotDailyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,7 +217,6 @@
 				871BE2791963DC4900087E4B /* HDAppDelegate.h */,
 				871BE27A1963DC4900087E4B /* HDAppDelegate.m */,
 				87C17A61197C038000DCA99C /* iPhone */,
-				87C17A65197C051800DCA99C /* iPad */,
 				87C17A67197C056400DCA99C /* ViewModel */,
 				87C17A66197C054800DCA99C /* Model */,
 				871BE28B1963DC4900087E4B /* Images.xcassets */,
@@ -307,14 +304,6 @@
 				87A738851989CFA000A5E4A2 /* Controller */,
 			);
 			name = iPhone;
-			sourceTree = "<group>";
-		};
-		87C17A65197C051800DCA99C /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				871BE27F1963DC4900087E4B /* Main_iPad.storyboard */,
-			);
-			name = iPad;
 			sourceTree = "<group>";
 		};
 		87C17A66197C054800DCA99C /* Model */ = {
@@ -423,7 +412,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				871BE2811963DC4900087E4B /* Main_iPad.storyboard in Resources */,
 				871BE28C1963DC4900087E4B /* Images.xcassets in Resources */,
 				871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */,
 				876111F5198A3D9E00B92D99 /* contentView in Resources */,
@@ -569,14 +557,6 @@
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		871BE27F1963DC4900087E4B /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				871BE2801963DC4900087E4B /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		871BE29C1963DC4900087E4B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -673,6 +653,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -690,6 +671,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

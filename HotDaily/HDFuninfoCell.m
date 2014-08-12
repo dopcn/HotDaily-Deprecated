@@ -9,8 +9,6 @@
 #import "HDFuninfoCell.h"
 #import "HDFuninfoViewModel.h"
 
-#import <SDWebImage/UIImageView+WebCache.h>
-
 @implementation HDFuninfoCellWithoutImage
 
 - (void)configureWithViewModel:(HDFuninfoViewModel *)viewModel atIndexPath:(NSIndexPath *)indexPath{
