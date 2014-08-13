@@ -18,6 +18,7 @@
     CGRect frame = self.bottomView.frame;
     CGFloat width = [self.viewModel bottomViewWidthAtIndexPath:indexPath];
     self.bottomView.frame = CGRectMake(frame.origin.x, frame.origin.y, width, frame.size.height);
+//    HDLog(@"%f",width);
 }
 
 @end

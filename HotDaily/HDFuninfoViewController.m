@@ -32,8 +32,10 @@
 //weird question about bottomView width
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
+    HDLog(@"didappear");
+    //[self.tableView reloadData];
 }
+
 
 - (void)configureView {
     [self setLeftNavButton];
@@ -115,6 +117,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self performSegueWithIdentifier:@"FuninfoCellToDetail" sender:indexPath];
 }
+
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
