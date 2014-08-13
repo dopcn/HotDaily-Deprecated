@@ -28,7 +28,7 @@
     return _numOfSections;
 }
 
-- (void)moreItemsIn:(UITableView *)tableView {
+- (void)insertItemsTo:(UITableView *)tableView completion:(void (^)(void))completion {
     self.numOfSections += 1;
     if (self.numOfSections%5 != 0) {
         NSRange range;
@@ -37,6 +37,7 @@
         self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+            completion();
         });
     } else {
         @weakify(self);
@@ -55,9 +56,11 @@
                                            self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+                                               completion();
                                            });
                                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                            [[HDHTTPManager sharedHTTPManager] networkFailAlert];
+                                           completion();
                                        }];
     }
     

@@ -16,7 +16,7 @@
 @property (nonatomic) NSInteger numOfSections;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
-- (void)moreItemsIn:(UITableView *)tableView;
+- (void)insertItemsTo:(UITableView *)tableView completion:(void (^)(void))completion;
 //table cell
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;

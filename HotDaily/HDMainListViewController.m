@@ -13,7 +13,6 @@
 
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
-#import <SVPullToRefresh/UIScrollView+SVInfiniteScrolling.h>
 
 
 @interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -37,13 +36,6 @@
     [self setLeftNavButton];
     //configure other attributes of slidingViewController in storyboard runtime attributes
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
-    
-    @weakify(self);
-    [self.tableView addInfiniteScrollingWithActionHandler:^{
-        @strongify(self);
-        [self.viewModel moreItemsIn:self.tableView];
-        [self.tableView.infiniteScrollingView stopAnimating];
-    }];
 }
 
 - (void)bindViewModel {
@@ -128,7 +120,14 @@
 }
 #pragma clang diagnostic pop
 
-
+- (IBAction)insertMore:(id)sender {
+    [self.indicatorView startAnimating];
+    @weakify(self);
+    [self.viewModel insertItemsTo:self.tableView completion:^{
+        @strongify(self);
+        [self.indicatorView stopAnimating];
+    }];
+}
 
 
 
@@ -138,5 +137,4 @@
 //    [super didReceiveMemoryWarning];
 //    // Dispose of any resources that can be recreated.
 //}
-
 @end

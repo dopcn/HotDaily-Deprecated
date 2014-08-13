@@ -10,8 +10,8 @@
 #import "HDFuninfoViewModel.h"
 
 #import <ReactiveCocoa/RACEXTScope.h>
-#import <SVPullToRefresh/SVPullToRefresh.h>
 #import "HDFuninfoCell.h"
+#import "MJRefresh.h"
 
 @interface HDFuninfoViewController ()
 
@@ -41,15 +41,15 @@
     self.tableView.tableHeaderView = header;
     
     @weakify(self);
-    [self.tableView addPullToRefreshWithActionHandler:^{
+    [self.tableView addHeaderWithCallback:^{
         @strongify(self);
         [self.refreshButton.rac_command execute:nil];
-        [self.tableView.pullToRefreshView stopAnimating];
     }];
-    [self.tableView addInfiniteScrollingWithActionHandler:^{
+    [self.tableView addFooterWithCallback:^{
         @strongify(self);
-        [self.viewModel moreItemsIn:self.tableView];
-        [self.tableView.infiniteScrollingView stopAnimating];
+        [self.viewModel insertItemsTo:self.tableView completion:^{
+            [self.tableView footerEndRefreshing];
+        }];
     }];
 }
 
@@ -60,11 +60,11 @@
             @strongify(self);
             [self.viewModel GETFuninfoListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
                                            [subscriber sendNext:responseObject];
+                                            [subscriber sendCompleted];
                                            self.viewModel.numOfSections = 1;
                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                [self.tableView reloadData];
                                            });
-                                           [subscriber sendCompleted];
                                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                            [subscriber sendError:error];
                                        }];
@@ -83,6 +83,13 @@
             range.length = 10;
             self.viewModel.listArray = [self.viewModel.data[@"data"][@"list"] subarrayWithRange:range];
             self.viewModel.numOfSections = 1;
+        }];
+    }];
+    
+    [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
+        [signal subscribeCompleted:^{
+            @strongify(self);
+            [self.tableView headerEndRefreshing];
         }];
     }];
 }

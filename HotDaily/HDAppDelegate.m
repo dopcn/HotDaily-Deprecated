@@ -12,8 +12,6 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "WebViewProxy.h"
 
-
-
 static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 
 @implementation HDAppDelegate
@@ -33,20 +31,6 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
     [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"arrow"]];
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"arrow"]];
     [[UIToolbar appearance] setTintColor:UIColorFromRGB(0xD0021B)];
-//    if (HDisPad) {
-//        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-//        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-//        splitViewController.delegate = (id)navigationController.topViewController;
-//        
-//        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-//        HDMasterViewController *controller = (HDMasterViewController *)masterNavigationController.topViewController;
-//        controller.managedObjectContext = self.managedObjectContext;
-//    } else {
-//        UIStoryboard *phone = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-//        UINavigationController *navigationController = (UINavigationController *)[phone instantiateViewControllerWithIdentifier:@"TopViewController"];
-//        HDMainListViewController *controller = (HDMainListViewController *)navigationController.topViewController;
-//        controller.managedObjectContext = self.managedObjectContext;
-//    }
     
     NSString *bundledPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"CustomPathImages"];
     [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];

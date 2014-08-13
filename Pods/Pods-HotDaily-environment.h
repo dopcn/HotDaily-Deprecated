@@ -90,12 +90,6 @@
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 1
 
-// SVPullToRefresh
-#define COCOAPODS_POD_AVAILABLE_SVPullToRefresh
-#define COCOAPODS_VERSION_MAJOR_SVPullToRefresh 0
-#define COCOAPODS_VERSION_MINOR_SVPullToRefresh 4
-#define COCOAPODS_VERSION_PATCH_SVPullToRefresh 1
-
 // WebViewJavascriptBridge
 #define COCOAPODS_POD_AVAILABLE_WebViewJavascriptBridge
 #define COCOAPODS_VERSION_MAJOR_WebViewJavascriptBridge 4
