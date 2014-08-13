@@ -530,11 +530,6 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="862-VO-8rs">
-                                                    <rect key="frame" x="0.0" y="83" width="300" height="2"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </view>
@@ -542,7 +537,6 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.92578125" green="0.9234484342" blue="0.88784997990000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="bottomView" destination="862-VO-8rs" id="rSI-fu-eo2"/>
                                     <outlet property="title" destination="F7o-LB-NQC" id="2mX-L0-BLw"/>
                                 </connections>
                             </tableViewCell>

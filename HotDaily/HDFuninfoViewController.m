@@ -29,13 +29,6 @@
     
     [self.refreshButton.rac_command execute:nil];
 }
-//weird question about bottomView width
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    HDLog(@"didappear");
-    //[self.tableView reloadData];
-}
-
 
 - (void)configureView {
     [self setLeftNavButton];

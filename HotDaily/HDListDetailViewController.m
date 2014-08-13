@@ -41,10 +41,6 @@
     [self setLeftNavButton];
 }
 
-- (void)dealloc {
-    self.webView = nil;
-}
-
 - (void)menuButtonTapped {
     [self.navigationController popViewControllerAnimated:YES];
 }

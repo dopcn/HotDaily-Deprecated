@@ -14,11 +14,14 @@
 - (void)configureWithViewModel:(HDFuninfoViewModel *)viewModel atIndexPath:(NSIndexPath *)indexPath{
     self.viewModel = viewModel;
     self.title.text = [self.viewModel titleAtIndexPath:indexPath];
-    self.bottomView.backgroundColor = [self.viewModel bottomViewColorAtIndexPath:indexPath];
-    CGRect frame = self.bottomView.frame;
+    
+    if (self.bottomView) {
+        [self.bottomView removeFromSuperview];
+    }
     CGFloat width = [self.viewModel bottomViewWidthAtIndexPath:indexPath];
-    self.bottomView.frame = CGRectMake(frame.origin.x, frame.origin.y, width, frame.size.height);
-//    HDLog(@"%f",width);
+    self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(10, 88, width, 2)];
+    self.bottomView.backgroundColor = [self.viewModel bottomViewColorAtIndexPath:indexPath];
+    [self addSubview:self.bottomView];
 }
 
 @end

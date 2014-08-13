@@ -14,7 +14,6 @@
 @property (strong, nonatomic) HDFuninfoViewModel *viewModel;
 - (void)configureWithViewModel:(HDFuninfoViewModel *)viewModel atIndexPath:(NSIndexPath *)indexPath;
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UIView *bottomView;
-
+@property (strong, nonatomic) UIView *bottomView;
 @end
 
