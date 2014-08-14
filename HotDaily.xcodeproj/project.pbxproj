@@ -37,6 +37,9 @@
 		878003EE199B56A600E65B77 /* UIScrollView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 878003E4199B56A600E65B77 /* UIScrollView+Extension.m */; };
 		878003EF199B56A600E65B77 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 878003E6199B56A600E65B77 /* UIScrollView+MJRefresh.m */; };
 		878003F0199B56A600E65B77 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 878003E8199B56A600E65B77 /* UIView+Extension.m */; };
+		878003F3199BB19900E65B77 /* HDHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 878003F2199BB19900E65B77 /* HDHistoryViewController.m */; };
+		878003F6199BB38C00E65B77 /* HDHistoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 878003F5199BB38C00E65B77 /* HDHistoryListViewController.m */; };
+		878003FA199D1B4100E65B77 /* historyData in Resources */ = {isa = PBXBuildFile; fileRef = 878003F9199D1B4100E65B77 /* historyData */; };
 		87829395197D0DD10037AC25 /* HDMainListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829394197D0DD10037AC25 /* HDMainListViewModel.m */; };
 		87829398197D13660037AC25 /* HDHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829397197D13660037AC25 /* HDHTTPManager.m */; };
 		879B4A5719907FDD00A70924 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A5619907FDD00A70924 /* SystemConfiguration.framework */; };
@@ -115,6 +118,11 @@
 		878003E6199B56A600E65B77 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		878003E7199B56A600E65B77 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		878003E8199B56A600E65B77 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		878003F1199BB19900E65B77 /* HDHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHistoryViewController.h; sourceTree = "<group>"; };
+		878003F2199BB19900E65B77 /* HDHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDHistoryViewController.m; sourceTree = "<group>"; };
+		878003F4199BB38C00E65B77 /* HDHistoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHistoryListViewController.h; sourceTree = "<group>"; };
+		878003F5199BB38C00E65B77 /* HDHistoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDHistoryListViewController.m; sourceTree = "<group>"; };
+		878003F9199D1B4100E65B77 /* historyData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = historyData; sourceTree = "<group>"; };
 		87829393197D0DD10037AC25 /* HDMainListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewModel.h; sourceTree = "<group>"; };
 		87829394197D0DD10037AC25 /* HDMainListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewModel.m; sourceTree = "<group>"; };
 		87829396197D13660037AC25 /* HDHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHTTPManager.h; sourceTree = "<group>"; };
@@ -338,6 +346,10 @@
 				87C522731998ADC200F89B2A /* HDWebViewViewController.m */,
 				87C522751999B27800F89B2A /* HDFuninfoViewController.h */,
 				87C522761999B27800F89B2A /* HDFuninfoViewController.m */,
+				878003F1199BB19900E65B77 /* HDHistoryViewController.h */,
+				878003F2199BB19900E65B77 /* HDHistoryViewController.m */,
+				878003F4199BB38C00E65B77 /* HDHistoryListViewController.h */,
+				878003F5199BB38C00E65B77 /* HDHistoryListViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -354,6 +366,7 @@
 		87C17A66197C054800DCA99C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				878003F9199D1B4100E65B77 /* historyData */,
 				876111F4198A3D9E00B92D99 /* contentView */,
 				871BE2821963DC4900087E4B /* HotDaily.xcdatamodeld */,
 				87829396197D13660037AC25 /* HDHTTPManager.h */,
@@ -460,6 +473,7 @@
 				871BE28C1963DC4900087E4B /* Images.xcassets in Resources */,
 				871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */,
 				876111F5198A3D9E00B92D99 /* contentView in Resources */,
+				878003FA199D1B4100E65B77 /* historyData in Resources */,
 				878003E9199B56A600E65B77 /* MJRefresh.bundle in Resources */,
 				871BE2751963DC4900087E4B /* InfoPlist.strings in Resources */,
 			);
@@ -558,9 +572,11 @@
 				87A738801988AA1500A5E4A2 /* HDBaseViewController.m in Sources */,
 				87829395197D0DD10037AC25 /* HDMainListViewModel.m in Sources */,
 				871BE27B1963DC4900087E4B /* HDAppDelegate.m in Sources */,
+				878003F6199BB38C00E65B77 /* HDHistoryListViewController.m in Sources */,
 				87C5227A1999B2CB00F89B2A /* HDFuninfoViewModel.m in Sources */,
 				87C522771999B27800F89B2A /* HDFuninfoViewController.m in Sources */,
 				878003EE199B56A600E65B77 /* UIScrollView+Extension.m in Sources */,
+				878003F3199BB19900E65B77 /* HDHistoryViewController.m in Sources */,
 				87A7387719889FA700A5E4A2 /* HDCollectionViewController.m in Sources */,
 				876CEC0A1994B826007BE0E1 /* UIView+Capture.m in Sources */,
 				87C17A64197C03CF00DCA99C /* HDMainListViewController.m in Sources */,

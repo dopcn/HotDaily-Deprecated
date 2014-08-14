@@ -28,17 +28,14 @@
     return _numOfSections;
 }
 
-- (void)insertItemsTo:(UITableView *)tableView completion:(void (^)(void))completion {
+- (void)insertItemsWithCompletion:(void (^)(void))completion {
     self.numOfSections += 1;
     if (self.numOfSections%5 != 0) {
         NSRange range;
         range.location = self.numOfSections%5 * 20;
         range.length = 20;
         self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
-            completion();
-        });
+        completion();
     } else {
         @weakify(self);
         NSDictionary *params = @{@"pageNo": @(self.numOfSections/5 + 1),
@@ -54,13 +51,9 @@
                                            range.location = 0;
                                            range.length = 20;
                                            self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
-                                               completion();
-                                           });
+                                           completion();
                                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                            [[HDHTTPManager sharedHTTPManager] networkFailAlert];
-                                           completion();
                                        }];
     }
     
@@ -85,6 +78,7 @@
 }
 
 - (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath {
+    NSAssert(indexPath.row < self.numOfSections*20, @"number of row exceed");
     if (self.listArray[indexPath.row + indexPath.section*20][@"pic"]) {
         return ![self.listArray[indexPath.row + indexPath.section*20][@"pic"] isEqualToString:@""];
     }
@@ -119,7 +113,7 @@
     if (images.count < 5) {
         while (images.count < 6) {
             [images addObject:@{@"url": @"http://img3.laibafile.cn/p/m/173672485.jpg",
-                                @"title": @"五张图片都没有要不要这么烂！"}];
+                                @"title": @"五张图片都没有要不要这么烂！请刷新"}];
         }
     }
     return images;

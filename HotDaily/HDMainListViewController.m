@@ -121,11 +121,18 @@
 #pragma clang diagnostic pop
 
 - (IBAction)insertMore:(id)sender {
-    [self.indicatorView startAnimating];
     @weakify(self);
-    [self.viewModel insertItemsTo:self.tableView completion:^{
+    [self.indicatorView startAnimating];
+    [self.viewModel insertItemsWithCompletion:^{
         @strongify(self);
-        [self.indicatorView stopAnimating];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.indicatorView stopAnimating];
+            if (self.viewModel.listArray.count <= self.viewModel.numOfSections*20) {
+                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+            } else {
+                NSLog(@"something wrong happened");
+            }
+        });
     }];
 }
 

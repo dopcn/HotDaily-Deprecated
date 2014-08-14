@@ -17,7 +17,7 @@
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
-- (void)insertItemsTo:(UITableView *)tableView completion:(void(^)(void))completion;
+- (void)insertItemsWithCompletion:(void(^)(void))completion;
 //table cell
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;

@@ -63,7 +63,7 @@
         [imageView sd_setImageWithURL:[self.viewModel headerImages][i][@"url"]];
         
         [self insertMaskLayerTo:imageView.layer];
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 140, 300, 50)];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 130, 300, 50)];
         title.textColor = [UIColor whiteColor];
         title.font = [UIFont boldSystemFontOfSize:20.0];
         title.numberOfLines = 2;

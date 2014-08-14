@@ -83,15 +83,17 @@
             range.length = 10;
             self.viewModel.listArray = [self.viewModel.data[@"data"][@"list"] subarrayWithRange:range];
             self.viewModel.numOfSections = 1;
-        }];
-    }];
-    
-    [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
-        [signal subscribeCompleted:^{
+        } completed:^{
             @strongify(self);
             [self.tableView headerEndRefreshing];
         }];
     }];
+    
+//    [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
+//        [signal subscribeCompleted:^{
+//            
+//        }];
+//    }];
 }
 
 
