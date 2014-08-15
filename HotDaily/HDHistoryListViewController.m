@@ -8,6 +8,7 @@
 
 #import "HDHistoryListViewController.h"
 #import <ReactiveCocoa/RACEXTScope.h>
+#import "HDHistoryListCell.h"
 
 @interface HDHistoryListViewController ()
 @property (strong, nonatomic) NSArray *listArray;
@@ -94,21 +95,21 @@
     return self.listArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryListCell" forIndexPath:indexPath];
-    cell.textLabel.text = self.listArray[indexPath.row][@"title"];
+- (HDHistoryListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    HDHistoryListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryListCell" forIndexPath:indexPath];
+    [cell configureCellWith:self.listArray[indexPath.row]];
     return cell;
 }
 
-/*
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
+        [segue.destinationViewController performSelector:@selector(setViewModelData:) withObject:self.listArray[indexPath.row]];
+    }
 }
-*/
+#pragma clang diagnostic pop
 
 @end

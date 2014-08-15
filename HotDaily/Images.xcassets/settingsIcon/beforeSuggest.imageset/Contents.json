@@ -2,12 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "icon3@2x.png"
+      "filename" : "beforeSuggest@2x.png"
     }
   ],
   "info" : {

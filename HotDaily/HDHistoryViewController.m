@@ -55,13 +55,14 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     if ([segue.destinationViewController respondsToSelector:@selector(setCategoryNo:)]) {
         [segue.destinationViewController performSelector:@selector(setCategoryNo:) withObject:@(indexPath.row)];
     }
 }
-
+#pragma clang diagnostic pop
 
 @end
