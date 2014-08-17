@@ -1,20 +1,21 @@
 //
-//  HDSettingsViewController.m
+//  HDMainViewController.m
 //  HotDaily
 //
-//  Created by weizhou on 7/20/14.
+//  Created by weizhou on 8/16/14.
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import "HDSettingsViewController.h"
+#import "HDMainViewController.h"
 
-@interface HDSettingsViewController ()
+@interface HDMainViewController () <UITabBarControllerDelegate>
 
 @end
 
-@implementation HDSettingsViewController
+@implementation HDMainViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 }
 
@@ -34,5 +35,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - tab bar delegate
+
+
+
+
+
+
+
+
+
 
 @end

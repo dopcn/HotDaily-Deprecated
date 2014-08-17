@@ -12,7 +12,6 @@
 #import "HDMainListHeaderView.h"
 
 #import <ReactiveCocoa/RACEXTScope.h>
-#import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
 
 
 @interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -33,39 +32,67 @@
 }
 
 - (void)configureView {
-    [self setLeftNavButton];
-    //configure other attributes of slidingViewController in storyboard runtime attributes
-    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    //
 }
 
 - (void)bindViewModel {
     @weakify(self);
-    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self);
-            [self.viewModel GETHotListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-                [subscriber sendNext:responseObject];
-                self.viewModel.numOfSections = 1;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
-                    [self.tableView reloadData];
-                });
-                [subscriber sendCompleted];
-            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                [subscriber sendError:error];
-            }];
-            return [RACDisposable disposableWithBlock:^{
-                //
-            }];
+    self.refreshButton.rac_command=[[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        [self.viewModel GETHotListSuccess:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
+                [self.tableView reloadData];
+            });
+        } failure:^{
+            //
         }];
+        return [RACSignal empty];
     }];
     
-    [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
-        [signal subscribeNext:^(id x) {
-            @strongify(self);
-            self.viewModel.data = x;
+    self.insertButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        self.insertButton.hidden = YES;
+        [self.indicatorView startAnimating];
+        [self.viewModel insertItemsWithCompletion:^{
+            if (self.viewModel.numOfSections*20 > self.viewModel.listArray.count) {
+                NSLog(@"network unfinished");
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+                    [self.indicatorView stopAnimating];
+                    self.insertButton.hidden = NO;
+                });
+            }
+            
         }];
+        return [RACSignal empty];
     }];
+//    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+//        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+//            @strongify(self);
+//            [self.viewModel GETHotListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+//                [subscriber sendNext:responseObject];
+//                self.viewModel.numOfSections = 1;
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
+//                    [self.tableView reloadData];
+//                });
+//                [subscriber sendCompleted];
+//            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                [subscriber sendError:error];
+//            }];
+//            return [RACDisposable disposableWithBlock:^{
+//                //
+//            }];
+//        }];
+//    }];
+//    
+//    [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
+//        [signal subscribeNext:^(id x) {
+//            @strongify(self);
+//            self.viewModel.data = x;
+//        }];
+//    }];
 }
 
 #pragma mark - Table view data source
@@ -102,39 +129,31 @@
     return header;
 }
 
-#pragma mark - tableView delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"MainListCellToDetail" sender:indexPath];
-}
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 //get rid of undeclared selector warning
 #pragma mark - Navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
+    [(UIViewController*)segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
-        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *data = [self.viewModel dataAtIndexPath:indexPath];
         [segue.destinationViewController performSelector:@selector(setViewModelData:) withObject:data];
     }
 }
 #pragma clang diagnostic pop
 
-- (IBAction)insertMore:(id)sender {
-    @weakify(self);
-    [self.indicatorView startAnimating];
-    [self.viewModel insertItemsWithCompletion:^{
-        @strongify(self);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.indicatorView stopAnimating];
-            if (self.viewModel.listArray.count <= self.viewModel.numOfSections*20) {
-                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
-            } else {
-                NSLog(@"something wrong happened");
-            }
-        });
-    }];
-}
+//- (IBAction)insertMore:(id)sender {
+//    @weakify(self);
+//    [self.indicatorView startAnimating];
+//    [self.viewModel insertItemsWithCompletion:^{
+//        @strongify(self);
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.indicatorView stopAnimating];
+//            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+//        });
+//    }];
+//}
 
 
 

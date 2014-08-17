@@ -17,7 +17,6 @@
 		871BE2771963DC4900087E4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE2761963DC4900087E4B /* main.m */; };
 		871BE27B1963DC4900087E4B /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE27A1963DC4900087E4B /* HDAppDelegate.m */; };
 		871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */; };
-		871BE2841963DC4900087E4B /* HotDaily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 871BE2821963DC4900087E4B /* HotDaily.xcdatamodeld */; };
 		871BE28C1963DC4900087E4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 871BE28B1963DC4900087E4B /* Images.xcassets */; };
 		871BE2931963DC4900087E4B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE2921963DC4900087E4B /* XCTest.framework */; };
 		871BE2941963DC4900087E4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE2681963DC4900087E4B /* Foundation.framework */; };
@@ -42,6 +41,7 @@
 		878003FC199DAE0D00E65B77 /* historyData in Resources */ = {isa = PBXBuildFile; fileRef = 878003FB199DAE0D00E65B77 /* historyData */; };
 		878003FF199DB56200E65B77 /* HDHistoryListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 878003FE199DB56200E65B77 /* HDHistoryListCell.m */; };
 		87800402199DE96F00E65B77 /* HDHistoryRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87800401199DE96F00E65B77 /* HDHistoryRecordViewController.m */; };
+		87800405199FB49500E65B77 /* HDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87800404199FB49500E65B77 /* HDMainViewController.m */; };
 		87829395197D0DD10037AC25 /* HDMainListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829394197D0DD10037AC25 /* HDMainListViewModel.m */; };
 		87829398197D13660037AC25 /* HDHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829397197D13660037AC25 /* HDHTTPManager.m */; };
 		879B4A5719907FDD00A70924 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A5619907FDD00A70924 /* SystemConfiguration.framework */; };
@@ -50,7 +50,6 @@
 		879B4A5D1990800600A70924 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A5C1990800600A70924 /* libicucore.dylib */; };
 		879B4A5F1990801100A70924 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A5E1990801100A70924 /* libz.1.2.5.dylib */; };
 		879B4A611990801E00A70924 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A601990801E00A70924 /* Security.framework */; };
-		87A738741988907A00A5E4A2 /* HDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A738731988907A00A5E4A2 /* HDMenuViewController.m */; };
 		87A7387719889FA700A5E4A2 /* HDCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */; };
 		87A738801988AA1500A5E4A2 /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387F1988AA1500A5E4A2 /* HDBaseViewController.m */; };
 		87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */; };
@@ -90,7 +89,6 @@
 		871BE2791963DC4900087E4B /* HDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDAppDelegate.h; sourceTree = "<group>"; };
 		871BE27A1963DC4900087E4B /* HDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDAppDelegate.m; sourceTree = "<group>"; };
 		871BE27D1963DC4900087E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		871BE2831963DC4900087E4B /* HotDaily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotDaily.xcdatamodel; sourceTree = "<group>"; };
 		871BE28B1963DC4900087E4B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		871BE2911963DC4900087E4B /* HotDailyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotDailyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		871BE2921963DC4900087E4B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -129,6 +127,8 @@
 		878003FE199DB56200E65B77 /* HDHistoryListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDHistoryListCell.m; sourceTree = "<group>"; };
 		87800400199DE96F00E65B77 /* HDHistoryRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHistoryRecordViewController.h; sourceTree = "<group>"; };
 		87800401199DE96F00E65B77 /* HDHistoryRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDHistoryRecordViewController.m; sourceTree = "<group>"; };
+		87800403199FB49500E65B77 /* HDMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainViewController.h; sourceTree = "<group>"; };
+		87800404199FB49500E65B77 /* HDMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainViewController.m; sourceTree = "<group>"; };
 		87829393197D0DD10037AC25 /* HDMainListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewModel.h; sourceTree = "<group>"; };
 		87829394197D0DD10037AC25 /* HDMainListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewModel.m; sourceTree = "<group>"; };
 		87829396197D13660037AC25 /* HDHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHTTPManager.h; sourceTree = "<group>"; };
@@ -139,8 +139,6 @@
 		879B4A5C1990800600A70924 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		879B4A5E1990801100A70924 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		879B4A601990801E00A70924 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		87A738721988907A00A5E4A2 /* HDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMenuViewController.h; sourceTree = "<group>"; };
-		87A738731988907A00A5E4A2 /* HDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMenuViewController.m; sourceTree = "<group>"; };
 		87A7387519889FA700A5E4A2 /* HDCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDCollectionViewController.h; sourceTree = "<group>"; };
 		87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDCollectionViewController.m; sourceTree = "<group>"; };
 		87A7387E1988AA1500A5E4A2 /* HDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseViewController.h; sourceTree = "<group>"; };
@@ -336,22 +334,18 @@
 		87A738851989CFA000A5E4A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				87A738721988907A00A5E4A2 /* HDMenuViewController.h */,
-				87A738731988907A00A5E4A2 /* HDMenuViewController.m */,
 				87A7387E1988AA1500A5E4A2 /* HDBaseViewController.h */,
 				87A7387F1988AA1500A5E4A2 /* HDBaseViewController.m */,
-				87C17A62197C03CF00DCA99C /* HDMainListViewController.h */,
-				87C17A63197C03CF00DCA99C /* HDMainListViewController.m */,
-				87C17A69197C0B8E00DCA99C /* HDListDetailViewController.h */,
-				87C17A6A197C0B8E00DCA99C /* HDListDetailViewController.m */,
-				87A7387519889FA700A5E4A2 /* HDCollectionViewController.h */,
-				87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */,
-				87C17A6F197C0C6B00DCA99C /* HDSettingsViewController.h */,
-				87C17A70197C0C6B00DCA99C /* HDSettingsViewController.m */,
 				876CEC051994AC67007BE0E1 /* HDShareViewController.h */,
 				876CEC061994AC67007BE0E1 /* HDShareViewController.m */,
 				87C522721998ADC200F89B2A /* HDWebViewViewController.h */,
 				87C522731998ADC200F89B2A /* HDWebViewViewController.m */,
+				87800403199FB49500E65B77 /* HDMainViewController.h */,
+				87800404199FB49500E65B77 /* HDMainViewController.m */,
+				87C17A62197C03CF00DCA99C /* HDMainListViewController.h */,
+				87C17A63197C03CF00DCA99C /* HDMainListViewController.m */,
+				87C17A69197C0B8E00DCA99C /* HDListDetailViewController.h */,
+				87C17A6A197C0B8E00DCA99C /* HDListDetailViewController.m */,
 				87C522751999B27800F89B2A /* HDFuninfoViewController.h */,
 				87C522761999B27800F89B2A /* HDFuninfoViewController.m */,
 				878003F1199BB19900E65B77 /* HDHistoryViewController.h */,
@@ -360,6 +354,10 @@
 				878003F5199BB38C00E65B77 /* HDHistoryListViewController.m */,
 				87800400199DE96F00E65B77 /* HDHistoryRecordViewController.h */,
 				87800401199DE96F00E65B77 /* HDHistoryRecordViewController.m */,
+				87C17A6F197C0C6B00DCA99C /* HDSettingsViewController.h */,
+				87C17A70197C0C6B00DCA99C /* HDSettingsViewController.m */,
+				87A7387519889FA700A5E4A2 /* HDCollectionViewController.h */,
+				87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -378,7 +376,6 @@
 			children = (
 				878003FB199DAE0D00E65B77 /* historyData */,
 				876111F4198A3D9E00B92D99 /* contentView */,
-				871BE2821963DC4900087E4B /* HotDaily.xcdatamodeld */,
 				87829396197D13660037AC25 /* HDHTTPManager.h */,
 				87829397197D13660037AC25 /* HDHTTPManager.m */,
 			);
@@ -570,6 +567,7 @@
 				878003EC199B56A600E65B77 /* MJRefreshFooterView.m in Sources */,
 				87C5227D1999B87800F89B2A /* HDFuninfoCell.m in Sources */,
 				876CEC071994AC67007BE0E1 /* HDShareViewController.m in Sources */,
+				87800405199FB49500E65B77 /* HDMainViewController.m in Sources */,
 				87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */,
 				878003FF199DB56200E65B77 /* HDHistoryListCell.m in Sources */,
 				87A738881989CFEC00A5E4A2 /* HDMainListHeaderView.m in Sources */,
@@ -592,13 +590,11 @@
 				87800402199DE96F00E65B77 /* HDHistoryRecordViewController.m in Sources */,
 				876CEC0A1994B826007BE0E1 /* UIView+Capture.m in Sources */,
 				87C17A64197C03CF00DCA99C /* HDMainListViewController.m in Sources */,
-				87A738741988907A00A5E4A2 /* HDMenuViewController.m in Sources */,
 				87C17A71197C0C6B00DCA99C /* HDSettingsViewController.m in Sources */,
 				876111F8198A409100B92D99 /* WebViewProxy.m in Sources */,
 				87C522741998ADC200F89B2A /* HDWebViewViewController.m in Sources */,
 				871BE2771963DC4900087E4B /* main.m in Sources */,
 				87C17A6E197C0C1200DCA99C /* HDMainListCell.m in Sources */,
-				871BE2841963DC4900087E4B /* HotDaily.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,19 +825,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		871BE2821963DC4900087E4B /* HotDaily.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				871BE2831963DC4900087E4B /* HotDaily.xcdatamodel */,
-			);
-			currentVersion = 871BE2831963DC4900087E4B /* HotDaily.xcdatamodel */;
-			path = HotDaily.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 871BE25D1963DC4900087E4B /* Project object */;
 }

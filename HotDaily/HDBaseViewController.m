@@ -7,7 +7,6 @@
 //
 
 #import "HDBaseViewController.h"
-#import <ECSlidingViewController/UIViewController+ECSlidingViewController.h>
 
 @interface HDBaseViewController ()
 
@@ -16,7 +15,7 @@
 @implementation HDBaseViewController
 
 - (void)menuButtonTapped {
-    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+    
 }
 
 - (void)setLeftNavButton {
@@ -43,7 +42,7 @@
 @implementation HDBaseTableViewController
 
 - (void)menuButtonTapped {
-    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+    
 }
 
 - (void)setLeftNavButton {

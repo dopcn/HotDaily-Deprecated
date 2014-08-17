@@ -48,11 +48,23 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
-// ECSlidingViewController
-#define COCOAPODS_POD_AVAILABLE_ECSlidingViewController
-#define COCOAPODS_VERSION_MAJOR_ECSlidingViewController 2
-#define COCOAPODS_VERSION_MINOR_ECSlidingViewController 0
-#define COCOAPODS_VERSION_PATCH_ECSlidingViewController 2
+// FMDB
+#define COCOAPODS_POD_AVAILABLE_FMDB
+#define COCOAPODS_VERSION_MAJOR_FMDB 2
+#define COCOAPODS_VERSION_MINOR_FMDB 3
+#define COCOAPODS_VERSION_PATCH_FMDB 0
+
+// FMDB/common
+#define COCOAPODS_POD_AVAILABLE_FMDB_common
+#define COCOAPODS_VERSION_MAJOR_FMDB_common 2
+#define COCOAPODS_VERSION_MINOR_FMDB_common 3
+#define COCOAPODS_VERSION_PATCH_FMDB_common 0
+
+// FMDB/standard
+#define COCOAPODS_POD_AVAILABLE_FMDB_standard
+#define COCOAPODS_VERSION_MAJOR_FMDB_standard 2
+#define COCOAPODS_VERSION_MINOR_FMDB_standard 3
+#define COCOAPODS_VERSION_PATCH_FMDB_standard 0
 
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa

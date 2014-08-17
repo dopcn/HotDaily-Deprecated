@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotDaily-ECSlidingViewController.xcscheme</key>
+		<key>Pods-HotDaily-FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,42 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A2382D96250427D8A6B6FB7</key>
+		<key>0A1F1EFB901C4D3CA3A7E4D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3175F9032AE24A91A1D644DE</key>
+		<key>1E08303831F345DB93E23676</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4AA2CDC2AFE3403298880B3B</key>
+		<key>79CB4D76DA26401F9B7A8FFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>77FEFEA4B4D64283885D5D24</key>
+		<key>C86EAFA68C694E3ABFA30924</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>901777D6A85144549D698E11</key>
+		<key>E9E6897BE57B41C89D5871C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5C383ABE832400FAC1CD6A7</key>
+		<key>EB1AF3DA4B7E4B48AD841AB8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B08088667BF543FC8CADDDED</key>
+		<key>FF4F8A2341B94482BD0E334E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF1FD2CA6C86424A98997B45</key>
+		<key>FFB08A1634134033A298036E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

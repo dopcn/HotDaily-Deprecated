@@ -17,6 +17,7 @@
 @implementation HDHistoryListViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self setLeftNavButton];
     
     RACSignal *categorySignal = RACObserve(self, categoryNo);
@@ -42,6 +43,10 @@
                 break;
         }
     }];
+}
+
+- (void)menuButtonTapped {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSArray *)readFileAtNo:(NSNumber*)num {
@@ -80,10 +85,6 @@
     return array;
 }
 
-- (void)menuButtonTapped {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -97,7 +98,7 @@
 
 - (HDHistoryListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HDHistoryListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryListCell" forIndexPath:indexPath];
-    [cell configureCellWith:self.listArray[indexPath.row]];
+    [cell configureCellWith:self.listArray[indexPath.row] atIndexPath:indexPath];
     return cell;
 }
 
@@ -105,6 +106,7 @@
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
+    [(UIViewController*)segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
         [segue.destinationViewController performSelector:@selector(setViewModelData:) withObject:self.listArray[indexPath.row]];

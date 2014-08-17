@@ -31,15 +31,6 @@
 }
 
 - (void)configureView {
-    [self setLeftNavButton];
-    
-    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 20)];
-    header.text = @"红色底边的长短代表点击量的多少";
-    header.textAlignment = NSTextAlignmentCenter;
-    header.font = [UIFont boldSystemFontOfSize:12.0];
-    header.textColor = [UIColor grayColor];
-    self.tableView.tableHeaderView = header;
-    
     @weakify(self);
     [self.tableView addHeaderWithCallback:^{
         @strongify(self);
@@ -88,12 +79,6 @@
             [self.tableView headerEndRefreshing];
         }];
     }];
-    
-//    [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
-//        [signal subscribeCompleted:^{
-//            
-//        }];
-//    }];
 }
 
 
@@ -114,20 +99,14 @@
     return cell;
 }
 
-#pragma mark - tableView delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [self performSegueWithIdentifier:@"FuninfoCellToDetail" sender:indexPath];
-}
-
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 //get rid of undeclared selector warning
 #pragma mark - Navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
+    [(UIViewController*)segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
-        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *data = [self.viewModel dataAtIndexPath:indexPath];
         [segue.destinationViewController performSelector:@selector(setViewModelData:) withObject:data];
     }

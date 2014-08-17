@@ -27,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setLeftNavButton];
+    
     self.bridge = [WebViewJavascriptBridge bridgeForWebView:_webView handler:^(id data, WVJBResponseCallback responseCallback) {
         //no callback now
     }];
@@ -38,7 +40,6 @@
     self.currentPageNo = @1;
     [self bindViewModel];
     
-    [self setLeftNavButton];
 }
 
 - (void)menuButtonTapped {
@@ -48,11 +49,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO];
+    [self.tabBarController.tabBar setHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:YES];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)bindViewModel {

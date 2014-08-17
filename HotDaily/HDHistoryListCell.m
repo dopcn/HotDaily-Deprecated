@@ -10,8 +10,8 @@
 
 @implementation HDHistoryListCell
 
-- (void)configureCellWith:(id)data {
-    self.title.text = data[@"title"];
+- (void)configureCellWith:(id)data atIndexPath:(NSIndexPath *)indexPath{
+    self.title.text = [NSString stringWithFormat:@"No.%li  %@",(long)indexPath.row,data[@"title"]];
     self.clickCount.text = data[@"clickCount"];
 }
 

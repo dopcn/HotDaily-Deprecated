@@ -11,5 +11,5 @@
 @interface HDHistoryListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *clickCount;
-- (void)configureCellWith:(id)data;
+- (void)configureCellWith:(id)data atIndexPath:(NSIndexPath*)indexPath;
 @end

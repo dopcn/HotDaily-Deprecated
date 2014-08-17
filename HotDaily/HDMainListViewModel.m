@@ -30,9 +30,9 @@
 
 - (void)insertItemsWithCompletion:(void (^)(void))completion {
     self.numOfSections += 1;
-    if (self.numOfSections%5 != 0) {
+    if (self.numOfSections%6 != 0) {
         NSRange range;
-        range.location = self.numOfSections%5 * 20;
+        range.location = (self.numOfSections-1)%5 * 20;
         range.length = 20;
         self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
         completion();
@@ -48,7 +48,7 @@
                                            @strongify(self);
                                            self.data = responseObject;
                                            NSRange range;
-                                           range.location = 0;
+                                           range.location = (self.numOfSections-1)%5 * 20;
                                            range.length = 20;
                                            self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
                                            completion();
@@ -56,7 +56,6 @@
                                            [[HDHTTPManager sharedHTTPManager] networkFailAlert];
                                        }];
     }
-    
 }
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
@@ -78,7 +77,6 @@
 }
 
 - (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath {
-    NSAssert(indexPath.row < self.numOfSections*20, @"number of row exceed");
     if (self.listArray[indexPath.row + indexPath.section*20][@"pic"]) {
         return ![self.listArray[indexPath.row + indexPath.section*20][@"pic"] isEqualToString:@""];
     }
@@ -113,14 +111,14 @@
     if (images.count < 5) {
         while (images.count < 6) {
             [images addObject:@{@"url": @"http://img3.laibafile.cn/p/m/173672485.jpg",
-                                @"title": @"五张图片都没有要不要这么烂！请刷新"}];
+                                @"title": @"尼玛网络速度太慢！请刷新"}];
         }
     }
     return images;
 }
 
-- (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *, id))success
-                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
+- (void)GETHotListSuccess:(void (^)(void))success
+                  failure:(void (^)(void))failure {
     NSDictionary *params = @{@"pageNo": @(1),
                              @"pageSize": @(100),
                              @"orderBy": @1,
@@ -128,9 +126,11 @@
     [[HDHTTPManager sharedHTTPManager] GET:hotListURLString
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       success(task, responseObject);
+                                       self.numOfSections = 1;
+                                       self.data = responseObject;
+                                       success();
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       failure(task, error);
+                                       failure();
                                    }];
 }
 

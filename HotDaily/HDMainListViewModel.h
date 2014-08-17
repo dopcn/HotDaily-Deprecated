@@ -27,7 +27,7 @@
 //header view
 - (NSArray *)headerImages;
 
-- (void)GETHotListSuccess:(void (^)(NSURLSessionDataTask *, id))success
-                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
+- (void)GETHotListSuccess:(void (^)(void))success
+                  failure:(void (^)(void))failure;
 
 @end

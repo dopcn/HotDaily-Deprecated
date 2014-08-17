@@ -4,8 +4,8 @@ target "HotDaily" do
 pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'WebViewJavascriptBridge'
-pod 'ECSlidingViewController'
 pod 'ReactiveCocoa'
+pod 'FMDB'
 end
 
 
