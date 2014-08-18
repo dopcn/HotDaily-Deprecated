@@ -24,15 +24,9 @@
     [super viewDidLoad];
     self.viewModel = [HDMainListViewModel new];
     
-    [self configureView];
-    
     [self bindViewModel];
     
     [self.refreshButton.rac_command execute:nil];
-}
-
-- (void)configureView {
-    //
 }
 
 - (void)bindViewModel {
@@ -56,14 +50,9 @@
         [self.viewModel insertItemsCompletion:^{
             [self.indicatorView stopAnimating];
             self.insertButton.hidden = NO;
-            if (self.viewModel.numOfSections*20 > self.viewModel.listArray.count) {
-                NSLog(@"network unfinished");
-            } else {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
-                });
-            }
-            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+            });
         }];
         return [RACSignal empty];
     }];

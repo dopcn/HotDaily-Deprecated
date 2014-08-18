@@ -10,36 +10,36 @@
 #import "HDMainListViewModel.h"
 
 #import <ReactiveCocoa/RACEXTScope.h>
+#import "HDCacheStore.h"
 
 @implementation HDMainListViewModel
 
-- (NSArray *)listArray {
-    if (_listArray) return _listArray;
-    NSRange range;
-    range.location = 0;
-    range.length = 20;
-    _listArray = [_data[@"data"][@"list"] subarrayWithRange:range];
-    return _listArray;
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _listArray = [HDCacheStore sharedStore].mainListCache;
+        _numOfSections = 1;
+    }
+    return self;
 }
 
-- (NSInteger)numOfSections {
-    if (_numOfSections) return _numOfSections;
-    _numOfSections = 1;
-    return _numOfSections;
+- (void)setListArray:(NSArray *)listArray {
+    _listArray = listArray;
+    [[HDCacheStore sharedStore] setMainListCache:listArray];
 }
 
 - (void)insertItemsCompletion:(void (^)(void))completion {
     self.numOfSections += 1;
     if ((self.numOfSections-1)%5 != 0) {
         NSRange range;
-        range.location = (self.numOfSections-1)%5 * 20;
-        range.length = 20;
+        range.location = (self.numOfSections-1)%5 * 10;
+        range.length = 10;
         self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
         completion();
     } else {
         @weakify(self);
         NSDictionary *params = @{@"pageNo": @(self.numOfSections/5 + 1),
-                                 @"pageSize": @(100),
+                                 @"pageSize": @(50),
                                  @"orderBy": @1,
                                  @"pageBy": @1};
         [[HDHTTPManager sharedHTTPManager] GET:hotListURLString
@@ -49,8 +49,8 @@
                                            if ([responseObject[@"success"] isEqualToNumber:@1]) {
                                                self.data = responseObject;
                                                NSRange range;
-                                               range.location = (self.numOfSections-1)%5 * 20;
-                                               range.length = 20;
+                                               range.location = (self.numOfSections-1)%5 * 10;
+                                               range.length = 10;
                                                self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
                                            }
                                            completion();
@@ -61,7 +61,7 @@
 }
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 10;
 }
 
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
@@ -81,23 +81,23 @@
 }
 
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath {
-    return self.listArray[indexPath.row + indexPath.section*20];
+    return self.listArray[indexPath.row + indexPath.section*10];
 }
 
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
-    return self.listArray[indexPath.row + indexPath.section*20][@"title"];
+    return self.listArray[indexPath.row + indexPath.section*10][@"title"];
 }
 
 - (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.listArray[indexPath.row + indexPath.section*20][@"pic"]) {
-        return ![self.listArray[indexPath.row + indexPath.section*20][@"pic"] isEqualToString:@""];
+    if (self.listArray[indexPath.row + indexPath.section*10][@"pic"]) {
+        return ![self.listArray[indexPath.row + indexPath.section*10][@"pic"] isEqualToString:@""];
     }
     return NO;
 }
 
 - (NSURL *)imageURLAtIndexPath:(NSIndexPath *)indexPath {
     if ([self hasImageAtIndexPath:indexPath]) {
-        NSURL *url = [NSURL URLWithString:self.listArray[indexPath.row + indexPath.section*20][@"pic"]];
+        NSURL *url = [NSURL URLWithString:self.listArray[indexPath.row + indexPath.section*10][@"pic"]];
         return url;
     } else {
         return nil;
@@ -132,7 +132,7 @@
 - (void)GETHotListSuccess:(void (^)(void))success
                   failure:(void (^)(void))failure {
     NSDictionary *params = @{@"pageNo": @(1),
-                             @"pageSize": @(100),
+                             @"pageSize": @(50),
                              @"orderBy": @1,
                              @"pageBy": @1};
     [[HDHTTPManager sharedHTTPManager] GET:hotListURLString
@@ -142,7 +142,7 @@
                                        self.data = responseObject;
                                        NSRange range;
                                        range.location = 0;
-                                       range.length = 20;
+                                       range.length = 10;
                                        self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
                                        success();
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {

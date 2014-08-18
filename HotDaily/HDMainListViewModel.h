@@ -9,7 +9,7 @@
 @import Foundation;
 
 @interface HDMainListViewModel : NSObject
-
+//data = responseObject
 @property (copy, nonatomic) NSDictionary *data;
 //table
 @property (copy, nonatomic) NSArray *listArray;

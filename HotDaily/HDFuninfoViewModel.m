@@ -10,22 +10,22 @@
 
 #import <ReactiveCocoa/RACEXTScope.h>
 #import "HDHTTPManager.h"
+#import "HDCacheStore.h"
 
 @implementation HDFuninfoViewModel
 
-- (NSArray *)listArray {
-    if (_listArray) return _listArray;
-    NSRange range;
-    range.location = 0;
-    range.length = 10;
-    _listArray = [_data[@"data"][@"list"] subarrayWithRange:range];
-    return _listArray;
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _listArray = [HDCacheStore sharedStore].funinfoListCache;
+        _numOfSections = 1;
+    }
+    return self;
 }
 
-- (NSInteger)numOfSections {
-    if (_numOfSections) return _numOfSections;
-    _numOfSections = 1;
-    return _numOfSections;
+- (void)setListArray:(NSArray *)listArray {
+    _listArray = listArray;
+    [[HDCacheStore sharedStore] setFuninfoListCache:listArray];
 }
 
 - (void)insertItemsCompletion:(void (^)(void))completion {

@@ -68,19 +68,13 @@
                 return NO;
             }
         }
-        NSString *searchItemSQL = [NSString stringWithFormat:@"SELECT * FROM HistoryRecordList WHERE categoryId = '%@' AND noteId = '%@'",item[@"categoryId"],item[@"noteId"]];
-        FMResultSet *s = [db executeQuery:searchItemSQL];
-        if ([s next]) {
+        NSString *insertItemSQL = @"INSERT INTO HistoryRecordList (title, categoryId, noteId, authorId) VALUES (:title, :categoryId, :noteId, :authorId)";
+        if ([db executeUpdate:insertItemSQL withParameterDictionary:item]) {
+            [db close];
             return YES;
         } else {
-            NSString *insertItemSQL = @"INSERT INTO HistoryRecordList (title, categoryId, noteId, authorId) VALUES (:title, :categoryId, :noteId, :authorId)";
-            if ([db executeUpdate:insertItemSQL withParameterDictionary:item]) {
-                [db close];
-                return YES;
-            } else {
-                [db close];
-                return NO;
-            }
+            [db close];
+            return NO;
         }
     } else {
         return NO;
