@@ -10,5 +10,5 @@
 
 @interface HDWebViewViewController : HDBaseViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (copy, nonatomic) NSString *url;
+@property (copy, nonatomic) NSString *urlString;
 @end

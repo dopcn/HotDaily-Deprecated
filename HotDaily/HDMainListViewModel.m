@@ -28,9 +28,9 @@
     return _numOfSections;
 }
 
-- (void)insertItemsWithCompletion:(void (^)(void))completion {
+- (void)insertItemsCompletion:(void (^)(void))completion {
     self.numOfSections += 1;
-    if (self.numOfSections%6 != 0) {
+    if ((self.numOfSections-1)%5 != 0) {
         NSRange range;
         range.location = (self.numOfSections-1)%5 * 20;
         range.length = 20;
@@ -46,11 +46,13 @@
                                     parameters:params
                                        success:^(NSURLSessionDataTask *task, id responseObject) {
                                            @strongify(self);
-                                           self.data = responseObject;
-                                           NSRange range;
-                                           range.location = (self.numOfSections-1)%5 * 20;
-                                           range.length = 20;
-                                           self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
+                                           if ([responseObject[@"success"] isEqualToNumber:@1]) {
+                                               self.data = responseObject;
+                                               NSRange range;
+                                               range.location = (self.numOfSections-1)%5 * 20;
+                                               range.length = 20;
+                                               self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
+                                           }
                                            completion();
                                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                            [[HDHTTPManager sharedHTTPManager] networkFailAlert];
@@ -63,9 +65,19 @@
 }
 
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
-    NSDateFormatter *df = [NSDateFormatter new];
-    [df setDateFormat:@"yyyy-MM-dd EEEE"];
-    return [NSString stringWithFormat:@"今天是: %@",NSLocalizedString([df stringFromDate:[NSDate date]], nil)];
+    switch (section%2) {
+        case 0: {
+            NSDateFormatter *df = [NSDateFormatter new];
+            [df setDateFormat:@"yyyy-MM-dd EEEE"];
+            return [NSString stringWithFormat:@"今天是: %@",NSLocalizedString([df stringFromDate:[NSDate date]], nil)];
+        }
+            break;
+        case 1: return @"Tips1:内容页点击顶部状态栏就会回到页首";
+            break;
+        default:
+            return nil;
+            break;
+    }
 }
 
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,6 +140,10 @@
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        self.numOfSections = 1;
                                        self.data = responseObject;
+                                       NSRange range;
+                                       range.location = 0;
+                                       range.length = 20;
+                                       self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
                                        success();
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                        failure();

@@ -14,9 +14,13 @@
 
 @implementation HDHistoryRecordViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    [self setLeftNavButton];
+}
+
+- (void)menuButtonTapped {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

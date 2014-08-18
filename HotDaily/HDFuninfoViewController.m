@@ -38,46 +38,36 @@
     }];
     [self.tableView addFooterWithCallback:^{
         @strongify(self);
-        [self.viewModel insertItemsTo:self.tableView completion:^{
-            [self.tableView footerEndRefreshing];
+        [self.viewModel insertItemsCompletion:^{
+            if (self.viewModel.numOfSections == 1) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView footerEndRefreshing];
+                    [self.tableView reloadData];
+                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView footerEndRefreshing];
+                    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+                });
+            }
         }];
     }];
 }
 
 - (void)bindViewModel {
     @weakify(self);
-    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self);
-            [self.viewModel GETFuninfoListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-                                           [subscriber sendNext:responseObject];
-                                            [subscriber sendCompleted];
-                                           self.viewModel.numOfSections = 1;
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               [self.tableView reloadData];
-                                           });
-                                       } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                           [subscriber sendError:error];
-                                       }];
-            return [RACDisposable disposableWithBlock:^{
-                //
-            }];
+    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal*(id input) {
+        @strongify(self);
+        [self.viewModel GETFuninfoListSuccess:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+                [self.tableView headerEndRefreshing];
+            });
+        } failure:^{
+            //
         }];
-    }];
-    
-    [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
-        [signal subscribeNext:^(id x) {
-            @strongify(self);
-            self.viewModel.data = x;
-            NSRange range;
-            range.location = 0;
-            range.length = 10;
-            self.viewModel.listArray = [self.viewModel.data[@"data"][@"list"] subarrayWithRange:range];
-            self.viewModel.numOfSections = 1;
-        } completed:^{
-            @strongify(self);
-            [self.tableView headerEndRefreshing];
-        }];
+        return [RACSignal empty];
     }];
 }
 

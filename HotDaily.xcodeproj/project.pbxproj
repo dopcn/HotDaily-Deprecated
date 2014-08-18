@@ -42,6 +42,8 @@
 		878003FF199DB56200E65B77 /* HDHistoryListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 878003FE199DB56200E65B77 /* HDHistoryListCell.m */; };
 		87800402199DE96F00E65B77 /* HDHistoryRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87800401199DE96F00E65B77 /* HDHistoryRecordViewController.m */; };
 		87800405199FB49500E65B77 /* HDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87800404199FB49500E65B77 /* HDMainViewController.m */; };
+		8780040819A07EDA00E65B77 /* HDAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8780040719A07EDA00E65B77 /* HDAboutViewController.m */; };
+		8780040B19A07F5000E65B77 /* HDBeforeSuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8780040A19A07F5000E65B77 /* HDBeforeSuggestViewController.m */; };
 		87829395197D0DD10037AC25 /* HDMainListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829394197D0DD10037AC25 /* HDMainListViewModel.m */; };
 		87829398197D13660037AC25 /* HDHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87829397197D13660037AC25 /* HDHTTPManager.m */; };
 		879B4A5719907FDD00A70924 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A5619907FDD00A70924 /* SystemConfiguration.framework */; };
@@ -129,6 +131,10 @@
 		87800401199DE96F00E65B77 /* HDHistoryRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDHistoryRecordViewController.m; sourceTree = "<group>"; };
 		87800403199FB49500E65B77 /* HDMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainViewController.h; sourceTree = "<group>"; };
 		87800404199FB49500E65B77 /* HDMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainViewController.m; sourceTree = "<group>"; };
+		8780040619A07EDA00E65B77 /* HDAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDAboutViewController.h; sourceTree = "<group>"; };
+		8780040719A07EDA00E65B77 /* HDAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDAboutViewController.m; sourceTree = "<group>"; };
+		8780040919A07F5000E65B77 /* HDBeforeSuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBeforeSuggestViewController.h; sourceTree = "<group>"; };
+		8780040A19A07F5000E65B77 /* HDBeforeSuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBeforeSuggestViewController.m; sourceTree = "<group>"; };
 		87829393197D0DD10037AC25 /* HDMainListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewModel.h; sourceTree = "<group>"; };
 		87829394197D0DD10037AC25 /* HDMainListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewModel.m; sourceTree = "<group>"; };
 		87829396197D13660037AC25 /* HDHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHTTPManager.h; sourceTree = "<group>"; };
@@ -313,6 +319,23 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		8780040C19A07F8B00E65B77 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				87C17A6F197C0C6B00DCA99C /* HDSettingsViewController.h */,
+				87C17A70197C0C6B00DCA99C /* HDSettingsViewController.m */,
+				87800400199DE96F00E65B77 /* HDHistoryRecordViewController.h */,
+				87800401199DE96F00E65B77 /* HDHistoryRecordViewController.m */,
+				87A7387519889FA700A5E4A2 /* HDCollectionViewController.h */,
+				87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */,
+				8780040919A07F5000E65B77 /* HDBeforeSuggestViewController.h */,
+				8780040A19A07F5000E65B77 /* HDBeforeSuggestViewController.m */,
+				8780040619A07EDA00E65B77 /* HDAboutViewController.h */,
+				8780040719A07EDA00E65B77 /* HDAboutViewController.m */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		87A738841989CF8600A5E4A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,12 +375,7 @@
 				878003F2199BB19900E65B77 /* HDHistoryViewController.m */,
 				878003F4199BB38C00E65B77 /* HDHistoryListViewController.h */,
 				878003F5199BB38C00E65B77 /* HDHistoryListViewController.m */,
-				87800400199DE96F00E65B77 /* HDHistoryRecordViewController.h */,
-				87800401199DE96F00E65B77 /* HDHistoryRecordViewController.m */,
-				87C17A6F197C0C6B00DCA99C /* HDSettingsViewController.h */,
-				87C17A70197C0C6B00DCA99C /* HDSettingsViewController.m */,
-				87A7387519889FA700A5E4A2 /* HDCollectionViewController.h */,
-				87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */,
+				8780040C19A07F8B00E65B77 /* settings */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -588,6 +606,7 @@
 				878003F3199BB19900E65B77 /* HDHistoryViewController.m in Sources */,
 				87A7387719889FA700A5E4A2 /* HDCollectionViewController.m in Sources */,
 				87800402199DE96F00E65B77 /* HDHistoryRecordViewController.m in Sources */,
+				8780040819A07EDA00E65B77 /* HDAboutViewController.m in Sources */,
 				876CEC0A1994B826007BE0E1 /* UIView+Capture.m in Sources */,
 				87C17A64197C03CF00DCA99C /* HDMainListViewController.m in Sources */,
 				87C17A71197C0C6B00DCA99C /* HDSettingsViewController.m in Sources */,
@@ -595,6 +614,7 @@
 				87C522741998ADC200F89B2A /* HDWebViewViewController.m in Sources */,
 				871BE2771963DC4900087E4B /* main.m in Sources */,
 				87C17A6E197C0C1200DCA99C /* HDMainListCell.m in Sources */,
+				8780040B19A07F5000E65B77 /* HDBeforeSuggestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

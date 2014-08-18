@@ -1,20 +1,20 @@
 //
-//  HDCollectionViewController.m
+//  HDBeforeSuggestViewController.m
 //  HotDaily
 //
-//  Created by weizhou on 7/30/14.
+//  Created by weizhou on 8/17/14.
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import "HDCollectionViewController.h"
+#import "HDBeforeSuggestViewController.h"
 
-@interface HDCollectionViewController ()
+@interface HDBeforeSuggestViewController ()
 
 @end
 
-@implementation HDCollectionViewController
-
-- (void)viewDidLoad {
+@implementation HDBeforeSuggestViewController
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setLeftNavButton];
 }

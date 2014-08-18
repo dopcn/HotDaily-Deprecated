@@ -9,5 +9,6 @@
 @import UIKit;
 
 @interface HDSettingsViewController : HDBaseTableViewController
+@property (weak, nonatomic) IBOutlet UISwitch *nightModeSwitch;
 
 @end

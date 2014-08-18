@@ -1,21 +1,36 @@
 //
-//  HDMainViewController.m
+//  HDAboutViewController.m
 //  HotDaily
 //
-//  Created by weizhou on 8/16/14.
+//  Created by weizhou on 8/17/14.
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import "HDMainViewController.h"
+#import "HDAboutViewController.h"
 
-@interface HDMainViewController () <UITabBarControllerDelegate>
+@interface HDAboutViewController ()
 
 @end
 
-@implementation HDMainViewController
+@implementation HDAboutViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setLeftNavButton];
+}
+
+- (void)menuButtonTapped {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,16 +49,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-#pragma mark - tab bar delegate
-
-
-
-
-
-
-
-
-
 
 @end

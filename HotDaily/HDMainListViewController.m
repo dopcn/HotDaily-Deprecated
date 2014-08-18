@@ -53,46 +53,20 @@
     self.insertButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         self.insertButton.hidden = YES;
         [self.indicatorView startAnimating];
-        [self.viewModel insertItemsWithCompletion:^{
+        [self.viewModel insertItemsCompletion:^{
+            [self.indicatorView stopAnimating];
+            self.insertButton.hidden = NO;
             if (self.viewModel.numOfSections*20 > self.viewModel.listArray.count) {
                 NSLog(@"network unfinished");
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
-                    [self.indicatorView stopAnimating];
-                    self.insertButton.hidden = NO;
                 });
             }
             
         }];
         return [RACSignal empty];
     }];
-//    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-//        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//            @strongify(self);
-//            [self.viewModel GETHotListSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-//                [subscriber sendNext:responseObject];
-//                self.viewModel.numOfSections = 1;
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
-//                    [self.tableView reloadData];
-//                });
-//                [subscriber sendCompleted];
-//            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//                [subscriber sendError:error];
-//            }];
-//            return [RACDisposable disposableWithBlock:^{
-//                //
-//            }];
-//        }];
-//    }];
-//    
-//    [self.refreshButton.rac_command.executionSignals subscribeNext:^(RACSignal *signal) {
-//        [signal subscribeNext:^(id x) {
-//            @strongify(self);
-//            self.viewModel.data = x;
-//        }];
-//    }];
 }
 
 #pragma mark - Table view data source
@@ -143,17 +117,9 @@
 }
 #pragma clang diagnostic pop
 
-//- (IBAction)insertMore:(id)sender {
-//    @weakify(self);
-//    [self.indicatorView startAnimating];
-//    [self.viewModel insertItemsWithCompletion:^{
-//        @strongify(self);
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.indicatorView stopAnimating];
-//            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
-//        });
-//    }];
-//}
+
+
+
 
 
 

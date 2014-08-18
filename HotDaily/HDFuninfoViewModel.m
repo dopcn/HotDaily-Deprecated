@@ -28,17 +28,14 @@
     return _numOfSections;
 }
 
-- (void)insertItemsTo:(UITableView *)tableView completion:(void (^)(void))completion {
+- (void)insertItemsCompletion:(void (^)(void))completion {
     self.numOfSections += 1;
-    if (self.numOfSections%5 != 0) {
+    if ((self.numOfSections-1)%5 != 0) {
         NSRange range;
-        range.location = self.numOfSections%5 * 10;
+        range.location = (self.numOfSections-1)%5 * 10;
         range.length = 10;
         self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [tableView insertSections:[NSIndexSet indexSetWithIndex:self.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
-            completion();
-        });
+        completion();
     } else {
         @weakify(self);
         NSDictionary *params = @{@"pageSize": @(50),
@@ -47,20 +44,15 @@
                                     parameters:params
                                        success:^(NSURLSessionDataTask *task, id responseObject) {
                                            @strongify(self);
+                                           self.numOfSections = 1;
                                            self.data = responseObject;
                                            NSRange range;
                                            range.location = 0;
                                            range.length = 10;
                                            self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
-                                           self.numOfSections = 1;
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               [tableView reloadData];
-                                               [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-                                               completion();
-                                           });
+                                           completion();
                                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                            [[HDHTTPManager sharedHTTPManager] networkFailAlert];
-                                           completion();
                                        }];
     }
     
@@ -93,16 +85,22 @@
     }
 }
 
-- (void)GETFuninfoListSuccess:(void (^)(NSURLSessionDataTask *, id))success
-                      failure:(void (^)(NSURLSessionDataTask *, NSError *))failure {
+- (void)GETFuninfoListSuccess:(void (^)(void))success
+                      failure:(void (^)(void))failure {
     NSDictionary *params = @{@"pageSize": @(50),
                              @"orderBy": @2};
     [[HDHTTPManager sharedHTTPManager] GET:funinfoListURLString
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       success(task, responseObject);
+                                       self.numOfSections = 1;
+                                       self.data = responseObject;
+                                       NSRange range;
+                                       range.location = 0;
+                                       range.length = 10;
+                                       self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
+                                       success();
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       failure(task, error);
+                                       failure();
                                    }];
 }
 

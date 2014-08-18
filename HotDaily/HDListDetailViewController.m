@@ -218,7 +218,7 @@
     } else if (buttonIndex == 2) {
         UINavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewController"];
         HDWebViewViewController *vc = nvc.viewControllers[0];
-        vc.url = self.viewModel.detailData[@"data"][@"mobileUrl"];
+        vc.urlString = self.viewModel.detailData[@"data"][@"mobileUrl"];
         [self presentViewController:nvc animated:YES completion:nil];
     }
 }

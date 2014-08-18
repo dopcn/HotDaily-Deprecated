@@ -16,14 +16,14 @@
 @property (nonatomic) NSInteger numOfSections;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
-- (void)insertItemsTo:(UITableView *)tableView completion:(void (^)(void))completion;
+- (void)insertItemsCompletion:(void (^)(void))completion;
 //table cell
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
 - (UIColor *)bottomViewColorAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)bottomViewWidthAtIndexPath:(NSIndexPath *)indexPath;
 
-- (void)GETFuninfoListSuccess:(void (^)(NSURLSessionDataTask *, id))success
-                      failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
+- (void)GETFuninfoListSuccess:(void (^)(void))success
+                      failure:(void (^)(void))failure;
 
 @end
