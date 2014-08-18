@@ -6,6 +6,7 @@ pod 'SDWebImage'
 pod 'WebViewJavascriptBridge'
 pod 'ReactiveCocoa'
 pod 'FMDB'
+pod 'MBProgressHUD'
 end
 
 

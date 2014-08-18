@@ -77,12 +77,4 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 //    [self saveContext];
 }
 
-#pragma mark - Application's Documents directory
-
-// Returns the URL to the application's Documents directory.
-- (NSURL *)applicationDocumentsDirectory
-{
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
-
 @end

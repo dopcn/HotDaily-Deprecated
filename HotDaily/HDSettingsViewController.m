@@ -29,7 +29,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     switch (section) {
-        case 1: return @"收藏列表和历史记录都会在 APP 被删除时清空";
+        case 1: return @"收藏列表和浏览历史都会在 APP 被删除时清空";
             break;
         default: return nil;
             break;

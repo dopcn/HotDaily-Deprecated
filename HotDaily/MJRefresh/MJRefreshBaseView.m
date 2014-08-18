@@ -135,7 +135,7 @@
     if (self.window) {
         self.state = MJRefreshStateRefreshing;
     } else {
-#warning 不能调用set方法
+//#warning 不能调用set方法
         _state = MJRefreshStateWillRefreshing;
         [super setNeedsDisplay];
     }

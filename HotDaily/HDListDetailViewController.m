@@ -13,6 +13,9 @@
 #import "HDShareViewController.h"
 #import "UIView+Capture.h"
 #import "HDWebViewViewController.h"
+#import "HDCollectionStore.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+
 
 @interface HDListDetailViewController () <UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) WebViewJavascriptBridge *bridge;
@@ -214,7 +217,23 @@
         tf.keyboardType = UIKeyboardTypeNumberPad;
         [alertView show];
     } else if (buttonIndex == 1) {
-        //collect
+        NSDictionary *item = @{@"title": self.viewModel.abstractData[@"title"],
+                               @"categoryId": self.viewModel.abstractData[@"categoryId"],
+                               @"noteId": self.viewModel.abstractData[@"noteId"],
+                               @"authorId": self.viewModel.abstractData[@"authorId"]};
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        if ([[HDCollectionStore sharedStore] insertItem:item]) {
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"收藏成功";
+            hud.margin = 10.f;
+            hud.removeFromSuperViewOnHide = YES;
+        } else {
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"收藏失败";
+            hud.margin = 10.f;
+            hud.removeFromSuperViewOnHide = YES;
+        }
+        [hud hide:YES afterDelay:0.8];
     } else if (buttonIndex == 2) {
         UINavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewController"];
         HDWebViewViewController *vc = nvc.viewControllers[0];

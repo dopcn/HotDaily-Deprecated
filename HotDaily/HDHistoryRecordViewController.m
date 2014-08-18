@@ -23,6 +23,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -30,8 +40,7 @@
 }
 
 #pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
@@ -43,13 +52,19 @@
     return cell;
 }
 
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+//get rid of undeclared selector warning
 #pragma mark - Navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
+    [(UIViewController*)segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+//    if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
+//        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+//        NSDictionary *data = self.listArray[indexPath.row];
+//        [segue.destinationViewController performSelector:@selector(setViewModelData:) withObject:data];
+//    }
 }
+#pragma clang diagnostic pop
 
 
 @end
