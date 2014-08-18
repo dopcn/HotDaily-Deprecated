@@ -7,9 +7,10 @@
 //
 
 #import "HDHistoryRecordViewController.h"
+#import "HDHistoryRecordStore.h"
 
 @interface HDHistoryRecordViewController ()
-
+@property (nonatomic, strong) NSArray *listArray;
 @end
 
 @implementation HDHistoryRecordViewController
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setLeftNavButton];
+    
+    self.listArray = [[HDHistoryRecordStore sharedStore] allItems];
 }
 
 - (void)menuButtonTapped {
@@ -40,15 +43,15 @@
 }
 
 #pragma mark - Table view data source
+#pragma mark - table view datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.listArray.count;
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryRecordCell" forIndexPath:indexPath];
-    cell.textLabel.text = @"test";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryRecordCell"];
+    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.text = self.listArray[indexPath.row][@"title"];
     return cell;
 }
 

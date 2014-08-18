@@ -149,20 +149,22 @@
             </objects>
             <point key="canvasLocation" x="461" y="64"/>
         </scene>
-        <!--History Record View Controller - 历史记录-->
+        <!--History Record View Controller - 浏览历史-->
         <scene sceneID="Tcm-rs-ts3">
             <objects>
                 <tableViewController id="zSw-HX-2CC" customClass="HDHistoryRecordViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" id="jYz-B6-lSk">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="jYz-B6-lSk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryRecordCell" id="pJD-NF-iVK">
-                                <rect key="frame" x="0.0" y="86" width="320" height="88"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pJD-NF-iVK" id="baG-XO-2CV">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="87"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -175,7 +177,7 @@
                             <outlet property="delegate" destination="zSw-HX-2CC" id="KH2-jB-E9n"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="历史记录" id="v9I-lY-yRO"/>
+                    <navigationItem key="navigationItem" title="浏览历史" id="v9I-lY-yRO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SOL-Br-Yuh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1023,6 +1025,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="60J-2Z-Y1Q"/>
-        <segue reference="3rr-uh-NRe"/>
+        <segue reference="pM9-SB-X1M"/>
     </inferredMetricsTieBreakers>
 </document>

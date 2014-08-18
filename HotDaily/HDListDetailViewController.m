@@ -15,6 +15,7 @@
 #import "HDWebViewViewController.h"
 #import "HDCollectionStore.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "HDHistoryRecordStore.h"
 
 
 @interface HDListDetailViewController () <UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
@@ -43,6 +44,11 @@
     self.currentPageNo = @1;
     [self bindViewModel];
     
+    NSDictionary *item = @{@"title": self.viewModel.abstractData[@"title"],
+                           @"categoryId": self.viewModel.abstractData[@"categoryId"],
+                           @"noteId": self.viewModel.abstractData[@"noteId"],
+                           @"authorId": self.viewModel.abstractData[@"authorId"]};
+    [[HDHistoryRecordStore sharedStore] insertItem:item];
 }
 
 - (void)menuButtonTapped {
