@@ -51,10 +51,10 @@
         if (indexPath.section == 2) {
             if (indexPath.row == 0) {
                 UINavigationController *nvc = (UINavigationController*)segue.destinationViewController;
-                [nvc.viewControllers[0] performSelector:@selector(setUrlString:) withObject:@"http://www.tianya.cn/m"];
+                [nvc.viewControllers[0] performSelector:@selector(setUrlString:) withObject:@"http://bbs.tianya.cn/m/post-funinfo-5731351-1.shtml"];
             } else if (indexPath.row == 2) {
                 UINavigationController *nvc = (UINavigationController*)segue.destinationViewController;
-                [nvc.viewControllers[0] performSelector:@selector(setUrlString:) withObject:@"http://www.tianya.cn/m"];
+                [nvc.viewControllers[0] performSelector:@selector(setUrlString:) withObject:@"http://www.diaochapai.com/survey935284"];
             }
         }
     }

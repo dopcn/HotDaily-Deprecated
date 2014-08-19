@@ -6,11 +6,14 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface HDShareViewController : UIViewController
 @property (strong, nonatomic) UIView *bgView;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 - (IBAction)dismiss:(id)sender;
+
+
+
 
 @end
