@@ -122,7 +122,13 @@
                 [self.bridge send:jsonString];
             }
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            //
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"没有连网 再好的戏也出不来 请刷新";
+            hud.margin = 10.f;
+            hud.removeFromSuperViewOnHide = YES;
+            [hud hide:YES afterDelay:1.5];
+
         }];
     }];
     
@@ -189,7 +195,8 @@
 - (IBAction)shareButtonTapped:(id)sender {
     UIImage *bgImage = [self.navigationController.view captureView];
     HDShareViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareViewController"];
-
+    vc.contentTitle = self.viewModel.detailData[@"data"][@"title"];
+    vc.contentURLString = self.viewModel.detailData[@"data"][@"mobileUrl"];
     [self presentViewController:vc animated:YES completion:^{
         vc.bgImageView.image = bgImage;
         [vc.view insertSubview:vc.bgView aboveSubview:vc.bgImageView];

@@ -106,7 +106,6 @@
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
-    [(UIViewController*)segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
         [segue.destinationViewController performSelector:@selector(setViewModelData:) withObject:self.listArray[indexPath.row]];

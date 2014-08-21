@@ -54,7 +54,6 @@
 //get rid of undeclared selector warning
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
-    [(UIViewController*)segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *data = self.listArray[indexPath.row];

@@ -12,6 +12,11 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "WebViewProxy.h"
 #import "HDCacheStore.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WeiboSDK.h"
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 
 static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 
@@ -34,7 +39,34 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
     [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];
     [[[SDWebImageManager sharedManager] imageDownloader] setValue:KImageReferer forHTTPHeaderField:@"Referer"];
     [self setupProxy];
+    
+    [self shareSDKInit];
     return YES;
+}
+
+- (void)shareSDKInit {
+    [ShareSDK registerApp:@"289fb2996fb8"];
+    
+    [ShareSDK connectSinaWeiboWithAppKey:@"332962264"
+                               appSecret:@"f080f6dbd56dfab625b2f6e0156f6398"
+                             redirectUri:@"https://api.weibo.com/oauth2/default.html"
+                             weiboSDKCls:[WeiboSDK class]];
+    
+    [ShareSDK connectWeChatWithAppId:@"wx5e8729df01addd67"
+                           wechatCls:[WXApi class]];
+    
+    [ShareSDK connectQQWithQZoneAppKey:@"1102099938"
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
+    
+    [ShareSDK connectQZoneWithAppKey:@"1102099938"
+                           appSecret:@"9DtdbiTK2imubrBZ"
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
+    
+    [ShareSDK connectCopy];
+    
+    [ShareSDK connectSMS];
 }
 
 - (void)setupProxy {
@@ -52,6 +84,11 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+    if ([[HDCacheStore sharedStore] save]) {
+        NSLog(@"save success");
+    } else {
+        NSLog(@"save fail");
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -68,7 +105,24 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [[HDCacheStore sharedStore] save];
+}
+
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
 }
 
 @end

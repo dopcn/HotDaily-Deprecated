@@ -17,25 +17,25 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _listArray = [HDCacheStore sharedStore].funinfoListCache;
         _numOfSections = 1;
+        _listArray = [HDCacheStore sharedStore].funinfoListCache;
     }
     return self;
 }
 
 - (void)setListArray:(NSArray *)listArray {
-    _listArray = listArray;
     [[HDCacheStore sharedStore] setFuninfoListCache:listArray];
+    _listArray = listArray;
 }
 
-- (void)insertItemsCompletion:(void (^)(void))completion {
+- (void)insertItemsSuccess:(void (^)(void))success failure:(void (^)(void))failure {
     self.numOfSections += 1;
     if ((self.numOfSections-1)%5 != 0) {
         NSRange range;
         range.location = (self.numOfSections-1)%5 * 10;
         range.length = 10;
         self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
-        completion();
+        success();
     } else {
         @weakify(self);
         NSDictionary *params = @{@"pageSize": @(50),
@@ -46,13 +46,17 @@
                                            @strongify(self);
                                            self.numOfSections = 1;
                                            self.data = responseObject;
-                                           NSRange range;
-                                           range.location = 0;
-                                           range.length = 10;
-                                           self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
-                                           completion();
+                                           if ([responseObject[@"success"] isEqualToNumber:@(1)]) {
+                                               NSRange range;
+                                               range.location = 0;
+                                               range.length = 10;
+                                               self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
+                                               success();
+                                           } else {
+                                               failure();
+                                           }
                                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                           [[HDHTTPManager sharedHTTPManager] networkFailAlert];
+                                           failure();
                                        }];
     }
     
@@ -94,10 +98,12 @@
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        self.numOfSections = 1;
                                        self.data = responseObject;
-                                       NSRange range;
-                                       range.location = 0;
-                                       range.length = 10;
-                                       self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
+                                       if ([responseObject[@"success"] isEqualToNumber:@(1)]) {
+                                           NSRange range;
+                                           range.location = 0;
+                                           range.length = 10;
+                                           self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
+                                       }
                                        success();
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                        failure();

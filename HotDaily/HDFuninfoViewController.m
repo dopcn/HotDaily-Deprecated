@@ -12,6 +12,7 @@
 #import <ReactiveCocoa/RACEXTScope.h>
 #import "HDFuninfoCell.h"
 #import "MJRefresh.h"
+#import "MBProgressHUD.h"
 
 @interface HDFuninfoViewController ()
 
@@ -38,7 +39,7 @@
     }];
     [self.tableView addFooterWithCallback:^{
         @strongify(self);
-        [self.viewModel insertItemsCompletion:^{
+        [self.viewModel insertItemsSuccess:^{
             if (self.viewModel.numOfSections == 1) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView footerEndRefreshing];
@@ -51,6 +52,8 @@
                     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
                 });
             }
+        } failure:^{
+            [self.tableView footerEndRefreshing];
         }];
     }];
 }
@@ -65,7 +68,13 @@
                 [self.tableView headerEndRefreshing];
             });
         } failure:^{
-            //
+            [self.tableView headerEndRefreshing];
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"没有连网 再好的戏也出不来 请刷新";
+            hud.margin = 10.f;
+            hud.removeFromSuperViewOnHide = YES;
+            [hud hide:YES afterDelay:1.5];
         }];
         return [RACSignal empty];
     }];
@@ -94,7 +103,6 @@
 //get rid of undeclared selector warning
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
-    [(UIViewController*)segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *data = [self.viewModel dataAtIndexPath:indexPath];

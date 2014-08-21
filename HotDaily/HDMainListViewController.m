@@ -12,6 +12,7 @@
 #import "HDMainListHeaderView.h"
 
 #import <ReactiveCocoa/RACEXTScope.h>
+#import "MBProgressHUD.h"
 
 
 @interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -39,7 +40,12 @@
                 [self.tableView reloadData];
             });
         } failure:^{
-            //
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"没有连网 再好的戏也出不来 请刷新";
+            hud.margin = 10.f;
+            hud.removeFromSuperViewOnHide = YES;
+            [hud hide:YES afterDelay:1.5];
         }];
         return [RACSignal empty];
     }];
@@ -47,12 +53,15 @@
     self.insertButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         self.insertButton.hidden = YES;
         [self.indicatorView startAnimating];
-        [self.viewModel insertItemsCompletion:^{
+        [self.viewModel insertItemsSuccess:^{
             [self.indicatorView stopAnimating];
             self.insertButton.hidden = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
             });
+        } failure:^{
+            [self.indicatorView stopAnimating];
+            self.insertButton.hidden = NO;
         }];
         return [RACSignal empty];
     }];
@@ -97,7 +106,6 @@
 //get rid of undeclared selector warning
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
-    [(UIViewController*)segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     if ([segue.destinationViewController respondsToSelector:@selector(setViewModelData:)]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *data = [self.viewModel dataAtIndexPath:indexPath];

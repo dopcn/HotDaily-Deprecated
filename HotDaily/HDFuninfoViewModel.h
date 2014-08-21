@@ -13,10 +13,11 @@
 @property (copy, nonatomic) NSDictionary *data;
 //table
 @property (copy, nonatomic) NSArray *listArray;
-@property (nonatomic) NSInteger numOfSections;
+@property (assign, nonatomic) NSInteger numOfSections;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
-- (void)insertItemsCompletion:(void (^)(void))completion;
+- (void)insertItemsSuccess:(void (^)(void))success
+                   failure:(void (^)(void))failure;
 //table cell
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
