@@ -48,6 +48,7 @@
                 });
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    sleep(1);
                     [self.tableView footerEndRefreshing];
                     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
                 });

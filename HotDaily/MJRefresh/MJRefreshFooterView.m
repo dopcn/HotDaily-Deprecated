@@ -136,9 +136,10 @@
             // 刷新完毕
             if (MJRefreshStateRefreshing == oldState) {
                 self.arrowImage.transform = CGAffineTransformMakeRotation(M_PI);
-                [UIView animateWithDuration:MJRefreshSlowAnimationDuration animations:^{
-                    self.scrollView.contentInsetBottom = self.scrollViewOriginalInset.bottom;
-                }];
+//                self.scrollView.contentInsetBottom = self.scrollViewOriginalInset.bottom;
+//                [UIView animateWithDuration:MJRefreshSlowAnimationDuration animations:^{
+//                    self.scrollView.contentInsetBottom = self.scrollViewOriginalInset.bottom;
+//                }];
             } else {
                 // 执行动画
                 [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
@@ -167,15 +168,14 @@
         {
             // 记录刷新前的数量
             self.lastRefreshCount = [self totalDataCountInScrollView];
-            
-            [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
-                CGFloat bottom = self.height + self.scrollViewOriginalInset.bottom;
-                CGFloat deltaH = [self heightForContentBreakView];
-                if (deltaH < 0) { // 如果内容高度小于view的高度
-                    bottom -= deltaH;
-                }
-                self.scrollView.contentInsetBottom = bottom;
-            }];
+//            [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
+//                CGFloat bottom = self.height + self.scrollViewOriginalInset.bottom;
+//                CGFloat deltaH = [self heightForContentBreakView];
+//                if (deltaH < 0) { // 如果内容高度小于view的高度
+//                    bottom -= deltaH;
+//                }
+//                self.scrollView.contentInsetBottom = bottom;
+//            }];
 			break;
         }
             

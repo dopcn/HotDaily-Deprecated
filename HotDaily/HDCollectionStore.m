@@ -42,7 +42,7 @@
             if (totalCount <= 50) {
                 searchItems = @"SELECT * FROM CollectionList WHERE id <= 50 ORDER BY id DESC";
             } else {
-                searchItems = [NSString stringWithFormat:@"SELECT * FROM CollectionList WHERE id BETWEEN %ld AND %ld ORDER BY id DESC", totalCount-49, (long)totalCount];
+                searchItems = [NSString stringWithFormat:@"SELECT * FROM CollectionList WHERE id BETWEEN %ld AND %ld ORDER BY id DESC", (long)(totalCount-49), (long)totalCount];
             }
             FMResultSet *s = [db executeQuery:searchItems];
             NSMutableArray *array = [NSMutableArray array];

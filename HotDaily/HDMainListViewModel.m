@@ -55,9 +55,11 @@
                                                success();
                                            } else {
                                                failure();
+                                               self.numOfSections -= 1;
                                            }
                                        } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                            failure();
+                                           self.numOfSections -= 1;
                                        }];
     }
 }
