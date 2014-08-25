@@ -9,6 +9,7 @@
 #import "HDShareViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import "MBProgressHUD.h"
+#import "HDHTTPManager.h"
 
 @interface HDShareViewController ()
 @property (nonatomic, copy) NSString *fullContent;
@@ -245,6 +246,23 @@
                             [self showResultMessage:@"拷贝失败" andHide:NO];
                         }
                     }];
+}
+
+- (IBAction)report:(id)sender {
+    NSString *postURLString = @"service/recomStand?";
+    NSDictionary *dic = @{@"contact": @0,
+                          @"content": @"程序崩溃",
+                          @"type": @0,
+                          @"userName": @"goodgoodstudy"};
+    [[HDHTTPManager sharedHTTPManager] POST:postURLString parameters:dic success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+        if ([responseObject[@"success"] isEqualToNumber:@1]) {
+            [self showResultMessage:@"举报成功" andHide:YES];
+        } else {
+            [self showResultMessage:@"举报失败，请稍后再试" andHide:NO];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self showResultMessage:@"网络连接出现问题，请检查后再试" andHide:NO];
+    }];
 }
 
 

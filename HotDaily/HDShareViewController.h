@@ -23,6 +23,6 @@
 - (IBAction)weiboShare:(id)sender;
 - (IBAction)SMSShare:(id)sender;
 - (IBAction)CopyShare:(id)sender;
-
+- (IBAction)report:(id)sender;
 
 @end
