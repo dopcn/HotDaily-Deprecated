@@ -1187,7 +1187,7 @@ LICENSE: MIT</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pM9-SB-X1M"/>
         <segue reference="60J-2Z-Y1Q"/>
+        <segue reference="n4I-Th-RC0"/>
     </inferredMetricsTieBreakers>
 </document>
