@@ -256,6 +256,7 @@
                           @"userName": @"goodgoodstudy"};
     [[HDHTTPManager sharedHTTPManager] POST:postURLString parameters:dic success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
         if ([responseObject[@"success"] isEqualToNumber:@1]) {
+            NSLog(@"%@",responseObject);
             [self showResultMessage:@"举报成功" andHide:YES];
         } else {
             [self showResultMessage:@"举报失败，请稍后再试" andHide:NO];
