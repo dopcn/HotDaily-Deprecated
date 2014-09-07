@@ -175,6 +175,7 @@
 		87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDListDetailViewModel.m; sourceTree = "<group>"; };
 		87A738861989CFEC00A5E4A2 /* HDMainListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListHeaderView.h; sourceTree = "<group>"; };
 		87A738871989CFEC00A5E4A2 /* HDMainListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListHeaderView.m; sourceTree = "<group>"; };
+		87C0AD7919BC045F00B67C75 /* ShareKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareKey.h; sourceTree = "<group>"; };
 		87C17A62197C03CF00DCA99C /* HDMainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMainListViewController.h; sourceTree = "<group>"; };
 		87C17A63197C03CF00DCA99C /* HDMainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMainListViewController.m; sourceTree = "<group>"; };
 		87C17A68197C061200DCA99C /* HDMacro.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMacro.pch; sourceTree = "<group>"; };
@@ -339,6 +340,7 @@
 				871BE2761963DC4900087E4B /* main.m */,
 				871BE2781963DC4900087E4B /* HotDaily-Prefix.pch */,
 				87C17A68197C061200DCA99C /* HDMacro.pch */,
+				87C0AD7919BC045F00B67C75 /* ShareKey.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

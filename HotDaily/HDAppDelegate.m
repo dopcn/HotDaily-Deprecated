@@ -7,7 +7,6 @@
 //
 
 #import "HDAppDelegate.h"
-#import <SDWebImage/SDImageCache.h>
 #import <SDWebImage/SDWebImageManager.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "WebViewProxy.h"
@@ -17,8 +16,7 @@
 #import "WXApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
-
-static NSString* const KImageReferer = @"http://bbs.tianya.cn";
+#import "ShareKey.h"
 
 @implementation HDAppDelegate
 
@@ -27,17 +25,15 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD0021B)];
-    
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [[UIToolbar appearance] setTintColor:UIColorFromRGB(0xD0021B)];
     [[UITabBar appearance] setSelectedImageTintColor:UIColorFromRGB(0xD0021B)];
+
+    [[[SDWebImageManager sharedManager] imageDownloader]
+     setValue:@"http:bbs.tianya.cn" forHTTPHeaderField:@"Referer"];
     
-    NSString *bundledPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"CustomPathImages"];
-    [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];
-    [[[SDWebImageManager sharedManager] imageDownloader] setValue:KImageReferer forHTTPHeaderField:@"Referer"];
     [self setupProxy];
     
     [self shareSDKInit];
@@ -45,22 +41,22 @@ static NSString* const KImageReferer = @"http://bbs.tianya.cn";
 }
 
 - (void)shareSDKInit {
-    [ShareSDK registerApp:@"289fb2996fb8"];
+    [ShareSDK registerApp:ShareSDKAppKey];
     
-    [ShareSDK connectSinaWeiboWithAppKey:@"332962264"
-                               appSecret:@"f080f6dbd56dfab625b2f6e0156f6398"
+    [ShareSDK connectSinaWeiboWithAppKey:SinaWeiboAppKey
+                               appSecret:SinaWeiboAppSecret
                              redirectUri:@"https://api.weibo.com/oauth2/default.html"
                              weiboSDKCls:[WeiboSDK class]];
     
-    [ShareSDK connectWeChatWithAppId:@"wx5e8729df01addd67"
+    [ShareSDK connectWeChatWithAppId:WeChatAppId
                            wechatCls:[WXApi class]];
     
-    [ShareSDK connectQQWithQZoneAppKey:@"1102099938"
+    [ShareSDK connectQQWithQZoneAppKey:QQAppKey
                      qqApiInterfaceCls:[QQApiInterface class]
                        tencentOAuthCls:[TencentOAuth class]];
     
-    [ShareSDK connectQZoneWithAppKey:@"1102099938"
-                           appSecret:@"9DtdbiTK2imubrBZ"
+    [ShareSDK connectQZoneWithAppKey:QZoneAppKey
+                           appSecret:QZoneAppSecret
                    qqApiInterfaceCls:[QQApiInterface class]
                      tencentOAuthCls:[TencentOAuth class]];
     
