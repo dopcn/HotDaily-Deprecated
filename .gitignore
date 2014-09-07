@@ -16,7 +16,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-ShareKey.h
+HotDaily/ShareKey.h
 
 # CocoaPods
 #
