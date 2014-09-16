@@ -28,7 +28,7 @@
     for (NSInteger i=0; i<6; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:imageArray[i]];
         [self.bgScrollView addSubview:imageView];
-        imageView.center = CGPointMake(160+320*i, CGRectGetMidY(screenRect));
+        imageView.center = CGPointMake(160+screenRect.size.width*i, CGRectGetMidY(screenRect));
     }
 }
 
