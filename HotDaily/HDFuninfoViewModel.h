@@ -10,6 +10,8 @@
 
 @interface HDFuninfoViewModel : NSObject
 
+@property (assign, nonatomic) CGFloat screenWidth;
+
 @property (copy, nonatomic) NSDictionary *data;
 //table
 @property (copy, nonatomic) NSArray *listArray;

@@ -32,6 +32,7 @@
 
 - (void)bindViewModel {
     @weakify(self);
+    
     self.refreshButton.rac_command=[[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         [self.viewModel GETHotListSuccess:^{
@@ -51,6 +52,7 @@
     }];
     
     self.insertButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
         self.insertButton.hidden = YES;
         [self.indicatorView startAnimating];
         [self.viewModel insertItemsSuccess:^{
