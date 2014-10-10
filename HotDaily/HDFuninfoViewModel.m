@@ -19,6 +19,7 @@
     if (self) {
         _numOfSections = 1;
         _listArray = [HDCacheStore sharedStore].funinfoListCache;
+        _screenWidth = [UIScreen mainScreen].bounds.size.width;
     }
     return self;
 }
@@ -79,13 +80,14 @@
 }
 
 - (CGFloat)bottomViewWidthAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat base = (self.screenWidth - 20.0)/2;
     NSInteger count = [self.listArray[indexPath.row + indexPath.section*10][@"clickCount"] integerValue];
     if (count < 50000) {
-        return (CGFloat)count*150/50000;
+        return (CGFloat)count*base/50000;
     } else if (count >= 50000 && count < 100000) {
-        return (CGFloat)count*150/100000 + 150.0;
+        return (CGFloat)count*base/100000 + base;
     } else {
-        return 300.0;
+        return (self.screenWidth-20.0);
     }
 }
 

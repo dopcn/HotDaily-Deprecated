@@ -220,11 +220,13 @@
 #pragma mark - actionsheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"去哪一页？"
-                                                            message:[NSString stringWithFormat:@"%@/%@",self.currentPageNo,self.viewModel.detailData[@"data"][@"pageCount"]]
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:@"确定", nil];
+        NSString *message = [NSString stringWithFormat:@"%@/%@",self.currentPageNo,self.viewModel.detailData[@"data"][@"pageCount"]];
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"去哪一页？"
+                                            message:message
+                                           delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  otherButtonTitles:@"确定", nil];
         alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
         UITextField *tf = [alertView textFieldAtIndex:0];
         tf.keyboardType = UIKeyboardTypeNumberPad;

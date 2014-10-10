@@ -11,6 +11,8 @@
 
 @interface HDMainListHeaderView : UIView <UIScrollViewDelegate>
 
+@property (assign, nonatomic) CGFloat screenWidth;
+
 @property (strong, nonatomic) HDMainListViewModel *viewModel;
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) UIScrollView *pageView;
