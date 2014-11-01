@@ -1162,7 +1162,7 @@ LICENSE: MIT</string>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803920000002" green="0.93725490199999995" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="a0L-h9-sNL" firstAttribute="top" secondItem="5bd-mJ-0nG" secondAttribute="bottom" id="Hd3-qV-5vx"/>
+                            <constraint firstItem="5bd-mJ-0nG" firstAttribute="height" secondItem="MMQ-IT-qOo" secondAttribute="height" constant="-44" id="K5I-RO-fHu"/>
                             <constraint firstItem="5bd-mJ-0nG" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leading" id="SCL-gJ-CPe"/>
                             <constraint firstAttribute="trailing" secondItem="5bd-mJ-0nG" secondAttribute="trailing" id="pRx-8N-cCG"/>
                             <constraint firstItem="5bd-mJ-0nG" firstAttribute="top" secondItem="cIm-e0-J51" secondAttribute="bottom" constant="-64" id="vsL-ly-3Yx"/>
@@ -1209,6 +1209,7 @@ LICENSE: MIT</string>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomMarginConstraint" destination="K5I-RO-fHu" id="WIb-6g-TV8"/>
                         <outlet property="nextPage" destination="1HU-EH-CvL" id="Smy-YL-4xZ"/>
                         <outlet property="onlyAuthor" destination="1gx-Nj-6ja" id="fLU-W3-k9O"/>
                         <outlet property="previousPage" destination="erW-4q-ktG" id="PD9-Kz-HJG"/>

@@ -20,6 +20,8 @@
 
 @interface HDListDetailViewController () <UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) WebViewJavascriptBridge *bridge;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomMarginConstraint;
+
 @end
 
 @implementation HDListDetailViewController
@@ -38,6 +40,7 @@
     }];
     
     self.webView.scrollView.delegate = self;
+    self.webView.scrollView.bounces = NO;
     
     [self.viewModel loadHTML:self.webView];
     
@@ -58,13 +61,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO];
-    [self.tabBarController.tabBar setHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:YES];
-    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)bindViewModel {
@@ -158,30 +159,29 @@
 #pragma mark - scrollview delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    static CGFloat lastOffY  = 0.0;
+    static CGFloat lastOffY = -64.0;
     CGFloat curOffY = scrollView.contentOffset.y;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
-    if (scrollView.frame.size.height >= scrollView.contentSize.height || //内容高度低于scrollView高度，不隐藏
-        fabs(curOffY) + screenHeight > scrollView.contentSize.height  || //拉至最底部时，不做处理
-        curOffY < 0                                                      //拉至最顶部时，不做处理
-        )
-    {
+    //内容高度低于scrollView高度，都不隐藏
+    if (scrollView.frame.size.height >= scrollView.contentSize.height) return;
+    //到达最底部
+    if (fabs(curOffY) + screenHeight >= scrollView.contentSize.height) {
+        self.bottomMarginConstraint.constant = 0;//this is somehow special
+        [self.navigationController setToolbarHidden:NO animated:YES];
         return;
     }
-    if (curOffY - lastOffY > 40)
+    
+    if (curOffY > lastOffY) //向上
     {
-        //向上
         lastOffY = curOffY;
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        self.bottomMarginConstraint.constant = 0;
         [self.navigationController setToolbarHidden:YES animated:YES];
-        
     }
-    else if(lastOffY - curOffY > 40)
+    else if(curOffY < lastOffY)
     {
-        //向下
         lastOffY = curOffY;
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        self.bottomMarginConstraint.constant = -44;
         [self.navigationController setToolbarHidden:NO animated:YES];
     }
 }
