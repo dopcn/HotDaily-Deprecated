@@ -28,6 +28,8 @@
     [self bindViewModel];
     
     [self.refreshButton.rac_command execute:nil];
+    
+    [Flurry logEvent:@"tab 1 opened"];
 }
 
 - (void)bindViewModel {

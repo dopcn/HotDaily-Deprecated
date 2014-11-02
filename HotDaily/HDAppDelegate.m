@@ -23,20 +23,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD0021B)];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    [[UIToolbar appearance] setTintColor:UIColorFromRGB(0xD0021B)];
-    [[UITabBar appearance] setSelectedImageTintColor:UIColorFromRGB(0xD0021B)];
-
-    [[[SDWebImageManager sharedManager] imageDownloader]
-     setValue:@"http:bbs.tianya.cn" forHTTPHeaderField:@"Referer"];
+    [self configureAppearance];
     
+    //webView image proxy
     [self setupProxy];
     
     [self shareSDKInit];
+    
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:FlurryAPIKey];
     return YES;
 }
 
@@ -76,6 +72,16 @@
             [res respondWithData:data mimeType:@"image/jpg"];
         }];
     }];
+}
+
+- (void)configureAppearance {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD0021B)];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [[UIToolbar appearance] setTintColor:UIColorFromRGB(0xD0021B)];
+    [[UITabBar appearance] setSelectedImageTintColor:UIColorFromRGB(0xD0021B)];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -31,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [Flurry logEvent:@"tab 3 opened"];
 }
 
 - (void)didReceiveMemoryWarning

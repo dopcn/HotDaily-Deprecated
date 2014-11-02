@@ -20,6 +20,8 @@
     [[self.brightnessSlider rac_newValueChannelWithNilValue:@(0.5)] subscribeNext:^(NSNumber* x) {
         [UIScreen mainScreen].brightness = [x floatValue];
     }];
+    
+    [Flurry logEvent:@"tab 3 opened"];
 }
 
 - (void)didReceiveMemoryWarning
