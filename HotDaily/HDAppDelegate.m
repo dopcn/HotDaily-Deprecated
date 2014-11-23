@@ -7,7 +7,6 @@
 //
 
 #import "HDAppDelegate.h"
-#import <SDWebImage/SDWebImageManager.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "WebViewProxy.h"
 #import "HDCacheStore.h"
@@ -17,6 +16,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "ShareKey.h"
+
 
 @implementation HDAppDelegate
 
@@ -33,6 +33,7 @@
     
     [Flurry setCrashReportingEnabled:YES];
     [Flurry startSession:FlurryAPIKey];
+    
     return YES;
 }
 
