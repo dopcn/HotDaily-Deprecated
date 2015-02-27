@@ -85,6 +85,8 @@
 		87E1F70519A3016F00A0D890 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E1F70419A3016F00A0D890 /* libstdc++.dylib */; };
 		87E1F70719A3017C00A0D890 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E1F70619A3017C00A0D890 /* libsqlite3.dylib */; };
 		87E1F70919A3018B00A0D890 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E1F70819A3018B00A0D890 /* MessageUI.framework */; };
+		87FD27801AA0C0F6008B6BC2 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FD277F1AA0C0F6008B6BC2 /* Main_iPad.storyboard */; };
+		87FD27841AA0C2B3008B6BC2 /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FD27831AA0C2B3008B6BC2 /* HDSplitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +225,9 @@
 		87E1F70419A3016F00A0D890 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		87E1F70619A3017C00A0D890 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		87E1F70819A3018B00A0D890 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		87FD277F1AA0C0F6008B6BC2 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		87FD27821AA0C2B3008B6BC2 /* HDSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSplitViewController.h; path = iPad/Controller/HDSplitViewController.h; sourceTree = "<group>"; };
+		87FD27831AA0C2B3008B6BC2 /* HDSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSplitViewController.m; path = iPad/Controller/HDSplitViewController.m; sourceTree = "<group>"; };
 		C3536FFCF160F2FE2985B247 /* Pods-HotDailyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotDailyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotDailyTests/Pods-HotDailyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C54C78B7B85CFCE29B493E49 /* Pods-HotDaily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotDaily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotDaily/Pods-HotDaily.debug.xcconfig"; sourceTree = "<group>"; };
 		E245C0D15CF568E46F2A8430 /* Pods-HotDaily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotDaily.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotDaily/Pods-HotDaily.release.xcconfig"; sourceTree = "<group>"; };
@@ -338,6 +343,7 @@
 				87E1F6D719A2FD9E00A0D890 /* WebViewProxy */,
 				871BE2791963DC4900087E4B /* HDAppDelegate.h */,
 				871BE27A1963DC4900087E4B /* HDAppDelegate.m */,
+				87FD277D1AA0C0CE008B6BC2 /* iPad */,
 				87C17A61197C038000DCA99C /* iPhone */,
 				87C17A67197C056400DCA99C /* ViewModel */,
 				87C17A66197C054800DCA99C /* Model */,
@@ -583,6 +589,32 @@
 			path = WeChatSDK;
 			sourceTree = "<group>";
 		};
+		87FD277D1AA0C0CE008B6BC2 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				87FD277E1AA0C0DD008B6BC2 /* View */,
+				87FD27811AA0C25E008B6BC2 /* Controller */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		87FD277E1AA0C0DD008B6BC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87FD277F1AA0C0F6008B6BC2 /* Main_iPad.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		87FD27811AA0C25E008B6BC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				87FD27821AA0C2B3008B6BC2 /* HDSplitViewController.h */,
+				87FD27831AA0C2B3008B6BC2 /* HDSplitViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		E03C2EA7FE6462867BC7FA46 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -684,6 +716,7 @@
 				876111F5198A3D9E00B92D99 /* contentView in Resources */,
 				878003FC199DAE0D00E65B77 /* historyData in Resources */,
 				878003E9199B56A600E65B77 /* MJRefresh.bundle in Resources */,
+				87FD27801AA0C0F6008B6BC2 /* Main_iPad.storyboard in Resources */,
 				871BE2751963DC4900087E4B /* InfoPlist.strings in Resources */,
 				87E1F6FF19A2FFDC00A0D890 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				87E1F70119A2FFDC00A0D890 /* WeiboSDK.bundle in Resources */,
@@ -781,6 +814,7 @@
 				87C17A6B197C0B8E00DCA99C /* HDListDetailViewController.m in Sources */,
 				878003ED199B56A600E65B77 /* MJRefreshHeaderView.m in Sources */,
 				87829398197D13660037AC25 /* HDHTTPManager.m in Sources */,
+				87FD27841AA0C2B3008B6BC2 /* HDSplitViewController.m in Sources */,
 				878003EA199B56A600E65B77 /* MJRefreshBaseView.m in Sources */,
 				878003F0199B56A600E65B77 /* UIView+Extension.m in Sources */,
 				878003EB199B56A600E65B77 /* MJRefreshConst.m in Sources */,
@@ -963,7 +997,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "649a9e7c-31bc-425a-a67a-c47accce0cec";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -997,7 +1031,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "649a9e7c-31bc-425a-a67a-c47accce0cec";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
