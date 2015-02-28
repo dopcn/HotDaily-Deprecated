@@ -10,10 +10,16 @@
 
 @interface HDBaseViewController : UIViewController
 
-
 @end
 
 @interface HDBaseTableViewController : UITableViewController
 
+@end
+
+@interface HDBaseViewControllerHD : UIViewController
+
+@end
+
+@interface HDBaseTableViewControllerHD : UITableViewController
 
 @end

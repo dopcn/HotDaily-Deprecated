@@ -85,6 +85,7 @@
 		87E1F70519A3016F00A0D890 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E1F70419A3016F00A0D890 /* libstdc++.dylib */; };
 		87E1F70719A3017C00A0D890 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E1F70619A3017C00A0D890 /* libsqlite3.dylib */; };
 		87E1F70919A3018B00A0D890 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E1F70819A3018B00A0D890 /* MessageUI.framework */; };
+		87F8F09E1AA21DB600C72B72 /* HDSideMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F8F09D1AA21DB600C72B72 /* HDSideMenuTableViewController.m */; };
 		87FD27801AA0C0F6008B6BC2 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FD277F1AA0C0F6008B6BC2 /* Main_iPad.storyboard */; };
 		87FD27841AA0C2B3008B6BC2 /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FD27831AA0C2B3008B6BC2 /* HDSplitViewController.m */; };
 /* End PBXBuildFile section */
@@ -225,6 +226,8 @@
 		87E1F70419A3016F00A0D890 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		87E1F70619A3017C00A0D890 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		87E1F70819A3018B00A0D890 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		87F8F09C1AA21DB600C72B72 /* HDSideMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSideMenuTableViewController.h; path = iPad/Controller/HDSideMenuTableViewController.h; sourceTree = "<group>"; };
+		87F8F09D1AA21DB600C72B72 /* HDSideMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSideMenuTableViewController.m; path = iPad/Controller/HDSideMenuTableViewController.m; sourceTree = "<group>"; };
 		87FD277F1AA0C0F6008B6BC2 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		87FD27821AA0C2B3008B6BC2 /* HDSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSplitViewController.h; path = iPad/Controller/HDSplitViewController.h; sourceTree = "<group>"; };
 		87FD27831AA0C2B3008B6BC2 /* HDSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSplitViewController.m; path = iPad/Controller/HDSplitViewController.m; sourceTree = "<group>"; };
@@ -611,6 +614,8 @@
 			children = (
 				87FD27821AA0C2B3008B6BC2 /* HDSplitViewController.h */,
 				87FD27831AA0C2B3008B6BC2 /* HDSplitViewController.m */,
+				87F8F09C1AA21DB600C72B72 /* HDSideMenuTableViewController.h */,
+				87F8F09D1AA21DB600C72B72 /* HDSideMenuTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -805,6 +810,7 @@
 				878003EC199B56A600E65B77 /* MJRefreshFooterView.m in Sources */,
 				87C5227D1999B87800F89B2A /* HDFuninfoCell.m in Sources */,
 				876CEC071994AC67007BE0E1 /* HDShareViewController.m in Sources */,
+				87F8F09E1AA21DB600C72B72 /* HDSideMenuTableViewController.m in Sources */,
 				8780040F19A19BCB00E65B77 /* HDCollectionStore.m in Sources */,
 				87800405199FB49500E65B77 /* HDMainViewController.m in Sources */,
 				87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */,
