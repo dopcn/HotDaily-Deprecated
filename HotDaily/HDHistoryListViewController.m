@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setLeftNavButton];
     
     RACSignal *categorySignal = RACObserve(self, categoryNo);
     [categorySignal subscribeNext:^(NSNumber* x) {

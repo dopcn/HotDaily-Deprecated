@@ -10,12 +10,10 @@
 
 @interface HDBaseViewController : UIViewController
 
-- (void)setLeftNavButton;
 
 @end
 
 @interface HDBaseTableViewController : UITableViewController
 
-- (void)setLeftNavButton;
 
 @end
