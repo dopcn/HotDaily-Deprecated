@@ -15,7 +15,6 @@
 @implementation HDBeforeSuggestViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setLeftNavButton];
     
     CGRect screenRect = [UIScreen mainScreen].bounds;
     NSArray *imageArray = @[[UIImage imageNamed:@"baozou1"],
