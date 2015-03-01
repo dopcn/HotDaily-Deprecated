@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A2CFCCED8384852B4F979C0 /* libPods-HotDailyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4C8938C679416A825D8629 /* libPods-HotDailyTests.a */; };
 		466EB19A90A446348AF8FA10 /* libPods-HotDaily.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D4EFFBB8304D16B324CB42 /* libPods-HotDaily.a */; };
-		870ACE5E1A06316F004365A4 /* libFlurry_5.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 870ACE5D1A06316F004365A4 /* libFlurry_5.4.0.a */; };
 		871BE2691963DC4900087E4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE2681963DC4900087E4B /* Foundation.framework */; };
 		871BE26B1963DC4900087E4B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE26A1963DC4900087E4B /* CoreGraphics.framework */; };
 		871BE26D1963DC4900087E4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE26C1963DC4900087E4B /* UIKit.framework */; };
@@ -101,8 +100,6 @@
 		12D4EFFBB8304D16B324CB42 /* libPods-HotDaily.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HotDaily.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3DF89FF95D1EA875B56CC2 /* Pods-HotDailyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotDailyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotDailyTests/Pods-HotDailyTests.release.xcconfig"; sourceTree = "<group>"; };
 		4B4C8938C679416A825D8629 /* libPods-HotDailyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HotDailyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		870ACE5C1A06316F004365A4 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		870ACE5D1A06316F004365A4 /* libFlurry_5.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.4.0.a; sourceTree = "<group>"; };
 		871BE2651963DC4900087E4B /* HotDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		871BE2681963DC4900087E4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		871BE26A1963DC4900087E4B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -256,7 +253,6 @@
 				87E1F70019A2FFDC00A0D890 /* libSinaWeiboSDK.a in Frameworks */,
 				466EB19A90A446348AF8FA10 /* libPods-HotDaily.a in Frameworks */,
 				87E1F6FD19A2FFDC00A0D890 /* ShareSDKCoreService.framework in Frameworks */,
-				870ACE5E1A06316F004365A4 /* libFlurry_5.4.0.a in Frameworks */,
 				87E1F6F719A2FFDC00A0D890 /* SinaWeiboConnection.framework in Frameworks */,
 				87E1F6F419A2FFDC00A0D890 /* CopyConnection.framework in Frameworks */,
 			);
@@ -277,15 +273,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		870ACE5B1A06316F004365A4 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				870ACE5C1A06316F004365A4 /* Flurry.h */,
-				870ACE5D1A06316F004365A4 /* libFlurry_5.4.0.a */,
-			);
-			path = Flurry;
-			sourceTree = "<group>";
-		};
 		871BE25C1963DC4900087E4B = {
 			isa = PBXGroup;
 			children = (
@@ -332,7 +319,6 @@
 		871BE2701963DC4900087E4B /* HotDaily */ = {
 			isa = PBXGroup;
 			children = (
-				870ACE5B1A06316F004365A4 /* Flurry */,
 				87E1F6D819A2FFDC00A0D890 /* ShareSDK */,
 				878003D8199B56A600E65B77 /* MJRefresh */,
 				87E1F6D719A2FD9E00A0D890 /* WebViewProxy */,
