@@ -13,9 +13,11 @@
 
 #import <ReactiveCocoa/RACEXTScope.h>
 #import "MBProgressHUD.h"
+#import "UINavigationBar+BackgroundColor.h"
 
+#define NAVBAR_CHANGE_POINT 50
 
-@interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @end
 
@@ -24,16 +26,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModel = [HDMainListViewModel new];
-    
     [self bindViewModel];
-    
     [self.refreshButton.rac_command execute:nil];
-    
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*5/8)];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    [self.navigationController.navigationBar useBackgroundColor:[UIColor clearColor]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self scrollViewDidScroll:self.tableView];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar reset];
 }
 
 - (void)bindViewModel {
     @weakify(self);
-    
     self.refreshButton.rac_command=[[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         [self.viewModel GETHotListSuccess:^{
@@ -93,17 +106,6 @@
     }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
-    if (!header) {
-        header = [UITableViewHeaderFooterView new];
-    }
-    header.contentView.backgroundColor = UIColorFromRGB(0xF2EFE6);
-    header.textLabel.textColor = [UIColor blackColor];
-    header.textLabel.text = [self.viewModel titleForHeaderInSection:section];
-    return header;
-}
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 //get rid of undeclared selector warning
@@ -116,17 +118,22 @@
     }
 }
 #pragma clang diagnostic pop
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    UIColor * color = UIColorFromRGB(0xD0021B);
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY > NAVBAR_CHANGE_POINT) {
+        CGFloat alpha = 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64);
+        
+        [self.navigationController.navigationBar useBackgroundColor:[color colorWithAlphaComponent:alpha]];
+    } else {
+        [self.navigationController.navigationBar useBackgroundColor:[color colorWithAlphaComponent:0]];
+    }
+}
 
 
 
-
-
-
-
-
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
 @end

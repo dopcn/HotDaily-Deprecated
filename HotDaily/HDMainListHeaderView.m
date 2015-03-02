@@ -14,7 +14,7 @@
 @implementation HDMainListHeaderView
 
 - (instancetype)initWithViewModel:(HDMainListViewModel *)viewModel {
-    _screenWidth = [UIScreen mainScreen].bounds.size.width;
+    _screenWidth = SCREEN_WIDTH;
     self = [self initWithFrame:CGRectMake(0, 0, _screenWidth, _screenWidth*5/8)];
     if (self) {
         self.viewModel = viewModel;
