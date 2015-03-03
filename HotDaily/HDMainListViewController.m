@@ -27,11 +27,9 @@
     [super viewDidLoad];
     self.viewModel = [HDMainListViewModel new];
     [self bindViewModel];
-    [self.refreshButton.rac_command execute:nil];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*5/8)];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
     [self.navigationController.navigationBar useBackgroundColor:[UIColor clearColor]];
+    [self.refreshButton.rac_command execute:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,30 +62,25 @@
         }];
         return [RACSignal empty];
     }];
-    
-    self.insertButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        self.insertButton.hidden = YES;
+}
+
+- (void)insertItems {
+    if (self.viewModel.isNoMoreData) {
+        [self.indicatorView stopAnimating];
+    } else {
         [self.indicatorView startAnimating];
         [self.viewModel insertItemsSuccess:^{
             [self.indicatorView stopAnimating];
-            self.insertButton.hidden = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.viewModel.numOfSections-1] withRowAnimation:UITableViewRowAnimationNone];
+                [self.tableView reloadData];
             });
         } failure:^{
             [self.indicatorView stopAnimating];
-            self.insertButton.hidden = NO;
         }];
-        return [RACSignal empty];
-    }];
+    }
 }
 
 #pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.numOfSections;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.viewModel numberOfRowsInSection:section];
 }
@@ -118,16 +111,20 @@
     }
 }
 #pragma clang diagnostic pop
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    UIColor * color = UIColorFromRGB(0xD0021B);
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat contentHeight = scrollView.contentSize.height;
+    
+    UIColor *color = UIColorFromRGB(0xD0021B);
     if (offsetY > NAVBAR_CHANGE_POINT) {
         CGFloat alpha = 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64);
-        
         [self.navigationController.navigationBar useBackgroundColor:[color colorWithAlphaComponent:alpha]];
     } else {
         [self.navigationController.navigationBar useBackgroundColor:[color colorWithAlphaComponent:0]];
+    }
+    
+    if (roundf(contentHeight-offsetY-SCREEN_HEIGHT) < 50) {
+        [self insertItems];
     }
 }
 
