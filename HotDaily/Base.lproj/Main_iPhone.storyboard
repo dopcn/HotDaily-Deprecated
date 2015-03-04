@@ -234,7 +234,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在热帖与八卦的开发中用到了以下开源组件，在此我只能说：给大神们一拜！！！" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Tb0-hA-VKi">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开源库：" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Tb0-hA-VKi">
                                 <rect key="frame" x="10" y="68" width="300" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="XcZ-3m-pxp"/>
@@ -305,7 +305,7 @@ LICENSE: MIT</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juo-iO-tbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1207" y="4751"/>
+            <point key="canvasLocation" x="1183" y="4063"/>
         </scene>
         <!--收藏列表-->
         <scene sceneID="vlA-7B-7Ty">
@@ -342,40 +342,6 @@ LICENSE: MIT</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9T-73-eCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1207" y="1696"/>
-        </scene>
-        <!--why??-->
-        <scene sceneID="QpP-9S-x0l">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Nrg-Hd-JZe" customClass="HDBeforeSuggestViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1pt-AQ-Ra1"/>
-                        <viewControllerLayoutGuide type="bottom" id="zvM-I0-KB4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="skU-Wt-BV2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTt-tc-czW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.93725490199999995" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="zvM-I0-KB4" firstAttribute="top" secondItem="iTt-tc-czW" secondAttribute="bottom" constant="-49" id="1XA-nQ-s2o"/>
-                            <constraint firstItem="iTt-tc-czW" firstAttribute="leading" secondItem="skU-Wt-BV2" secondAttribute="leadingMargin" constant="-16" id="7p5-w6-UVh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iTt-tc-czW" secondAttribute="trailing" constant="-16" id="Yyb-h2-gpb"/>
-                            <constraint firstItem="iTt-tc-czW" firstAttribute="top" secondItem="1pt-AQ-Ra1" secondAttribute="bottom" constant="-64" id="rOy-oZ-8cl"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="why??" id="0AM-nR-r8m"/>
-                    <connections>
-                        <outlet property="bgScrollView" destination="iTt-tc-czW" id="syV-fX-EQy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tFu-ZZ-ZUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1207" y="4027"/>
         </scene>
         <!--设置-->
         <scene sceneID="en8-LZ-VCt">
@@ -499,30 +465,6 @@ LICENSE: MIT</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="jd0-rE-Q2A" kind="modal" id="60J-2Z-Y1Q"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsCell" textLabel="Jc3-CZ-x0U" imageView="Xhr-hU-QDm" style="IBUITableViewCellStyleDefault" id="Zku-HS-9gF">
-                                        <rect key="frame" x="0.0" y="315" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zku-HS-9gF" id="gfk-jf-Vum">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="吐槽前必看" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jc3-CZ-x0U">
-                                                    <rect key="frame" x="60" y="0.0" width="225" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="beforeSuggest" id="Xhr-hU-QDm">
-                                                    <rect key="frame" x="15" y="6" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Nrg-Hd-JZe" kind="push" id="5Yf-MJ-7Io"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsCell" textLabel="sgZ-12-SR9" imageView="87K-4u-bud" style="IBUITableViewCellStyleDefault" id="1ii-s7-64T">
@@ -1392,7 +1334,6 @@ LICENSE: MIT</string>
     <resources>
         <image name="Qzone" width="58" height="58"/>
         <image name="about" width="30" height="30"/>
-        <image name="beforeSuggest" width="30" height="30"/>
         <image name="collectionList" width="30" height="30"/>
         <image name="copy" width="58" height="58"/>
         <image name="funinfo" width="30" height="32"/>
