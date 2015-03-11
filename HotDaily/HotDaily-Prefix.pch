@@ -17,7 +17,6 @@
     #import <Foundation/Foundation.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
     #import <AFNetworking/AFNetworking.h>
-    #import "Flurry.h"
 
     #import "HDBaseViewController.h"
 #endif

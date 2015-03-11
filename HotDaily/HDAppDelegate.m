@@ -31,8 +31,6 @@
     
     [self shareSDKInit];
     
-    [Flurry setCrashReportingEnabled:YES];
-    [Flurry startSession:FlurryAPIKey];
     
     return YES;
 }
