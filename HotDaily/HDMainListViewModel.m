@@ -18,8 +18,7 @@
     self = [super init];
     if (self) {
         _listArray = [HDCacheStore sharedStore].mainListCache;
-        _currentPage = 1;
-        _noMoreData = NO;
+        _numOfSections = 1;
     }
     return self;
 }
@@ -30,36 +29,43 @@
 }
 
 - (void)insertItemsSuccess:(void (^)(void))success failure:(void (^)(void))failure {
-    @weakify(self);
-    self.currentPage++;
-    NSDictionary *params = @{@"pageNo": @(self.currentPage),
-                             @"pageSize": @(50),
-                             @"orderBy": @1,
-                             @"pageBy": @1};
-    [[HDHTTPManager sharedHTTPManager] GET:hotListURLString
-                                parameters:params
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       @strongify(self);
-                                       if ([responseObject[@"success"] isEqualToNumber:@1]) {
-                                           self.data = responseObject;
-                                           if (responseObject[@"data"][@"list"]) {
-                                               self.listArray = [self.listArray arrayByAddingObjectsFromArray:self.data[@"data"][@"list"]];
+    self.numOfSections += 1;
+    if ((self.numOfSections-1)%5 != 0) {
+        NSRange range;
+        range.location = (self.numOfSections-1)%5 * 10;
+        range.length = 10;
+        self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
+        success();
+    } else {
+        @weakify(self);
+        NSDictionary *params = @{@"pageNo": @(self.numOfSections/5 + 1),
+                                 @"pageSize": @(50),
+                                 @"orderBy": @1,
+                                 @"pageBy": @1};
+        [[HDHTTPManager sharedHTTPManager] GET:hotListURLString
+                                    parameters:params
+                                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                                           @strongify(self);
+                                           if ([responseObject[@"success"] isEqualToNumber:@1]) {
+                                               self.data = responseObject;
+                                               NSRange range;
+                                               range.location = (self.numOfSections-1)%5 * 10;
+                                               range.length = 10;
+                                               self.listArray = [self.listArray arrayByAddingObjectsFromArray:[self.data[@"data"][@"list"] subarrayWithRange:range]];
+                                               success();
                                            } else {
-                                               self.noMoreData = YES;
+                                               failure();
+                                               self.numOfSections -= 1;
                                            }
-                                           success();
-                                       } else {
+                                       } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                            failure();
-                                           self.currentPage--;
-                                       }
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       failure();
-                                       self.currentPage--;
-                                   }];
+                                           self.numOfSections -= 1;
+                                       }];
+    }
 }
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return self.listArray.count;
+    return 10;
 }
 
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
@@ -79,23 +85,23 @@
 }
 
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath {
-    return self.listArray[indexPath.row];
+    return self.listArray[indexPath.row + indexPath.section*10];
 }
 
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
-    return self.listArray[indexPath.row][@"title"];
+    return self.listArray[indexPath.row + indexPath.section*10][@"title"];
 }
 
 - (BOOL)hasImageAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.listArray[indexPath.row][@"pic"]) {
-        return ![self.listArray[indexPath.row][@"pic"] isEqualToString:@""];
+    if (self.listArray[indexPath.row + indexPath.section*10][@"pic"]) {
+        return ![self.listArray[indexPath.row + indexPath.section*10][@"pic"] isEqualToString:@""];
     }
     return NO;
 }
 
 - (NSURL *)imageURLAtIndexPath:(NSIndexPath *)indexPath {
     if ([self hasImageAtIndexPath:indexPath]) {
-        NSURL *url = [NSURL URLWithString:self.listArray[indexPath.row][@"pic"]];
+        NSURL *url = [NSURL URLWithString:self.listArray[indexPath.row + indexPath.section*10][@"pic"]];
         return url;
     } else {
         return nil;
@@ -137,8 +143,12 @@
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        if ([responseObject[@"success"] isEqualToNumber:@1]) {
+                                           self.numOfSections = 1;
                                            self.data = responseObject;
-                                           self.listArray = self.data[@"data"][@"list"];
+                                           NSRange range;
+                                           range.location = 0;
+                                           range.length = 10;
+                                           self.listArray = [self.data[@"data"][@"list"] subarrayWithRange:range];
                                            success();
                                        } else {
                                            failure();

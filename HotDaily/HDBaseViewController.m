@@ -8,15 +8,7 @@
 
 #import "HDBaseViewController.h"
 
-@interface HDBaseViewController ()
-
-@end
-
 @implementation HDBaseViewController
-
-- (void)menuButtonTapped {
-    
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,19 +19,45 @@
     return NO;
 }
 
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+}
 
 @end
 
 @implementation HDBaseTableViewController
 
-- (void)menuButtonTapped {
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+@end
+@implementation HDBaseViewControllerHD
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
 }
+
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+}
+
+@end
+
+@implementation HDBaseTableViewControllerHD
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,11 +67,7 @@
     return NO;
 }
 
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
-
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
 @end

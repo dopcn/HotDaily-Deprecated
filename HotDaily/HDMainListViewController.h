@@ -14,6 +14,7 @@
 @property (strong, nonatomic) HDMainListViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorView;
+@property (weak, nonatomic) IBOutlet UIButton *insertButton;
 
 
 @end
