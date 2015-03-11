@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setLeftNavButton];
     
     self.listArray = [[HDCollectionStore sharedStore] allItems];
 }

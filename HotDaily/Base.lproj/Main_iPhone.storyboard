@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g9L-ks-Nua">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g9L-ks-Nua">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +29,7 @@
         <!--Master-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
-                <tableViewController title="Master" id="pGg-6v-bdr" customClass="HDMainListViewController" sceneMemberID="viewController">
+                <tableViewController title="Master" automaticallyAdjustsScrollViewInsets="NO" id="pGg-6v-bdr" customClass="HDMainListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,33 +38,18 @@
                         <color key="sectionIndexBackgroundColor" red="0.94901960780000005" green="0.93725490199999995" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="0.94901960780000005" green="0.93725490199999995" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="3NU-cJ-S8W">
-                            <rect key="frame" x="0.0" y="276" width="320" height="60"/>
+                            <rect key="frame" x="0.0" y="212" width="320" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jy3-c0-Hal">
                                     <rect key="frame" x="150" y="20" width="20" height="20"/>
                                     <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </activityIndicatorView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdh-V6-18W">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="Puz-VV-Q8G"/>
-                                        <constraint firstAttribute="width" constant="320" id="h8n-0d-it4"/>
-                                    </constraints>
-                                    <state key="normal" title="点击这里加载更多">
-                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <state key="selected" title="加载中"/>
-                                    <state key="highlighted" title="加载中"/>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.92578125" green="0.9234484342" blue="0.88784997990000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="centerX" secondItem="Jy3-c0-Hal" secondAttribute="centerX" id="6mK-lB-5pu"/>
                                 <constraint firstItem="Jy3-c0-Hal" firstAttribute="top" secondItem="3NU-cJ-S8W" secondAttribute="top" constant="20" id="78r-9q-Hq8"/>
-                                <constraint firstAttribute="centerX" secondItem="Fdh-V6-18W" secondAttribute="centerX" id="a5Y-LS-ynO"/>
-                                <constraint firstItem="Fdh-V6-18W" firstAttribute="top" secondItem="3NU-cJ-S8W" secondAttribute="top" id="aZR-Ej-agP"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -194,7 +179,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="indicatorView" destination="Jy3-c0-Hal" id="SAP-YM-hF3"/>
-                        <outlet property="insertButton" destination="Fdh-V6-18W" id="GzY-fC-UMU"/>
                         <outlet property="refreshButton" destination="SCX-2M-XRz" id="beN-Sx-qd9"/>
                     </connections>
                 </tableViewController>
@@ -250,7 +234,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在热帖与八卦的开发中用到了以下开源组件，在此我只能说：给大神们一拜！！！" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Tb0-hA-VKi">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开源库：" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Tb0-hA-VKi">
                                 <rect key="frame" x="10" y="68" width="300" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="XcZ-3m-pxp"/>
@@ -321,7 +305,7 @@ LICENSE: MIT</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juo-iO-tbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1207" y="4751"/>
+            <point key="canvasLocation" x="1183" y="4063"/>
         </scene>
         <!--收藏列表-->
         <scene sceneID="vlA-7B-7Ty">
@@ -358,40 +342,6 @@ LICENSE: MIT</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9T-73-eCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1207" y="1696"/>
-        </scene>
-        <!--why??-->
-        <scene sceneID="QpP-9S-x0l">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Nrg-Hd-JZe" customClass="HDBeforeSuggestViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1pt-AQ-Ra1"/>
-                        <viewControllerLayoutGuide type="bottom" id="zvM-I0-KB4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="skU-Wt-BV2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTt-tc-czW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.93725490199999995" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="zvM-I0-KB4" firstAttribute="top" secondItem="iTt-tc-czW" secondAttribute="bottom" constant="-49" id="1XA-nQ-s2o"/>
-                            <constraint firstItem="iTt-tc-czW" firstAttribute="leading" secondItem="skU-Wt-BV2" secondAttribute="leadingMargin" constant="-16" id="7p5-w6-UVh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iTt-tc-czW" secondAttribute="trailing" constant="-16" id="Yyb-h2-gpb"/>
-                            <constraint firstItem="iTt-tc-czW" firstAttribute="top" secondItem="1pt-AQ-Ra1" secondAttribute="bottom" constant="-64" id="rOy-oZ-8cl"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="why??" id="0AM-nR-r8m"/>
-                    <connections>
-                        <outlet property="bgScrollView" destination="iTt-tc-czW" id="syV-fX-EQy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tFu-ZZ-ZUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1207" y="4027"/>
         </scene>
         <!--设置-->
         <scene sceneID="en8-LZ-VCt">
@@ -515,30 +465,6 @@ LICENSE: MIT</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="jd0-rE-Q2A" kind="modal" id="60J-2Z-Y1Q"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsCell" textLabel="Jc3-CZ-x0U" imageView="Xhr-hU-QDm" style="IBUITableViewCellStyleDefault" id="Zku-HS-9gF">
-                                        <rect key="frame" x="0.0" y="315" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zku-HS-9gF" id="gfk-jf-Vum">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="吐槽前必看" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jc3-CZ-x0U">
-                                                    <rect key="frame" x="60" y="0.0" width="225" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="beforeSuggest" id="Xhr-hU-QDm">
-                                                    <rect key="frame" x="15" y="6" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Nrg-Hd-JZe" kind="push" id="5Yf-MJ-7Io"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsCell" textLabel="sgZ-12-SR9" imageView="87K-4u-bud" style="IBUITableViewCellStyleDefault" id="1ii-s7-64T">
@@ -1408,7 +1334,6 @@ LICENSE: MIT</string>
     <resources>
         <image name="Qzone" width="58" height="58"/>
         <image name="about" width="30" height="30"/>
-        <image name="beforeSuggest" width="30" height="30"/>
         <image name="collectionList" width="30" height="30"/>
         <image name="copy" width="58" height="58"/>
         <image name="funinfo" width="30" height="32"/>
@@ -1436,6 +1361,6 @@ LICENSE: MIT</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="60J-2Z-Y1Q"/>
-        <segue reference="ISx-yJ-be3"/>
+        <segue reference="n0e-nr-hT6"/>
     </inferredMetricsTieBreakers>
 </document>

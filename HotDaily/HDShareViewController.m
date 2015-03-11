@@ -34,7 +34,6 @@
     self.content.text = [NSString stringWithFormat:@"发送内容:%@(%@)[来自APP热帖与八卦]",self.contentTitle, self.contentURLString];
     self.fullContent = [NSString stringWithFormat:@"发送内容:%@(%@ )[来自APP热帖与八卦]",self.contentTitle, self.contentURLString];
     
-    [Flurry logEvent:@"shareViewController opened"];
 }
 
 - (void)didReceiveMemoryWarning

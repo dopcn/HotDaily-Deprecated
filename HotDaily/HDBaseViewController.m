@@ -18,10 +18,6 @@
     
 }
 
-- (void)setLeftNavButton {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow.png"] style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,10 +39,6 @@
 
 - (void)menuButtonTapped {
     
-}
-
-- (void)setLeftNavButton {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow.png"] style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
 }
 
 - (void)viewDidLoad {

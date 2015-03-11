@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setLeftNavButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem  alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
 }
 
