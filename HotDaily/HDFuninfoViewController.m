@@ -30,7 +30,6 @@
     
     [self.refreshButton.rac_command execute:nil];
     
-    [Flurry logEvent:@"tab 2 opened"];
 }
 
 - (void)configureView {

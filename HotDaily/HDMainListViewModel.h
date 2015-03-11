@@ -13,7 +13,8 @@
 @property (copy, nonatomic) NSDictionary *data;
 //table
 @property (copy, nonatomic) NSArray *listArray;
-@property (assign, nonatomic) NSInteger numOfSections;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign, getter=isNoMoreData) BOOL noMoreData;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;

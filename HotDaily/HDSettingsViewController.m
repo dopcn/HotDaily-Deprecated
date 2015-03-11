@@ -21,7 +21,6 @@
         [UIScreen mainScreen].brightness = [x floatValue];
     }];
     
-    [Flurry logEvent:@"tab 3 opened"];
 }
 
 - (void)didReceiveMemoryWarning
