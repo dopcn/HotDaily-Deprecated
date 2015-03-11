@@ -75,7 +75,6 @@
  *
  *	@param 	path 	提交路径
  *  @param  parameters  参数
- *  @param  timeInterval 请求超时时间
  *  @param  userData    附加数据
  *  @param  result  返回回调方法
  *  @param  fault   错误回调方法
@@ -87,7 +86,6 @@
  *
  *	@param 	path 	Request path.
  *  @param  parameters  Parameters object.
- *  @param  timeInterval time Interval
  *  @param  userData    User data.
  *  @param  result  Result handler.
  *  @param  fault   Fault handler.
@@ -99,21 +97,12 @@
      result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
       fault:(void(^)(NSError *error))fault;
 
-- (void)get:(NSString *)path
- parameters:(id<ISSCParameters>)parameters
-timeInterval:(NSTimeInterval)timeInterval
-   userData:(id)userData
-     result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
-      fault:(void(^)(NSError *error))fault;
-
-
 ///#begin zh-cn
 /**
  *	@brief	以POST方式进行数据提交
  *
  *	@param 	path 	提交路径
  *  @param  parameters  参数
- *  @param  timeInterval 请求超时时间
  *  @param  userData    附加数据
  *  @param  result  返回回调方法
  *  @param  fault   错误回调方法
@@ -125,7 +114,6 @@ timeInterval:(NSTimeInterval)timeInterval
  *
  *	@param 	path 	Request path.
  *  @param  parameters  Parameters object.
- *  @param  timeInterval time Interval
  *  @param  userData    User data.
  *  @param  result  Result handler.
  *  @param  fault   Fault handler.
@@ -137,20 +125,12 @@ timeInterval:(NSTimeInterval)timeInterval
       result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
        fault:(void(^)(NSError *error))fault;
 
-- (void)post:(NSString *)path
-  parameters:(id<ISSCParameters>)parameters
-timeInterval:(NSTimeInterval)timeInterval
-    userData:(id)userData
-      result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
-       fault:(void(^)(NSError *error))fault;
-
 ///#begin zh-cn
 /**
  *	@brief	以POST方式并以multipart形式进行数据提交
  *
  *	@param 	path 	提交路径
  *  @param  parameters  参数
- *  @param  timeInterval 请求超时时间
  *  @param  userData    附加数据
  *  @param  result  返回回调方法
  *  @param  fault   错误回调方法
@@ -162,7 +142,6 @@ timeInterval:(NSTimeInterval)timeInterval
  *
  *	@param 	path 	Request path.
  *  @param  parameters  Parameters object.
- *  @param  timeInterval time Interval
  *  @param  userData    User data.
  *  @param  result  Result handler.
  *  @param  fault   Fault handler.
@@ -174,20 +153,12 @@ timeInterval:(NSTimeInterval)timeInterval
                result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
                 fault:(void(^)(NSError *error))fault;
 
-- (void)multipartPost:(NSString *)path
-           parameters:(id<ISSCParameters>)parameters
-         timeInterval:(NSTimeInterval)timeInterval
-             userData:(id)userData
-               result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
-                fault:(void(^)(NSError *error))fault;
-
 ///#begin zh-cn
 /**
  *	@brief	以DELETE方式进行数据提交
  *
  *	@param 	path 	提交路径
  *	@param 	parameters 	参数
- *  @param  timeInterval 请求超时时间
  *	@param 	userData 	附加数据
  *  @param  result      返回回调方式
  *  @param  fault       错误回调方法
@@ -199,7 +170,6 @@ timeInterval:(NSTimeInterval)timeInterval
  *
  *	@param 	path 	Request path.
  *	@param 	parameters 	Parameters object.
- *  @param  timeInterval time Interval
  *	@param 	userData 	User data.
  *  @param  result      Result handler.
  *  @param  fault       Fault handler.
@@ -211,19 +181,11 @@ timeInterval:(NSTimeInterval)timeInterval
      result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
       fault:(void(^)(NSError *error))fault;
 
-- (void)del:(NSString *)path
- parameters:(id<ISSCParameters>)parameters
-timeInterval:(NSTimeInterval)timeInterval
-   userData:(id)userData
-     result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
-      fault:(void(^)(NSError *error))fault;
-
 ///#begin zh-cn
 /**
  *	@brief	发送请求
  *
  *	@param 	request 	请求对象
- *  @param  timeInterval 请求超时时间
  *	@param 	userData 	附加数据
  *  @param  result      返回回调方式
  *  @param  fault       错误回调方法
@@ -234,19 +196,12 @@ timeInterval:(NSTimeInterval)timeInterval
  *	@brief	Send request.
  *
  *	@param 	request 	Request object.
- *  @param  timeInterval time Interval
  *	@param 	userData 	User data.
  *  @param  result      Result handler.
  *  @param  fault       Fault handler.
  */
 ///#end
 - (void)sendRequest:(NSMutableURLRequest *)request
-           userData:(id)userData
-             result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
-              fault:(void(^)(NSError *error))fault;
-
-- (void)sendRequest:(NSMutableURLRequest *)request
-       timeInterval:(NSTimeInterval)timeInterval
            userData:(id)userData
              result:(void(^)(NSHTTPURLResponse *response, NSData *responseData))result
               fault:(void(^)(NSError *error))fault;

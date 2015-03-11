@@ -38,7 +38,6 @@ TencentApiRetCode;
  */
 @protocol TencentApiInterfaceDelegate <NSObject>
 
-@optional
 /**
  * 请求获得内容 当前版本只支持第三方相应腾讯业务请求
  */

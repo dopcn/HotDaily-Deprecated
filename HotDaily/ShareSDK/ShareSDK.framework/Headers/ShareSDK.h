@@ -24,13 +24,11 @@
 #import "NSArray+ShareSDK.h"
 #import "ShareSDKTypeDef.h"
 #import "ShareSDKEventHandlerDef.h"
-
 #import "ShareSDKDef.h"
 #import "ISSAuthOptions.h"
 #import "ISSViewDelegate.h"
 #import "ISSPage.h"
 #import "ISSContent.h"
-
 #import "ISSShareActionSheet.h"
 #import "ISSShareOptions.h"
 #import "ISSShareViewDelegate.h"
@@ -39,7 +37,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.10.6
+ *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）
  */
 ///#end
 ///#begin en
@@ -191,6 +189,7 @@
  */
 ///#end
 + (void)useAppTrusteeship:(BOOL)enabled;
+
 
 #pragma mark 初始化
 
@@ -381,6 +380,29 @@
              qqApiInterfaceCls:(Class)qqApiInterfaceCls
                tencentOAuthCls:(Class)tencentOAuthCls;
 
+///#begin zh-cn
+/**
+ *	@brief	连接网易微博应用以使用相关功能，此应用需要引用T163WeiboConnection.framework
+ *          http://open.t.163.com上注册网易微博开放平台应用，并将相关信息填写到以下字段
+ *
+ *	@param 	appKey 	应用Key
+ *	@param 	appSecret 	应用密钥
+ *	@param 	redirectUri 	回调地址
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Initialize NetEase Weibo platform，This platform need import T163WeiboConnection.framework
+ *          Go to http://open.t.163.com and register NetEase Weibo open platform app，Then fill in the relevant information into the field below
+ *
+ *	@param 	appKey 	App key.
+ *	@param 	appSecret 	App secret.
+ *	@param 	redirectUri 	Redirect url.
+ */
+///#end
++ (void)connect163WeiboWithAppKey:(NSString *)appKey
+                        appSecret:(NSString *)appSecret
+                      redirectUri:(NSString *)redirectUri;
 
 ///#begin zh-cn
 /**
@@ -649,28 +671,22 @@
 ///#begin zh-cn
 /**
  *	@brief	连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
- *          http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段。如果需要使用微信授权获取用户信息等，则可使用下面中带appSecret的方法。
+ *          http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
  *
  *	@param 	appId 	应用ID
- *  @param 	appSecret 	应用密钥
  *	@param 	wechatCls 	微信Api类型，引入WXApi.h后，将[WXApi class]传入此参数
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Initialize WeChat platform. If you want get the user's infomation then you may choose the method that with the appSecret.This platform need import WeChatConnection.framework and libWeChatSDK.a
+ *	@brief	Initialize WeChat platform. This platform need import WeChatConnection.framework and libWeChatSDK.a
  *          Go to http://open.weixin.qq.com register app，Then fill in the relevant information into the field below
  *
  *	@param 	appId 	App id.
- *  @param 	appSecret 	App Secret
  *	@param 	wechatCls 	WXApi class，You should import WXApi.h，then passed [WXApi class] this parameter.
  */
 ///#end
 + (void)connectWeChatWithAppId:(NSString *)appId
-                     wechatCls:(Class)wechatCls;
-
-+ (void)connectWeChatWithAppId:(NSString *)appId
-                     appSecret:(NSString *)appSecret
                      wechatCls:(Class)wechatCls;
 
 ///#begin zh-cn
@@ -897,8 +913,7 @@
  */
 ///#end
 + (void)connectDropboxWithAppKey:(NSString *)appKey
-                       appSecret:(NSString *)appSecret
-                     callbackUrl:(NSString *)callbackUrl;
+                       appSecret:(NSString *)appSecret;
 
 ///#begin zh-cn
 /**
@@ -1011,85 +1026,67 @@
 
 ///#begin zh-cn
 /**
- *	@brief	连接微信好友。如果需要使用微信授权获取用户信息等，则可使用下面中带appSecret的方法。
+ *	@brief	连接微信好友
  *
  *  @since  ver2.6.0
  *
  *	@param 	appId 	应用ID，必须要和朋友圈传入ID一致
- *  @param 	appSecret 	应用密钥
  *	@param 	wechatCls 	微信Api类型，引入WXApi.h后，将[WXApi class]传入此参数
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Initialize WeChat Session platform.If you want get the user's infomation then you may choose the method that with the appSecret.
+ *	@brief	Initialize WeChat Session platform.
  *
  *  @since  ver2.6.0
  *
  *	@param 	appId 	App id. Must be consistent and WeChat Timeline passed ID
- *  @param 	appSecret 	App Secret
  *	@param 	wechatCls 	WXApi class，You should import WXApi.h，then passed [WXApi class] this parameter.
  */
 ///#end
 + (void)connectWeChatSessionWithAppId:(NSString *)appId
                             wechatCls:(Class)wechatCls;
 
-+ (void)connectWeChatSessionWithAppId:(NSString *)appId
-                            appSecret:(NSString *)appSecret
-                            wechatCls:(Class)wechatCls;
-
 ///#begin zh-cn
 /**
- *	@brief	连接微信朋友圈。如果需要使用微信授权获取用户信息等，则可使用下面中带appSecret的方法。
+ *	@brief	连接微信朋友圈
  *
  *  @since  ver2.6.0
  *
  *	@param 	appId 	应用ID，必须要和好友传入ID一致
- *  @param 	appSecret 	应用密钥
  *	@param 	wechatCls 	微信Api类型，引入WXApi.h后，将[WXApi class]传入此参数
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Initialize WeChat Timeline platform.If you want get the user's infomation then you may choose the method that with the appSecret.
+ *	@brief	Initialize WeChat Timeline platform.
  *
  *  @since  ver2.6.0
  *
  *	@param 	appId 	App id. Must be consistent and WeChat Session passed ID
- *  @param 	appSecret 	App Secret
  *	@param 	wechatCls 	WXApi class，You should import WXApi.h，then passed [WXApi class] this parameter.
  */
 ///#end
 + (void)connectWeChatTimelineWithAppId:(NSString *)appId
                              wechatCls:(Class)wechatCls;
 
-+ (void)connectWeChatTimelineWithAppId:(NSString *)appId
-                             appSecret:(NSString *)appSecret
-                             wechatCls:(Class)wechatCls;
-
 ///#begin zh-cn
 /**
- *	@brief	连接微信收藏。如果需要使用微信授权获取用户信息等，则可使用下面中带appSecret的方法。
+ *	@brief	连接微信收藏
  *
  *	@param 	appId 	应用ID，必须要和好友、朋友圈传入ID一致。
- *  @param 	appSecret 	应用密钥
  *	@param 	wechatCls 	微信Api类型，引入WXApi.h后，将[WXApi class]传入此参数
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Initialize WeChat Favorite platform.If you want get the user's infomation then you may choose the method that with the appSecret.
+ *	@brief	Initialize WeChat Favorite platform.
  *
  *	@param 	appId 	App id，Must be consistent and WeChat Session、WeChat Timeline passed ID
- *  @param 	appSecret 	App Secret
  *	@param 	wechatCls 	WXApi class，You should import WXApi.h，then passed [WXApi class] this parameter.
  */
 ///#end
 + (void)connectWeChatFavWithAppId:(NSString *)appId
-                        wechatCls:(Class)wechatCls;
-
-+ (void)connectWeChatFavWithAppId:(NSString *)appId
-                        appSecret:(NSString *)appSecret
                         wechatCls:(Class)wechatCls;
 
 ///#begin zh-cn
@@ -1220,40 +1217,6 @@
  */
 ///#end
 + (void)connectWhatsApp;
-
-///#begin zh-cn
-/**
- *	@brief	链接KaKao Talk以使用相关功能。
- *
- *  @since  ver2.10.0
- *
- */
-///#end
-///#begin en
-/**
- *	@brief	Initialize KaKao Talk platform，This platform need import KaKaoTalkConnection.framework
- *
- *	@since  ver2.10.0
- */
-///#end
-+ (void)connectKaKaoTalk;
-
-///#begin zh-cn
-/**
- *	@brief	链接KaKao Story以使用相关功能。
- *
- *  @since  ver2.10.0
- *
- */
-///#end
-///#begin en
-/**
- *	@brief	Initialize KaKao Story platform，This platform need import KaKaoTalkConnection.framework
- *
- *	@since  ver2.10.0
- */
-///#end
-+ (void)connectKaKaoStory;
 
 ///#begin zh-cn
 /**
@@ -1628,7 +1591,7 @@
  *
  *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
  *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
+ *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1643,7 +1606,7 @@
  *
  *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
  *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -1668,7 +1631,7 @@
  *
  *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
  *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
+ *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1686,7 +1649,7 @@
  *
  *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
  *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -1713,7 +1676,7 @@
  *
  *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
  *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
+ *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1732,7 +1695,7 @@
  *
  *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
  *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
