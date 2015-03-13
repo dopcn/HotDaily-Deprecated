@@ -71,6 +71,8 @@
 		879B4A5F1990801100A70924 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A5E1990801100A70924 /* libz.1.2.5.dylib */; };
 		879B4A611990801E00A70924 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A601990801E00A70924 /* Security.framework */; };
 		879E93CA1AB343B4009446D7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879E93C91AB343B4009446D7 /* Main_iPad.storyboard */; };
+		879E93CE1AB345FA009446D7 /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879E93CD1AB345FA009446D7 /* HDSplitViewController.m */; };
+		879E93D11AB34689009446D7 /* HDSideMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879E93D01AB34689009446D7 /* HDSideMenuTableViewController.m */; };
 		87A7387719889FA700A5E4A2 /* HDCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */; };
 		87A738801988AA1500A5E4A2 /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387F1988AA1500A5E4A2 /* HDBaseViewController.m */; };
 		87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */; };
@@ -196,6 +198,10 @@
 		879B4A5E1990801100A70924 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		879B4A601990801E00A70924 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		879E93C91AB343B4009446D7 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		879E93CC1AB345FA009446D7 /* HDSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSplitViewController.h; path = iPad/HDSplitViewController.h; sourceTree = "<group>"; };
+		879E93CD1AB345FA009446D7 /* HDSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSplitViewController.m; path = iPad/HDSplitViewController.m; sourceTree = "<group>"; };
+		879E93CF1AB34689009446D7 /* HDSideMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSideMenuTableViewController.h; path = iPad/HDSideMenuTableViewController.h; sourceTree = "<group>"; };
+		879E93D01AB34689009446D7 /* HDSideMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSideMenuTableViewController.m; path = iPad/HDSideMenuTableViewController.m; sourceTree = "<group>"; };
 		87A7387519889FA700A5E4A2 /* HDCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDCollectionViewController.h; sourceTree = "<group>"; };
 		87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDCollectionViewController.m; sourceTree = "<group>"; };
 		87A7387E1988AA1500A5E4A2 /* HDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseViewController.h; sourceTree = "<group>"; };
@@ -512,6 +518,10 @@
 		879E93CB1AB34408009446D7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				879E93CC1AB345FA009446D7 /* HDSplitViewController.h */,
+				879E93CD1AB345FA009446D7 /* HDSplitViewController.m */,
+				879E93CF1AB34689009446D7 /* HDSideMenuTableViewController.h */,
+				879E93D01AB34689009446D7 /* HDSideMenuTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -798,9 +808,11 @@
 			files = (
 				878003EC199B56A600E65B77 /* MJRefreshFooterView.m in Sources */,
 				87C5227D1999B87800F89B2A /* HDFuninfoCell.m in Sources */,
+				879E93D11AB34689009446D7 /* HDSideMenuTableViewController.m in Sources */,
 				876CEC071994AC67007BE0E1 /* HDShareViewController.m in Sources */,
 				8780040F19A19BCB00E65B77 /* HDCollectionStore.m in Sources */,
 				87800405199FB49500E65B77 /* HDMainViewController.m in Sources */,
+				879E93CE1AB345FA009446D7 /* HDSplitViewController.m in Sources */,
 				87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */,
 				878003FF199DB56200E65B77 /* HDHistoryListCell.m in Sources */,
 				87A738881989CFEC00A5E4A2 /* HDMainListHeaderView.m in Sources */,
