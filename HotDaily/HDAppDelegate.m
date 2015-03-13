@@ -31,7 +31,6 @@
     
     [self shareSDKInit];
     
-    
     return YES;
 }
 
