@@ -1,9 +1,0 @@
-#include "Pods-HotDailyTests-Kiwi.xcconfig"
-FRAMEWORK_SEARCH_PATHS = ${PODS_HOTDAILYTESTS_KIWI_FRAMEWORK_SEARCH_PATHS}
-FRAMEWORK_SEARCH_PATHS[sdk=iphoneos8.0] = ${PODS_HOTDAILYTESTS_KIWI_FRAMEWORK_SEARCH_PATHS}
-FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator8.0] = ${PODS_HOTDAILYTESTS_KIWI_FRAMEWORK_SEARCH_PATHS}
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/Kiwi" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AVOSCloud" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/Kiwi" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/ReactiveCocoa" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/WebViewJavascriptBridge"
-OTHER_LDFLAGS = ${PODS_HOTDAILYTESTS_KIWI_OTHER_LDFLAGS} -ObjC
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES
