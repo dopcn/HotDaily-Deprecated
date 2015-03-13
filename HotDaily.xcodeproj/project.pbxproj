@@ -70,6 +70,7 @@
 		879B4A5D1990800600A70924 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A5C1990800600A70924 /* libicucore.dylib */; };
 		879B4A5F1990801100A70924 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A5E1990801100A70924 /* libz.1.2.5.dylib */; };
 		879B4A611990801E00A70924 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879B4A601990801E00A70924 /* Security.framework */; };
+		879E93CA1AB343B4009446D7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879E93C91AB343B4009446D7 /* Main_iPad.storyboard */; };
 		87A7387719889FA700A5E4A2 /* HDCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */; };
 		87A738801988AA1500A5E4A2 /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387F1988AA1500A5E4A2 /* HDBaseViewController.m */; };
 		87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */; };
@@ -194,6 +195,7 @@
 		879B4A5C1990800600A70924 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		879B4A5E1990801100A70924 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		879B4A601990801E00A70924 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		879E93C91AB343B4009446D7 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		87A7387519889FA700A5E4A2 /* HDCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDCollectionViewController.h; sourceTree = "<group>"; };
 		87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDCollectionViewController.m; sourceTree = "<group>"; };
 		87A7387E1988AA1500A5E4A2 /* HDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseViewController.h; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				87E1F6D719A2FD9E00A0D890 /* WebViewProxy */,
 				871BE2791963DC4900087E4B /* HDAppDelegate.h */,
 				871BE27A1963DC4900087E4B /* HDAppDelegate.m */,
+				879E93C81AB3439E009446D7 /* iPad */,
 				87C17A61197C038000DCA99C /* iPhone */,
 				87C17A67197C056400DCA99C /* ViewModel */,
 				87C17A66197C054800DCA99C /* Model */,
@@ -497,10 +500,25 @@
 			name = settings;
 			sourceTree = "<group>";
 		};
+		879E93C81AB3439E009446D7 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				879E93CB1AB34408009446D7 /* Controller */,
+				879E93C91AB343B4009446D7 /* Main_iPad.storyboard */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		879E93CB1AB34408009446D7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		87A738841989CF8600A5E4A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */,
 				87C17A6C197C0C1200DCA99C /* HDMainListCell.h */,
 				87C17A6D197C0C1200DCA99C /* HDMainListCell.m */,
 				87C5227B1999B87800F89B2A /* HDFuninfoCell.h */,
@@ -544,6 +562,7 @@
 		87C17A61197C038000DCA99C /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */,
 				87A738841989CF8600A5E4A2 /* View */,
 				87A738851989CFA000A5E4A2 /* Controller */,
 			);
@@ -688,6 +707,7 @@
 				871BE28C1963DC4900087E4B /* Images.xcassets in Resources */,
 				871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */,
 				876111F5198A3D9E00B92D99 /* contentView in Resources */,
+				879E93CA1AB343B4009446D7 /* Main_iPad.storyboard in Resources */,
 				878003FC199DAE0D00E65B77 /* historyData in Resources */,
 				878003E9199B56A600E65B77 /* MJRefresh.bundle in Resources */,
 				871BE2751963DC4900087E4B /* InfoPlist.strings in Resources */,
@@ -971,7 +991,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "649a9e7c-31bc-425a-a67a-c47accce0cec";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1005,7 +1025,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "649a9e7c-31bc-425a-a67a-c47accce0cec";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
