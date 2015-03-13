@@ -96,22 +96,6 @@
     }
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-}
-
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url
 {
