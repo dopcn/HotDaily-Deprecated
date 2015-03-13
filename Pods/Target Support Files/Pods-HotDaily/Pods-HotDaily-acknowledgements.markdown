@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## AFNetworking
 
-Copyright (c) 2013-2014 AFNetworking (http://afnetworking.com/)
+Copyright (c) 2013-2015 AFNetworking (http://afnetworking.com/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## AVOSCloud
+
+© Copyright 2013 AVOS Systems, Inc. See https://cn.avoscloud.com/terms.html
+
 ## FMDB
 
-If you are using fmdb in your project, I'd love to hear about it.  Let me 
-know at gus@flyingmeat.com.
+If you are using FMDB in your project, I'd love to hear about it.  Let Gus know
+by sending an email to gus@flyingmeat.com.
 
-In short, this is the MIT License.
+And if you happen to come across either Gus Mueller or Rob Ryan in a bar, you
+might consider purchasing a drink of their choosing if FMDB has been useful to
+you.
 
-Copyright (c) 2008 Flying Meat Inc.
+Finally, and shortly, this is the MIT License.
+
+Copyright (c) 2008-2014 Flying Meat Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +61,7 @@ THE SOFTWARE.
 
 ## MBProgressHUD
 
-Copyright (c) 2013 Matej Bukovinski
+Copyright (c) 2009-2015 Matej Bukovinski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -75,7 +83,7 @@ THE SOFTWARE.
 
 ## ReactiveCocoa
 
-**Copyright (c) 2012 - 2014, GitHub, Inc.**
+**Copyright (c) 2012 - 2015, GitHub, Inc.**
 **All rights reserved.**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
