@@ -48,6 +48,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "ipad_protrait.png",
       "scale" : "1x"
     },
     {
@@ -55,6 +56,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "ipad_landscape.png",
       "scale" : "1x"
     },
     {
@@ -62,6 +64,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "ipad_protrait@2x.png",
       "scale" : "2x"
     },
     {
@@ -69,6 +72,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "ipad_landscape@2x.png",
       "scale" : "2x"
     },
     {

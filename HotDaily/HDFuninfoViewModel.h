@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-@import Foundation;
+#import "HDBaseViewModel.h"
 
-@interface HDFuninfoViewModel : NSObject
+@interface HDFuninfoViewModel : HDBaseViewModel
 
 @property (assign, nonatomic) CGFloat screenWidth;
 

@@ -6,10 +6,11 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-@import UIKit;
+#import "HDBaseCell.h"
+
 @class HDFuninfoViewModel;
 
-@interface HDFuninfoCellWithoutImage : UITableViewCell
+@interface HDFuninfoCellWithoutImage : HDBaseCell
 
 @property (strong, nonatomic) HDFuninfoViewModel *viewModel;
 - (void)configureWithViewModel:(HDFuninfoViewModel *)viewModel atIndexPath:(NSIndexPath *)indexPath;

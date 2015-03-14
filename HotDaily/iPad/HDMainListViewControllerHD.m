@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-#import "HDMainListViewController.h"
+#import "HDMainListViewControllerHD.h"
 #import "HDMainListViewModel.h"
 #import "HDMainListCell.h"
 #import "HDMainListHeaderView.h"
@@ -18,17 +18,17 @@
 
 #define NAVBAR_CHANGE_POINT 50
 
-@interface HDMainListViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface HDMainListViewControllerHD () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @end
 
-@implementation HDMainListViewController
+@implementation HDMainListViewControllerHD
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModel = [HDMainListViewModel new];
     [self bindViewModel];
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*5/8)];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-100, 200)];
     [self.navigationController.navigationBar useBackgroundColor:[UIColor clearColor]];
     [self.refreshButton.rac_command execute:nil];
     [self.tableView registerNib:[HDMainListCellWithImage cellNib] forCellReuseIdentifier:[HDMainListCellWithImage cellIdentifier]];
@@ -69,16 +69,12 @@
 
 - (void)insertItems {
     if (self.viewModel.isNoMoreData) {
-        [self.indicatorView stopAnimating];
     } else {
-        [self.indicatorView startAnimating];
         [self.viewModel insertItemsSuccess:^{
-            [self.indicatorView stopAnimating];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
         } failure:^{
-            [self.indicatorView stopAnimating];
         }];
     }
 }
@@ -100,12 +96,6 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HDListDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
-    [vc setViewModelData:[self.viewModel dataAtIndexPath:indexPath]];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat contentHeight = scrollView.contentSize.height;
@@ -123,7 +113,30 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *data = [self.viewModel dataAtIndexPath:indexPath];
+//    [segue.destinationViewController performSelector:@selector(setViewModelData:) withObject:data];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
+//        [self.tableView reloadData];
+//        [self.navigationController.navigationBar useBackgroundColor:[UIColor clearColor]];
+//    });
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.tableView.tableHeaderView = [[HDMainListHeaderView alloc] initWithViewModel:self.viewModel];
+        [self.tableView reloadData];
+        [self.navigationController.navigationBar useBackgroundColor:[UIColor clearColor]];
+    });
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

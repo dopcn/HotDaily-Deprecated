@@ -6,21 +6,22 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-@import UIKit;
+#import "HDBaseCell.h"
+
 @class HDMainListViewModel;
 
-@interface HDMainListCellWithoutImage : UITableViewCell
+@interface HDMainListCellWithoutImage : HDBaseCell
 
 @property (nonatomic, strong) HDMainListViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
-- (void)configureWithViewModel:(HDMainListViewModel *)viewModel atIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
-@interface HDMainListCellWithImage : HDMainListCellWithoutImage
+@interface HDMainListCellWithImage : HDBaseCell
 
+@property (nonatomic, strong) HDMainListViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIImageView *titleImage;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;

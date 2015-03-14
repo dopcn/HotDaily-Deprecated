@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-@import Foundation;
+#import "HDBaseViewModel.h"
 
-@interface HDMainListViewModel : NSObject
+@interface HDMainListViewModel : HDBaseViewModel
 //data = responseObject
 @property (copy, nonatomic) NSDictionary *data;
 //table

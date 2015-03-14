@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 fengweizhou. All rights reserved.
 //
 
-@import Foundation;
+#import "HDBaseViewModel.h"
 
-@interface HDListDetailViewModel : NSObject
+@interface HDListDetailViewModel : HDBaseViewModel
 
 @property (copy, nonatomic) NSDictionary *abstractData;
 @property (copy, nonatomic) NSDictionary *detailData;

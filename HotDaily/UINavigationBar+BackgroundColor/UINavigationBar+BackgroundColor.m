@@ -30,6 +30,8 @@ static char const * const overlayKey = "backgroundOverlay";
         [self setShadowImage:[UIImage new]];
         self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, 64)];
         [self insertSubview:self.overlay atIndex:0];
+    } else {
+        self.overlay.frame = CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, 64);
     }
     self.overlay.backgroundColor = backgroundColor;
 }

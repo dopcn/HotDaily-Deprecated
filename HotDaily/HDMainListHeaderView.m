@@ -11,11 +11,18 @@
 #import "UIImageView+WebCache.h"
 #import "HDMainListViewModel.h"
 
+static NSInteger iPadHeaderHeight = 200;
+
 @implementation HDMainListHeaderView
 
 - (instancetype)initWithViewModel:(HDMainListViewModel *)viewModel {
-    _screenWidth = SCREEN_WIDTH;
-    self = [self initWithFrame:CGRectMake(0, 0, _screenWidth, _screenWidth*5/8)];
+    if (HDisPhone) {
+        _screenWidth = SCREEN_WIDTH;
+        self = [self initWithFrame:CGRectMake(0, 0, _screenWidth, _screenWidth*5/8)];
+    } else {
+        _screenWidth = SCREEN_WIDTH-100;
+        self = [self initWithFrame:CGRectMake(0, 0, _screenWidth, iPadHeaderHeight)];
+    }
     if (self) {
         self.viewModel = viewModel;
         
@@ -42,20 +49,31 @@
 }
 
 - (void)pageViewInit {
-    self.pageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenWidth*5/8)];
+    if (HDisPhone) {
+        self.pageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenWidth*5/8)];
+        self.pageView.contentSize = CGSizeMake(self.screenWidth*5, self.screenWidth*5/8);
+    } else {
+        self.pageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, iPadHeaderHeight)];
+        self.pageView.contentSize = CGSizeMake(self.screenWidth*5, iPadHeaderHeight);
+    }
     self.pageView.pagingEnabled = YES;
     self.pageView.delegate = self;
     self.pageView.bounces = NO;
     self.pageView.showsVerticalScrollIndicator = NO;
     self.pageView.showsHorizontalScrollIndicator = NO;
-    self.pageView.contentSize = CGSizeMake(self.screenWidth*5, self.screenWidth*5/8);
     
     for (NSInteger i = 0; i < 5; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0+i*self.screenWidth, 0, self.screenWidth, self.screenWidth*5/8)];
+        NSInteger height;
+        if (HDisPhone) {
+            height = self.screenWidth*5/8;
+        } else {
+            height = iPadHeaderHeight;
+        }
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0+i*self.screenWidth, 0, self.screenWidth, height)];
         [imageView sd_setImageWithURL:[self.viewModel headerImages][i][@"url"]];
         
         [self insertMaskLayerTo:imageView.layer];
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, self.screenWidth*5/8 - 70, self.screenWidth-20, 50)];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, height - 70, self.screenWidth-20, 50)];
         title.textColor = [UIColor whiteColor];
         title.font = [UIFont boldSystemFontOfSize:20.0];
         title.numberOfLines = 2;
@@ -75,14 +93,18 @@
     
     gradientLayer.colors = @[(id)color1.CGColor, (id)color2.CGColor];
     gradientLayer.locations = @[@0.0, @1.0];
-    gradientLayer.frame = CGRectMake(0, self.screenWidth*5/8 - 70, self.screenWidth, 70);
+    if (HDisPhone) {
+        gradientLayer.frame = CGRectMake(0, self.screenWidth*5/8 - 70, self.screenWidth, 70);
+    } else {
+        gradientLayer.frame = CGRectMake(0, 200 - 70, self.screenWidth, 70);
+    }
     
     [layer insertSublayer:gradientLayer atIndex:0];
 }
 
 - (void)pageControlInit {
     self.pageControl = [UIPageControl new];
-    self.pageControl.center = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height-10);
+    self.pageControl.center = CGPointMake(_screenWidth/2, self.frame.size.height-10);
     self.pageControl.numberOfPages = 5;
     self.pageControl.currentPage = 0;
     self.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];

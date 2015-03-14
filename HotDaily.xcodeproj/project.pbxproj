@@ -33,7 +33,6 @@
 		871BE2751963DC4900087E4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871BE2731963DC4900087E4B /* InfoPlist.strings */; };
 		871BE2771963DC4900087E4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE2761963DC4900087E4B /* main.m */; };
 		871BE27B1963DC4900087E4B /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 871BE27A1963DC4900087E4B /* HDAppDelegate.m */; };
-		871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */; };
 		871BE28C1963DC4900087E4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 871BE28B1963DC4900087E4B /* Images.xcassets */; };
 		871BE2931963DC4900087E4B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE2921963DC4900087E4B /* XCTest.framework */; };
 		871BE2941963DC4900087E4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871BE2681963DC4900087E4B /* Foundation.framework */; };
@@ -73,6 +72,13 @@
 		879E93CA1AB343B4009446D7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879E93C91AB343B4009446D7 /* Main_iPad.storyboard */; };
 		879E93CE1AB345FA009446D7 /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879E93CD1AB345FA009446D7 /* HDSplitViewController.m */; };
 		879E93D11AB34689009446D7 /* HDSideMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879E93D01AB34689009446D7 /* HDSideMenuTableViewController.m */; };
+		879E93D41AB449D6009446D7 /* HDMainListViewControllerHD.m in Sources */ = {isa = PBXBuildFile; fileRef = 879E93D31AB449D6009446D7 /* HDMainListViewControllerHD.m */; };
+		879E93D81AB44AFE009446D7 /* HDBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 879E93D71AB44AFE009446D7 /* HDBaseCell.m */; };
+		879E93DB1AB44C43009446D7 /* HDBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 879E93DA1AB44C43009446D7 /* HDBaseViewModel.m */; };
+		879E93DF1AB44D36009446D7 /* MustOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = 879E93DE1AB44D36009446D7 /* MustOverride.m */; };
+		879E93E11AB44E63009446D7 /* HDMainListCellWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879E93E01AB44E63009446D7 /* HDMainListCellWithImage.xib */; };
+		879E93E31AB44E99009446D7 /* HDMainListCellWithoutImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879E93E21AB44E99009446D7 /* HDMainListCellWithoutImage.xib */; };
+		879E93E51AB4699A009446D7 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879E93E41AB4699A009446D7 /* Main_iPhone.storyboard */; };
 		87A7387719889FA700A5E4A2 /* HDCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */; };
 		87A738801988AA1500A5E4A2 /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7387F1988AA1500A5E4A2 /* HDBaseViewController.m */; };
 		87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */; };
@@ -140,7 +146,6 @@
 		871BE2781963DC4900087E4B /* HotDaily-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotDaily-Prefix.pch"; sourceTree = "<group>"; };
 		871BE2791963DC4900087E4B /* HDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDAppDelegate.h; sourceTree = "<group>"; };
 		871BE27A1963DC4900087E4B /* HDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDAppDelegate.m; sourceTree = "<group>"; };
-		871BE27D1963DC4900087E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		871BE28B1963DC4900087E4B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		871BE2911963DC4900087E4B /* HotDailyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotDailyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		871BE2921963DC4900087E4B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -202,6 +207,17 @@
 		879E93CD1AB345FA009446D7 /* HDSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSplitViewController.m; path = iPad/HDSplitViewController.m; sourceTree = "<group>"; };
 		879E93CF1AB34689009446D7 /* HDSideMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSideMenuTableViewController.h; path = iPad/HDSideMenuTableViewController.h; sourceTree = "<group>"; };
 		879E93D01AB34689009446D7 /* HDSideMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSideMenuTableViewController.m; path = iPad/HDSideMenuTableViewController.m; sourceTree = "<group>"; };
+		879E93D21AB449D6009446D7 /* HDMainListViewControllerHD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDMainListViewControllerHD.h; path = iPad/HDMainListViewControllerHD.h; sourceTree = "<group>"; };
+		879E93D31AB449D6009446D7 /* HDMainListViewControllerHD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDMainListViewControllerHD.m; path = iPad/HDMainListViewControllerHD.m; sourceTree = "<group>"; };
+		879E93D61AB44AFE009446D7 /* HDBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDBaseCell.h; path = Universal/HDBaseCell.h; sourceTree = "<group>"; };
+		879E93D71AB44AFE009446D7 /* HDBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDBaseCell.m; path = Universal/HDBaseCell.m; sourceTree = "<group>"; };
+		879E93D91AB44C43009446D7 /* HDBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDBaseViewModel.h; path = viewModel/HDBaseViewModel.h; sourceTree = "<group>"; };
+		879E93DA1AB44C43009446D7 /* HDBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDBaseViewModel.m; path = viewModel/HDBaseViewModel.m; sourceTree = "<group>"; };
+		879E93DD1AB44D36009446D7 /* MustOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustOverride.h; sourceTree = "<group>"; };
+		879E93DE1AB44D36009446D7 /* MustOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustOverride.m; sourceTree = "<group>"; };
+		879E93E01AB44E63009446D7 /* HDMainListCellWithImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDMainListCellWithImage.xib; sourceTree = "<group>"; };
+		879E93E21AB44E99009446D7 /* HDMainListCellWithoutImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDMainListCellWithoutImage.xib; sourceTree = "<group>"; };
+		879E93E41AB4699A009446D7 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		87A7387519889FA700A5E4A2 /* HDCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDCollectionViewController.h; sourceTree = "<group>"; };
 		87A7387619889FA700A5E4A2 /* HDCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDCollectionViewController.m; sourceTree = "<group>"; };
 		87A7387E1988AA1500A5E4A2 /* HDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseViewController.h; sourceTree = "<group>"; };
@@ -419,12 +435,14 @@
 		871BE2701963DC4900087E4B /* HotDaily */ = {
 			isa = PBXGroup;
 			children = (
+				879E93DC1AB44D36009446D7 /* MustOverride */,
 				87065B181AA4B2A700DB56A0 /* UINavigationBar+BackgroundColor */,
 				87065AEA1AA4AF0500DB56A0 /* ShareSDK */,
 				878003D8199B56A600E65B77 /* MJRefresh */,
 				87E1F6D719A2FD9E00A0D890 /* WebViewProxy */,
 				871BE2791963DC4900087E4B /* HDAppDelegate.h */,
 				871BE27A1963DC4900087E4B /* HDAppDelegate.m */,
+				879E93D51AB44AC8009446D7 /* Universal */,
 				879E93C81AB3439E009446D7 /* iPad */,
 				87C17A61197C038000DCA99C /* iPhone */,
 				87C17A67197C056400DCA99C /* ViewModel */,
@@ -522,15 +540,37 @@
 				879E93CD1AB345FA009446D7 /* HDSplitViewController.m */,
 				879E93CF1AB34689009446D7 /* HDSideMenuTableViewController.h */,
 				879E93D01AB34689009446D7 /* HDSideMenuTableViewController.m */,
+				879E93D21AB449D6009446D7 /* HDMainListViewControllerHD.h */,
+				879E93D31AB449D6009446D7 /* HDMainListViewControllerHD.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		879E93D51AB44AC8009446D7 /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				879E93D61AB44AFE009446D7 /* HDBaseCell.h */,
+				879E93D71AB44AFE009446D7 /* HDBaseCell.m */,
+				87C17A6C197C0C1200DCA99C /* HDMainListCell.h */,
+				87C17A6D197C0C1200DCA99C /* HDMainListCell.m */,
+				879E93E01AB44E63009446D7 /* HDMainListCellWithImage.xib */,
+				879E93E21AB44E99009446D7 /* HDMainListCellWithoutImage.xib */,
+			);
+			name = Universal;
+			sourceTree = "<group>";
+		};
+		879E93DC1AB44D36009446D7 /* MustOverride */ = {
+			isa = PBXGroup;
+			children = (
+				879E93DD1AB44D36009446D7 /* MustOverride.h */,
+				879E93DE1AB44D36009446D7 /* MustOverride.m */,
+			);
+			path = MustOverride;
 			sourceTree = "<group>";
 		};
 		87A738841989CF8600A5E4A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				87C17A6C197C0C1200DCA99C /* HDMainListCell.h */,
-				87C17A6D197C0C1200DCA99C /* HDMainListCell.m */,
 				87C5227B1999B87800F89B2A /* HDFuninfoCell.h */,
 				87C5227C1999B87800F89B2A /* HDFuninfoCell.m */,
 				87A738861989CFEC00A5E4A2 /* HDMainListHeaderView.h */,
@@ -572,7 +612,7 @@
 		87C17A61197C038000DCA99C /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
-				871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */,
+				879E93E41AB4699A009446D7 /* Main_iPhone.storyboard */,
 				87A738841989CF8600A5E4A2 /* View */,
 				87A738851989CFA000A5E4A2 /* Controller */,
 			);
@@ -605,6 +645,8 @@
 				87A73882198955F300A5E4A2 /* HDListDetailViewModel.m */,
 				87C522781999B2CB00F89B2A /* HDFuninfoViewModel.h */,
 				87C522791999B2CB00F89B2A /* HDFuninfoViewModel.m */,
+				879E93D91AB44C43009446D7 /* HDBaseViewModel.h */,
+				879E93DA1AB44C43009446D7 /* HDBaseViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -715,9 +757,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				871BE28C1963DC4900087E4B /* Images.xcassets in Resources */,
-				871BE27E1963DC4900087E4B /* Main_iPhone.storyboard in Resources */,
 				876111F5198A3D9E00B92D99 /* contentView in Resources */,
+				879E93E31AB44E99009446D7 /* HDMainListCellWithoutImage.xib in Resources */,
 				879E93CA1AB343B4009446D7 /* Main_iPad.storyboard in Resources */,
+				879E93E51AB4699A009446D7 /* Main_iPhone.storyboard in Resources */,
+				879E93E11AB44E63009446D7 /* HDMainListCellWithImage.xib in Resources */,
 				878003FC199DAE0D00E65B77 /* historyData in Resources */,
 				878003E9199B56A600E65B77 /* MJRefresh.bundle in Resources */,
 				871BE2751963DC4900087E4B /* InfoPlist.strings in Resources */,
@@ -813,6 +857,7 @@
 				8780040F19A19BCB00E65B77 /* HDCollectionStore.m in Sources */,
 				87800405199FB49500E65B77 /* HDMainViewController.m in Sources */,
 				879E93CE1AB345FA009446D7 /* HDSplitViewController.m in Sources */,
+				879E93D41AB449D6009446D7 /* HDMainListViewControllerHD.m in Sources */,
 				87A73883198955F300A5E4A2 /* HDListDetailViewModel.m in Sources */,
 				878003FF199DB56200E65B77 /* HDHistoryListCell.m in Sources */,
 				87A738881989CFEC00A5E4A2 /* HDMainListHeaderView.m in Sources */,
@@ -820,7 +865,9 @@
 				87C17A6B197C0B8E00DCA99C /* HDListDetailViewController.m in Sources */,
 				878003ED199B56A600E65B77 /* MJRefreshHeaderView.m in Sources */,
 				87829398197D13660037AC25 /* HDHTTPManager.m in Sources */,
+				879E93DB1AB44C43009446D7 /* HDBaseViewModel.m in Sources */,
 				878003EA199B56A600E65B77 /* MJRefreshBaseView.m in Sources */,
+				879E93DF1AB44D36009446D7 /* MustOverride.m in Sources */,
 				878003F0199B56A600E65B77 /* UIView+Extension.m in Sources */,
 				878003EB199B56A600E65B77 /* MJRefreshConst.m in Sources */,
 				87A738801988AA1500A5E4A2 /* HDBaseViewController.m in Sources */,
@@ -830,6 +877,7 @@
 				87C5227A1999B2CB00F89B2A /* HDFuninfoViewModel.m in Sources */,
 				87C522771999B27800F89B2A /* HDFuninfoViewController.m in Sources */,
 				878003EE199B56A600E65B77 /* UIScrollView+Extension.m in Sources */,
+				879E93D81AB44AFE009446D7 /* HDBaseCell.m in Sources */,
 				878003F3199BB19900E65B77 /* HDHistoryViewController.m in Sources */,
 				87A7387719889FA700A5E4A2 /* HDCollectionViewController.m in Sources */,
 				87800402199DE96F00E65B77 /* HDHistoryRecordViewController.m in Sources */,
@@ -882,14 +930,6 @@
 				871BE2741963DC4900087E4B /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		871BE27C1963DC4900087E4B /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				871BE27D1963DC4900087E4B /* Base */,
-			);
-			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		871BE29C1963DC4900087E4B /* InfoPlist.strings */ = {
