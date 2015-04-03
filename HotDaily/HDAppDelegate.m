@@ -18,8 +18,6 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import <AVOSCloud/AVOSCloud.h>
 
-#define AVOSCloudAppID  @"srktyhtxclybtwn11snsqmdayp5do6yvnpc142x9z6orl79g"
-#define AVOSCloudAppKey @"cgm7zq4j7uvce3bm6xjwbp45wwwj8tmpoj815k8pscerdvaki"
 
 @implementation HDAppDelegate
 

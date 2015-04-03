@@ -39,14 +39,14 @@
         CGRect masterViewFrame = masterViewController.view.frame;
         CGFloat deltaX = masterViewFrame.size.width - kMasterViewWidth;
         masterViewFrame.size.width -= deltaX;
-        CGRect masterViewFrame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT);
+//        CGRect masterViewFrame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT);
         masterViewController.view.frame = masterViewFrame;
         
         // Adjust the width of the detail view
         CGRect detailViewFrame = detailViewController.view.frame;
         detailViewFrame.origin.x -= deltaX;
         detailViewFrame.size.width += deltaX;
-        CGRect detailViewFrame = CGRectMake(0, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT);
+//        CGRect detailViewFrame = CGRectMake(0, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT);
         detailViewController.view.frame = detailViewFrame;
         
         
