@@ -1,0 +1,24 @@
+{
+  "name": "MJRefresh",
+  "version": "1.0.0",
+  "platforms": {
+    "ios": null
+  },
+  "license": "MIT",
+  "summary": "Give pull-to-refresh to any UIScrollView with 1 line of code.",
+  "homepage": "https://github.com/CoderMJLee/MJRefresh",
+  "authors": {
+    "CoderMJLee": "https://github.com/CoderMJLee"
+  },
+  "source": {
+    "git": "~/Documents/MJRefresh"
+  },
+  "description": "MJRefresh allows you to easily add pull-to-refresh functionality to any UIScrollView subclass with only 1 line of code. Instead of depending on delegates and/or subclassing UIViewController, SVPullToRefresh extends UIScrollView with a addPullToRefreshWithActionHandler: method as well as a pullToRefreshView property.",
+  "requires_arc": true,
+  "source_files": "**/*.{h,m}",
+  "xcconfig": {
+    "LIBRARY_SEARCH_PATHS": "\"$(PODS_ROOT)/MJRefresh\""
+  },
+  "resources": "MJRefresh/MJRefresh.bundle/**/*.png",
+  "frameworks": "UIKit"
+}
